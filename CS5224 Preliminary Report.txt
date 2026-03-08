@@ -1,0 +1,456 @@
+﻿1. Motivation and Objective:
+
+
+Small-and-medium-sized enterprises (SMEs) account for 99% of global firms and over 50% of value added, yet they face persistent hurdles in digital adoption. Limited financial resources and a shortage of specialized technical talent, particularly in data analytics, create a significant capability gap. According to McKinsey & Company, this results in a stark productivity deficit: SMEs operate at only 60% of the productivity level of large firms in advanced economies, and as low as 29% in emerging markets[1]. Having such major barriers to digitalization limits SMEs’ growth and long-term competitiveness. 
+
+
+Our platform addresses these challenges through an integrated analytics platform with a chatbot interface, enabling retail SMEs to access business intelligence and predictive analytics without requiring advanced technical expertise. By offering user-friendly interfaces and predefined analytical models, the platform supports SMEs to make well-grounded, data-driven decisions. This cloud-based solution reduces technical barriers and costs, helping SMEs sustain their competitiveness in the digital economy.
+
+
+2. User Journey: [a][b]
+Stages
+	1. Introduction and Onboarding
+	2. Problem alignment
+	3. Data Input
+	4. Parameter Tuning
+	5. Model Training and Insights
+	6. Results 
+	Key features
+	Homepage showing use case options
+
+
+Chatbot to understand business questions to answer
+
+
+Free sign-up (?) - so that the SMEs are more inclined to use the product
+	Human-in-loop integration and alignment
+* If the suggested result is not what is desired by the user, more prompting can be done to frame the problem and solution better
+	User uploads their own data
+
+
+AI-generated sample data
+
+
+Data Quality Check
+* Missing data, etc. 
+	Prompts to determine model parameters
+* How far ahead would you like to be able to predict
+* How cautious (Sensitivity of the model)
+	Pre-training cost preview
+
+
+Live training updates
+
+
+Training technical details
+	Simple business suggestions based on results and the original business problem
+
+
+Data-driven explanations of suggestions given
+	User actions
+	Select use case
+
+
+Converse with our chatbot to get a better framing of the user’s problem
+	Chatbot to clarify with the user on their problem and the desired result
+
+
+	Upload the dataset which the user would like to be analysed
+
+
+If there are any issues with the data, the user will be prompted to check the data and select what they would like to do (autofill, skip, estimate)
+	User to define their desired parameters
+	Users are to select the training tier which they would like
+* Cost is dependent on the computing resources required 
+
+
+Live updates on the training that is being run
+
+
+Simple explanations of the training results and technical details of the model run, what are the results obtained
+	
+
+	  
+[c]
+3. Competitive Landscape Analysis:
+Existing platforms present technical and financial uncertainties for resource-constrained SMEs without prior cloud or ML experience. For example, Roboflow[2] focuses primarily on vision-based use cases and requires users to manage data annotation, model training, and deployment workflows. This demands technical expertise and limits broader applicability. Similarly, Amazon SageMaker Canvas[3] provides a no-code interface, but users must still handle data preparation and operate within the broader AWS ecosystem. Its general-purpose design and usage-based pricing structure may introduce additional technical and financial uncertainties for SMEs.
+In contrast, our platform is purpose-built for retail SMEs, emphasizing intuitive conversational interaction combined with predefined descriptive and predictive analytics models. Rather than requiring users to build and configure models, the system delivers ready-to-use, business-focused insights. Thus, it better aligns with the operational realities and financial constraints of retail SMEs. Additionally, deployed on AWS infrastructure, our domain-specific and resource-optimized design enables scalable, affordable, and predictable pricing tailored to retail SMEs.
+
+
+4. Business Model (Pricing Strategies):
+Our platform follows a hybrid pricing model that combines tiered subscription plans with usage-based resource allocation. The Free plan supports trial users and micro retailers with single-user access, the Growth plan serves the major targeted SMEs with collaborative features for up to three users, and the Pro plan enables scaling retail chains with unlimited user access and expanded analytical capacity. 
+In addition to tiered subscriptions, the platform adopts a usage-based pricing model for computational resources. Each plan includes baseline allocations of compute capacity, storage, and chatbot interaction tokens to support AI-assisted problem diagnosis and analytics. When usage exceeds these quotas, additional consumption is billed on a pay-per-use basis. This structure ensures predictable subscription costs while allowing flexible scalability as business needs grow.
+
+
+1. Model & Analytics Capabilities 
+Feature
+	Free
+	Growth
+	Pro
+	Basic ML Models
+(Regression, Classification)
+	✓
+	✓
+	✓
+	Advanced ML Models
+(Ensemble)
+	✕
+	✓
+	✓
+	Deep Learning Models
+	✕
+	Limited
+	✓
+	Feature Importance
+	✓
+	✓
+	✓
+	Advanced Explainability (SHAP-based)
+	✕
+	Basic
+	Full
+	  
+
+
+5. Architecture and implementation
+We will fully leverage AWS cloud services for frontend and backend processes, basing our SaaS application in the Asia Pacific (Singapore) region. We will replicate services across multiple availability zones (multi-AZs) within Singapore borders to ensure high availability, we also ensure that data is kept within Singapore’s borders for customers who have data security concerns.
+
+
+Application architecture
+  
+
+Figure XX: AWS Cloud Architecture
+We utilise a serverless architecture for two key reasons: Firstly, as we are first starting out this application, metrics to predict usage and scaling are unreliable, it is difficult for us to estimate baseline traffic levels or peak workloads. A serverless platform lets us scale compute resources on demand and allows us to handle sudden spikes without manual configuration. Secondly, a serverless application is ideal for our business solution as it is event-driven workloads. We do not require continuous 24/7 compute resources as our ML operations (uploading data, requesting model training and generating visualisation) occur only when triggered by user actions. 
+
+
+We may decide to migrate to a server-based architecture once we have established usage metrics and a baseline usage rate that helps us to generate autoscaling policies on EC2, as well as getting a better estimate of cost metrics to compare the cost of serverless to server for this decision.
+
+
+The overall architecture is event-driven, enabling asynchronous processing for long-running ML training tasks. The frontend uses React webpage delivered via CloudFront, with backend logic handled by AWS Lambda acting as the API layer, API calls are routed through Amazon API Gateway. Users will authenticate through Amazon Cognito. We separate the data storage into Amazon S3 for user-uploaded datasets and ML model artefacts (eg. plots, learned weights/parameters..) as well as Amazon DynamoDB for structured metadata. We use AWS Fargate containers to handle long-running ML training jobs which will be triggered via Amazon SQS. Data visualisation requests are served by calling Amazon Bedrock directly from Lambda.
+
+
+Amazon bedrock powers the chatbot interface, translating the business queries into actionable model parameters. It drives the visualisation phase by using GenAI to interpret the initial dataset and generates the visual summaries for the react frontend to display. The backend automatically retrieves the established parameters to execute the appropriate data validation and model training workflows. [d][e][f]
+
+
+AWS Lambda serves as our backend API layer, this allows us to auto-scale and have a pay-per-use flexibility into our application. This keeps our costs low as we do not need a server. As our application may run long-running ML models that exceeds 15 minutes, we instead run ML model training jobs as python containers (scikit-learn) on AWS Fargate, which will be triggered via SQS. ECS scales the number of Fargate tasks based on SQS queue depth using Application Auto Scaling, this allows us to scale automatically (and to zero if idle), which may be useful as this is a new application and we are uncertain about potential traffic flows. As Lambda and Fargate (used purely as a background ML worker) are scaled on demand, we do not need a Load Balancer unlike with running fixed servers[g][h][i].
+
+
+6. Evaluation of the cloud architecture  
+To ensure that our SaaS product can bridge the data capability gap for SMEs, its performance must be efficient and also cost-effective. Our product’s AWS-based architecture can be evaluated with four key metrics, which will be discussed in Sections 6.1 to 6.4. 
+
+
+6.1. Architecture Quality
+As we are utilising a serverless-first design, we should assess the integrity and efficiency of the platform compared to traditional always-on servers. We identify the following performance metrics to evaluate our architecture performance:
+* API latency: Time for API Gateway and lambda to respond
+* Response time for
+   * Chatbot response times 
+   * Visualisation response times
+* ML job startup time: Time between job request and Fargate task start
+Use CloudWatch for monitoring above
+
+
+6.2. Scalability and Reliability 
+In order for retail SMEs to rely on the platform for daily operations, the infrastructure must accommodate for growth and maintain high reliability. The platform’s reliability will ensure the long-term retention of users. We will evaluate scalability by testing the system on different test scenarios:
+
+
+Scenario
+	Concurrent Users
+	Training Jobs
+	Light load
+	10 users
+	10 jobs
+	Medium load
+	100 users
+	100 jobs
+	Heavy load
+	1000 users
+	500 jobs
+	
+
+With each scenario we track the metrics mentioned earlier in architecture quality and map onto a graph. A sign of good scalability should observe that lambda response time remain stable, response times remain consistent and fargate tasks scale with queue depth.
+To evaluate the platform’s reliability, we will conduct simulated disruptions within a staged environment. This involves disrupting specific infrastructure components, such as terminating an active AWS Fargate ML worker in the middle of a task or by simulating a complete outage of an AWS Availability Zone (AZ).
+The platform is reliable if the conversational interface (chatbot) remains fully accessible and seamlessly reroutes traffic to a healthy AZ without dropping user sessions. Additionally, any disrupted Machine Learning jobs are not lost but rather returned to the Amazon SQS queue which can then be picked up by a Fargate worker. This ensures there is no sudden data loss or downtime during physical hardware outages. [j][k]
+6.3. Security 
+Since the platform potentially processes confidential data from SMEs, proving the effectiveness of our security architecture is crucial to establishing and maintaining user trust. To evaluate whether the proposed SaaS security measures work as intended, we will subject the platform to rigorous vulnerability and boundary testing across three key areas:
+
+
+Chatbot Vulnerability and Leak Testing
+	The conversational interface will be evaluated using prompt injection and boundary testing. This ensures the chatbot strictly prevents unauthorized data leaks, ensuring that it only retrieves and discusses data explicitly tied to the current authenticated user's session.
+	Cross-Tenant Authorization Audits
+	The effectiveness of Amazon Cognito and our multi-tenant separation can be evaluated by role-based access testing. This involves simulating scenarios where one authenticated SME attempts to access, view, or query the datasets and predictive models of another SMEs, ensuring that strict data isolation holds up under pressure.
+	Network Isolation Testing
+	Conduct regular vulnerability scanning and external penetration testing to verify that our private subnets are fully secure. This ensures that backend systems (storage and ML workers) completely block direct public internet access and strictly route allowable traffic through the API Gateway.
+
+
+	[l][m][n]
+
+
+6.4. Business-level Key Performance Indexes (KPIs)
+The SaaS performance can be measured by its direct impact on business viability and operational success of its users. KPIs allow the platform to quantify how effectively it is closing the compatibility gap for retail SMEs. By monitoring these indicators, the system ensures that infrastructure costs are maintained and that the user experience is of top quality.
+
+
+Table X: KPIs to ensure Maximum Impact of the Proposed SaaS
+Churn rate 
+	This KPI monitors the rate at which SMEs cancel their subscriptions. By tracking when users leave, the system can identify technical or operational bottlenecks that may be driving users to opt out of using the product.
+	Cost Per Tenant (CPT)
+	The cloud compute and storage expenditures are tracked per user across the “Free”, “Growth”, and “Pro” tiers to ensure that the pricing strategy remains profitable and sustainable. The architecture can then be scaled economically to ensure that low-cost entry points are viable (i.e “Growth” tier). 
+	Time-to-Insight 
+	The system measures the end-to-end duration from an SME’s initial problem alignment via the chatbot, to the delivery of the predictive models or business suggestions. Optimization of the pipeline can be carried out to deliver predictive models/outputs faster.
+	Feature Adoption Rates 
+	This KPI checks which analytical model or chatbot tools are used the most often. Any future investments towards improving the product will always be focused on the real challenges faced by the retail SMEs, making sure that the product is relevant always. 
+	
+
+________________
+
+
+Additional (dont include in report)
+Architecture overview
+Service
+	What it does
+	Compared to alternatives
+	Amazon Cognito
+	User authentication
+	
+
+	CloudFront + S3
+	Frontend React app delivery (static)
+	AWS Amplify
+	API Gateway
+	Single HTTPs entry point and routes requests to lambda functions
+	
+
+	AWS Lambda
+	Backend API layer (this contains all our application routes and logic)
+	FastAPI on fargate
+	Amazon SQS
+	Job queue from lambda API to Fargate ML workers
+	
+
+	AWS Fargate
+	Containerised python workers for ML model training (cos lambda calls cannot be longer than 15mins)
+	EC2 (sustained high load)
+	AWS Step Functions
+	Orchestrates multi-step ML training pipeline
+	
+
+	Amazon S3
+	Store user data, datasets and others (dashboard, job records)
+	
+
+	DynamoDB
+	Metadata for above
+	Aurora (SQL storage)
+	Bedrock
+	Data visualisation
+	Anthropic/OpenAI API call
+	
+
+
+
+Cost Model
+Service
+	Pricing type
+	Cost
+	Amazon Cognito
+	By Monthly Active Users (MAU)
+	First 10,000: Free
+After 10,000: $0.015 
+	S3 (standard)
+	By objects size in S3
+By requests made to objects
+	  
+  
+
+	CloudFront
+	1M requests, 100GB Data Transfer
+	Free tier
+	
+
+	
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The integrity and efficiency of the platform are critical to deliver a human-in-the-loop conversational experience. We assess the quality across the following parameters (as shown in table X): 
+Table X:  Parameters to Assess Architecture Quality 
+Performance and Latency 
+	The system’s latency will be continuously monitored, mainly focusing on chatbot response times and the generation of pre-training cost previews. Lower latency should be prioritized to maintain user engagement. 
+	Cost Efficiency 
+	The proposed hybrid pricing model for the product means that the architecture dynamically allocates computing resources. This ensures that the “free” tier plan can remain cost-effective while still being able to provide the needed computing power to the “Growth” and “Pro” tier subscribers.  
+	Modularity and Microservices 
+	A decoupled microservices structure can be implemented to separate the chatbot interface from the compute-heavy Machine Learning training pipeline. This ensures that the shared compute resources are allocated effectively and not just focused on meeting the computational demands of the “Pro” tier users that are executing complex predictive models. 
+[o][p]	
+
+
+6.2. Scalability and Reliability 
+In order for retail SMEs to rely on the platform for daily operations, the infrastructure must accommodate for growth and maintain high availability. The platform’s reliability will ensure the long-term retention of users. This means that the system must have elastic scalability and high availability characteristics (see table X).
+Table X:  Scalable and Reliable Architecture for SMEs
+Elastic Scalability 
+	The system utilizes auto-scaling to handle predictable traffic spikes (such as end-of-month sales reporting) and adds compute power only when demand is high. Once traffic drops, it scales back down and thus ensures that operating costs strictly align with actual computing usage. Additionally, the architecture prevents churn caused by poor platform performance.
+	High Availability 
+	To keep the platform online even if underlying hardware fails, we distribute the infrastructure across multiple AWS Availability Zones (AZs). This physical redundancy guarantees that SMEs will not suddenly lose access to the chatbot/dashboard due to any server or data center outage. By reducing single-point hardware failures, it reinforces product loyalty and reduces the likelihood of seeking the use of other products. 
+	
+
+
+
+
+
+
+
+
+
+6.3. Security 
+Since the platform potentially can process confidential operational data from SMEs, a security architecture is crucial to establish and maintain the trust of the user. To mitigate the risks associated with cloud-based analytics, the platform will implement a multi-layered security strategy centered on separation within a multi-tenant environment. Amazon Cognito is utilized for secure user authentication and authorization. This security architecture ensures that regardless of their subscription tier, users will not be able to view or expose datasets or predictive models belonging to other SMEs. 
+
+
+Additionally, a comprehensive data encryption protocol should be enforced, where all information is encrypted within the cloud database whether at rest within the storage (i.e Amazon S3, DynamoDB) or during transit between the client (i.e API gateway), chatbot and ML training servers. To further enforce these security protocols, the system will utilize Identity and Access Management (IAM) policies within the AWS environment. This ensures that internal teams and systems with administrative access to the product are given only the absolute minimum level of access required to do their job, thereby safeguarding SME’s data against external and internal vulnerabilities. 
+
+
+6.4. Business-level Key Performance Indexes (KPIs)
+The SaaS performance can be measured by its direct impact on business viability and operational success of its users. KPIs allows the platform to quantify how effectively it is closing the compatibility gap for retail SMEs. By monitoring these indicators, the system ensures that infrastructure costs are maintained and that the user experience is of top quality.
+
+
+Table X: KPIs to ensure Maximum Impact of the Proposed SaaS
+Churn rate 
+	This KPI monitors the rate at which SMEs cancel their subscriptions. By tracking when users leave, the system can identify technical or operational bottlenecks that may be driving users to opt out of using the product.
+	Cost Per Tenant (CPT)
+	The cloud compute and storage expenditures are tracked per user across the “Free”, “Growth”, and “Pro” tiers to ensure that the pricing strategy remains profitable and sustainable. The architecture can then be scaled economically to ensure that low-cost entry points are viable (i.e “Growth” tier). 
+	Time-to-Insight 
+	The system measures the end-to-end duration from an SME’s initial problem alignment via the chatbot, to the delivery of the predictive models or business suggestions. Optimization of the pipeline can be carried out to deliver predictive models/outputs faster.
+	Feature Adoption Rates 
+	This KPI checks which analytical model or chatbot tools are used the most often. Any future investments towards improving the product will always be focused on the real challenges faced by the retail SMEs, making sure that the product is relevant always. 
+	
+
+
+
+
+
+
+
+
+
+
+
+* Sat 2pm - 3pm 
+
+
+
+
+We evaluate our SaaS product on four key metrics:
+1. Architecture Quality
+2. Scalability and reliability
+   1. Churn
+3. Security
+4. Business-level Key Performance Indexes (KPIs)
+
+
+________________
+[1] How Digital Services Empower SMEs and Start-Ups: https://itif.org/publications/2025/08/27/how-digital-services-empower-smes-and-start-ups/
+[2] Roboflow Official Website: https://roboflow.com/industries/retail-and-service
+[3] Amazon SageMaker Canvas: https://aws.amazon.com/tw/sagemaker/ai/canvas/
+[a]will be modified later
+[b]what user can do at that page - impt features on that page (overview)
+[c]can help to create a user request flow like this too to show all the user journeys
+[d]kiv bedrock
+[e]bedrock available in sg
+[f]we will use AWS Nova 2 Lite which is available in ap-southeast1 region (Singapore)
+[g]fact check tyvm
+[h]So actually ECS is automatically set-up with fargate right? If so then this is correct
+[i]mmm can be true but i think will need an application load balancer for the chatbot fargate. so archi is 
+frontend -> ALB -> (chatbot + orchestration fargate) -> training fargate
+[j]Can check for reliability evaluation
+[k]wow super hard to do but ig it makes sense
+[l]Edited for evaluation
+[m]^^ ensure cannot access from public internet, proper authentication, user cannot access other user’s data, chatbot should not leak data to unauthorised users
+[n]Agreed
+[o]?
+[p]Just realised this was more to design than evaluation

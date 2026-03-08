@@ -1,0 +1,1001 @@
+Invoice ID,Branch,City,Customer type,Gender,Product line,Unit price,Quantity,Tax 5%,Total,Date,Time,Payment,cogs,gross margin percentage,gross income,Rating
+001-12-9434,C,Naypyitaw,Member,Male,Home and lifestyle,41.19,5,10.2975,216.2475,01/01/2019,11:00,Ewallet,205.95,4.761904762,10.2975,6.6
+002-40-2063,A,Yangon,Member,Female,Fashion accessories,46.69,7,16.3415,343.1715,01/01/2019,15:15,Ewallet,326.83,4.761904762,16.3415,4.4
+003-45-6342,C,Naypyitaw,Member,Male,Sports and travel,21.3,5,5.325,111.825,01/01/2019,11:15,Cash,106.5,4.761904762,5.325,6.8
+004-15-8489,C,Naypyitaw,Member,Female,Home and lifestyle,25.42,3,3.813,80.073,01/01/2019,19:45,Cash,76.26,4.761904762,3.813,8.9
+005-93-9195,A,Yangon,Normal,Female,Sports and travel,84.46,5,21.115,443.415,01/01/2019,11:30,Credit card,422.29999999999995,4.761904762,21.115,7.7
+006-88-9837,A,Yangon,Member,Female,Sports and travel,62.64,7,21.924,460.404,01/01/2019,18:45,Credit card,438.48,4.761904762,21.924,9.0
+007-60-6560,C,Naypyitaw,Member,Female,Home and lifestyle,40.38,5,10.095,211.995,01/02/2019,19:00,Ewallet,201.9,4.761904762,10.095,7.0
+008-75-1846,B,Mandalay,Member,Female,Electronic accessories,82.26,5,20.565,431.865,01/02/2019,16:15,Cash,411.3,4.761904762,20.565,4.7
+009-84-7316,C,Naypyitaw,Member,Male,Home and lifestyle,32.19,9,14.4855,304.1955,01/02/2019,19:15,Cash,289.71,4.761904762,14.4855,4.1
+010-53-7469,C,Naypyitaw,Member,Female,Home and lifestyle,97.84,3,14.676,308.196,01/02/2019,15:15,Ewallet,293.52,4.761904762,14.676,5.8
+011-35-9915,C,Naypyitaw,Member,Male,Fashion accessories,41.03,6,12.309,258.489,01/02/2019,15:15,Ewallet,246.18,4.761904762,12.309,8.2
+012-29-5208,C,Naypyitaw,Member,Male,Home and lifestyle,40.36,1,2.018,42.378,01/02/2019,16:45,Credit card,40.36,4.761904762,2.018,8.7
+013-21-3048,A,Yangon,Member,Male,Electronic accessories,38.07,5,9.5175,199.8675,01/03/2019,12:15,Credit card,190.35,4.761904762,9.5175,5.8
+014-23-2828,C,Naypyitaw,Normal,Male,Fashion accessories,20.99,8,8.396,176.316,01/03/2019,15:30,Credit card,167.92,4.761904762,8.396,7.0
+015-20-7988,B,Mandalay,Member,Male,Health and beauty,20.0,5,5.0,105.0,01/03/2019,16:45,Ewallet,100.0,4.761904762,5.0,6.5
+016-12-4744,A,Yangon,Normal,Female,Health and beauty,68.33,9,30.7485,645.7185,01/03/2019,16:45,Ewallet,614.97,4.761904762,30.7485,6.5
+017-15-1009,B,Mandalay,Member,Female,Sports and travel,88.76,6,26.628,559.188,01/03/2019,11:00,Credit card,532.5600000000001,4.761904762,26.628,5.4
+018-14-7038,B,Mandalay,Member,Female,Sports and travel,81.15,8,32.46,681.66,01/03/2019,14:00,Credit card,649.2,4.761904762,32.46,4.8
+019-19-3219,B,Mandalay,Member,Female,Electronic accessories,22.7,8,9.08,190.68,01/04/2019,19:00,Cash,181.6,4.761904762,9.08,5.2
+020-11-3060,B,Mandalay,Member,Male,Food and beverages,59.1,3,8.865,186.165,01/04/2019,16:30,Cash,177.3,4.761904762,8.865,4.3
+021-49-2619,A,Yangon,Normal,Female,Health and beauty,19.5,7,6.825,143.325,01/04/2019,18:30,Credit card,136.5,4.761904762,6.825,5.2
+022-74-2342,A,Yangon,Member,Female,Sports and travel,14.08,7,4.928,103.488,01/04/2019,13:15,Credit card,98.56,4.761904762,4.928,4.1
+023-82-3832,B,Mandalay,Member,Male,Health and beauty,69.07,6,20.721,435.141,01/04/2019,18:00,Cash,414.41999999999996,4.761904762,20.721,7.8
+024-18-2994,B,Mandalay,Normal,Male,Electronic accessories,58.16,7,20.356,427.476,01/04/2019,11:30,Credit card,407.12,4.761904762,20.356,5.9
+025-24-4490,A,Yangon,Normal,Female,Electronic accessories,17.38,2,1.738,36.498,01/05/2019,19:15,Cash,34.76,4.761904762,1.738,9.8
+026-58-2604,A,Yangon,Member,Female,Food and beverages,13.14,9,5.913,124.173,01/05/2019,12:15,Cash,118.26,4.761904762,5.913,5.2
+027-71-1235,A,Yangon,Normal,Male,Food and beverages,99.08,1,4.954,104.034,01/05/2019,12:30,Cash,99.08,4.761904762,4.954,6.1
+028-59-2908,C,Naypyitaw,Normal,Female,Fashion accessories,12.7,1,0.635,13.335,01/05/2019,19:45,Ewallet,12.7,4.761904762,0.635,6.1
+029-84-6256,C,Naypyitaw,Normal,Female,Electronic accessories,50.01,3,7.5015,157.5315,01/05/2019,15:30,Ewallet,150.03,4.761904762,7.5015,4.1
+030-43-3635,C,Naypyitaw,Member,Female,Sports and travel,55.42,3,8.313,174.573,01/05/2019,10:30,Credit card,166.26,4.761904762,8.313,9.0
+031-44-3560,B,Mandalay,Member,Female,Health and beauty,20.56,1,1.028,21.588,01/06/2019,12:15,Cash,20.56,4.761904762,1.028,4.2
+032-49-4391,C,Naypyitaw,Member,Male,Home and lifestyle,25.22,7,8.827,185.367,01/06/2019,16:00,Ewallet,176.54,4.761904762,8.827,9.6
+033-31-6951,B,Mandalay,Normal,Male,Food and beverages,41.66,4,8.332,174.972,01/06/2019,13:45,Credit card,166.64,4.761904762,8.332,9.4
+034-81-7413,B,Mandalay,Member,Male,Home and lifestyle,78.55,2,7.855,164.955,01/06/2019,14:30,Credit card,157.1,4.761904762,7.855,7.2
+035-69-7941,C,Naypyitaw,Normal,Female,Sports and travel,55.64,5,13.91,292.11,01/06/2019,18:15,Credit card,278.2,4.761904762,13.91,7.3
+036-44-5820,B,Mandalay,Member,Female,Food and beverages,67.41,6,20.223,424.683,01/06/2019,13:00,Credit card,404.46,4.761904762,20.223,7.9
+037-46-3898,C,Naypyitaw,Member,Female,Home and lifestyle,98.67,9,44.4015,932.4315,01/07/2019,10:30,Credit card,888.03,4.761904762,44.4015,6.3
+038-87-8577,C,Naypyitaw,Normal,Female,Sports and travel,79.12,4,15.824,332.304,01/07/2019,11:45,Cash,316.48,4.761904762,15.824,7.9
+039-71-5227,A,Yangon,Member,Female,Health and beauty,49.09,2,4.909,103.089,01/07/2019,18:15,Credit card,98.18,4.761904762,4.909,4.3
+040-98-2065,C,Naypyitaw,Normal,Male,Sports and travel,50.18,5,12.545,263.445,01/07/2019,14:00,Cash,250.9,4.761904762,12.545,4.3
+041-98-7943,A,Yangon,Normal,Female,Fashion accessories,65.69,3,9.8535,206.9235,01/07/2019,17:30,Ewallet,197.07,4.761904762,9.8535,6.7
+042-60-8804,C,Naypyitaw,Member,Female,Food and beverages,69.88,2,6.988,146.748,01/07/2019,15:45,Credit card,139.76,4.761904762,6.988,7.3
+043-47-6984,C,Naypyitaw,Normal,Male,Electronic accessories,55.06,1,2.753,57.813,01/08/2019,16:15,Ewallet,55.06,4.761904762,2.753,9.3
+044-32-5670,A,Yangon,Member,Female,Health and beauty,68.04,2,6.804,142.884,01/08/2019,12:45,Cash,136.08,4.761904762,6.804,4.6
+045-24-3712,A,Yangon,Member,Male,Home and lifestyle,12.12,6,3.636,76.356,01/08/2019,15:30,Cash,72.72,4.761904762,3.636,8.9
+046-26-2248,C,Naypyitaw,Normal,Male,Food and beverages,48.67,8,19.468,408.828,01/08/2019,19:00,Ewallet,389.36,4.761904762,19.468,5.3
+047-75-2997,B,Mandalay,Member,Male,Electronic accessories,35.1,3,5.265,110.565,01/08/2019,19:00,Credit card,105.30000000000001,4.761904762,5.265,6.4
+048-62-4687,A,Yangon,Normal,Male,Sports and travel,21.63,9,9.7335,204.4035,01/08/2019,12:15,Credit card,194.67,4.761904762,9.7335,5.9
+049-60-2970,B,Mandalay,Member,Male,Electronic accessories,18.96,9,8.532,179.172,01/09/2019,17:30,Ewallet,170.64000000000001,4.761904762,8.532,6.4
+050-79-6765,B,Mandalay,Member,Female,Food and beverages,64.29,2,6.429,135.009,01/09/2019,11:15,Ewallet,128.58,4.761904762,6.429,4.9
+051-76-2202,B,Mandalay,Member,Male,Food and beverages,57.12,8,22.848,479.808,01/09/2019,12:45,Ewallet,456.96,4.761904762,22.848,7.0
+052-81-6567,A,Yangon,Member,Male,Fashion accessories,32.82,5,8.205,172.305,01/09/2019,19:00,Credit card,164.1,4.761904762,8.205,8.8
+053-24-6742,B,Mandalay,Member,Female,Fashion accessories,52.39,4,10.478,220.038,01/09/2019,12:15,Credit card,209.56,4.761904762,10.478,6.6
+054-38-6408,A,Yangon,Normal,Female,Electronic accessories,54.3,5,13.575,285.075,01/09/2019,18:45,Credit card,271.5,4.761904762,13.575,6.9
+055-36-1419,B,Mandalay,Normal,Male,Sports and travel,27.55,4,5.51,115.71,01/10/2019,10:00,Ewallet,110.2,4.761904762,5.51,9.1
+056-38-2120,C,Naypyitaw,Normal,Female,Electronic accessories,68.69,8,27.476,576.996,01/10/2019,12:15,Credit card,549.52,4.761904762,27.476,8.2
+057-36-1950,C,Naypyitaw,Normal,Female,Food and beverages,80.28,4,16.056,337.176,01/10/2019,19:15,Cash,321.12,4.761904762,16.056,6.9
+058-42-6373,A,Yangon,Normal,Male,Food and beverages,81.23,6,24.369,511.749,01/10/2019,18:15,Ewallet,487.38,4.761904762,24.369,5.5
+059-77-3645,C,Naypyitaw,Normal,Male,Home and lifestyle,64.22,2,6.422,134.862,01/10/2019,16:00,Credit card,128.44,4.761904762,6.422,9.3
+060-75-5612,C,Naypyitaw,Member,Female,Fashion accessories,56.05,5,14.0125,294.2625,01/10/2019,18:00,Ewallet,280.25,4.761904762,14.0125,7.5
+061-83-7028,B,Mandalay,Member,Male,Home and lifestyle,15.49,6,4.647,97.587,01/11/2019,14:30,Cash,92.94,4.761904762,4.647,5.3
+062-40-7371,A,Yangon,Normal,Male,Health and beauty,35.9,5,8.975,188.475,01/11/2019,19:30,Cash,179.5,4.761904762,8.975,5.6
+063-97-8863,B,Mandalay,Normal,Female,Food and beverages,18.39,2,1.839,38.619,01/11/2019,15:30,Ewallet,36.78,4.761904762,1.839,8.8
+064-24-4228,B,Mandalay,Member,Male,Home and lifestyle,96.74,7,33.859,711.039,01/11/2019,13:45,Ewallet,677.18,4.761904762,33.859,4.3
+065-17-3371,B,Mandalay,Member,Male,Electronic accessories,22.16,4,4.432,93.072,01/11/2019,10:30,Cash,88.64,4.761904762,4.432,10.0
+066-85-4756,B,Mandalay,Member,Male,Fashion accessories,23.66,8,9.464,198.744,01/11/2019,17:15,Ewallet,189.28,4.761904762,9.464,4.8
+067-11-1094,B,Mandalay,Normal,Male,Fashion accessories,90.06,7,31.521,661.941,01/12/2019,13:30,Cash,630.4200000000001,4.761904762,31.521,8.8
+068-45-1793,B,Mandalay,Normal,Male,Sports and travel,94.95,7,33.2325,697.8825,01/12/2019,16:45,Cash,664.65,4.761904762,33.2325,6.4
+069-52-3116,B,Mandalay,Normal,Female,Electronic accessories,78.92,9,35.514,745.794,01/12/2019,11:45,Credit card,710.28,4.761904762,35.514,7.0
+070-29-7166,A,Yangon,Member,Female,Sports and travel,10.49,1,0.5245,11.0145,01/12/2019,15:30,Ewallet,10.49,4.761904762,0.5245,9.3
+071-56-1345,C,Naypyitaw,Member,Male,Home and lifestyle,10.12,6,3.036,63.756,01/12/2019,14:00,Ewallet,60.72,4.761904762,3.036,6.5
+072-55-9554,B,Mandalay,Normal,Female,Health and beauty,44.03,6,13.209,277.389,01/12/2019,14:30,Credit card,264.18,4.761904762,13.209,7.2
+073-21-8783,B,Mandalay,Normal,Male,Electronic accessories,22.91,6,6.873,144.333,01/13/2019,14:30,Cash,137.46,4.761904762,6.873,4.3
+074-71-1984,B,Mandalay,Member,Male,Electronic accessories,11.65,6,3.495,73.395,01/13/2019,10:15,Ewallet,69.9,4.761904762,3.495,4.0
+075-69-4531,B,Mandalay,Member,Male,Electronic accessories,51.77,7,18.1195,380.5095,01/13/2019,17:30,Credit card,362.39000000000004,4.761904762,18.1195,5.5
+076-77-4876,B,Mandalay,Member,Male,Sports and travel,94.88,6,28.464,597.744,01/13/2019,10:30,Credit card,569.28,4.761904762,28.464,8.1
+077-81-1126,B,Mandalay,Member,Male,Home and lifestyle,39.14,1,1.957,41.097,01/13/2019,14:30,Ewallet,39.14,4.761904762,1.957,4.7
+078-40-7024,C,Naypyitaw,Normal,Female,Electronic accessories,69.5,3,10.425,218.925,01/13/2019,16:00,Credit card,208.5,4.761904762,10.425,4.7
+079-60-8196,C,Naypyitaw,Member,Female,Electronic accessories,68.7,2,6.87,144.27,01/14/2019,11:45,Cash,137.4,4.761904762,6.87,6.5
+080-87-4368,B,Mandalay,Member,Male,Fashion accessories,32.6,6,9.78,205.38,01/14/2019,18:30,Credit card,195.60000000000002,4.761904762,9.78,7.9
+081-95-2792,C,Naypyitaw,Member,Female,Health and beauty,68.54,8,27.416,575.736,01/14/2019,12:15,Cash,548.32,4.761904762,27.416,8.3
+082-55-6732,A,Yangon,Normal,Male,Fashion accessories,29.11,3,4.3665,91.6965,01/14/2019,16:00,Cash,87.33,4.761904762,4.3665,5.1
+083-30-4417,B,Mandalay,Normal,Female,Fashion accessories,20.98,8,8.392,176.232,01/14/2019,14:15,Ewallet,167.84,4.761904762,8.392,4.5
+084-45-4030,A,Yangon,Member,Male,Health and beauty,73.12,8,29.248,614.208,01/14/2019,14:45,Credit card,584.96,4.761904762,29.248,9.6
+085-66-4072,A,Yangon,Member,Female,Home and lifestyle,20.21,5,5.0525,106.1025,01/15/2019,14:00,Cash,101.05000000000001,4.761904762,5.0525,5.6
+086-72-5021,B,Mandalay,Member,Male,Fashion accessories,99.72,8,39.888,837.648,01/15/2019,13:30,Cash,797.76,4.761904762,39.888,9.1
+087-64-7514,C,Naypyitaw,Normal,Male,Home and lifestyle,26.51,6,7.953,167.013,01/15/2019,15:45,Credit card,159.06,4.761904762,7.953,9.2
+088-49-3708,A,Yangon,Normal,Female,Fashion accessories,63.47,5,15.8675,333.2175,01/15/2019,11:00,Cash,317.35,4.761904762,15.8675,8.6
+089-56-8112,B,Mandalay,Normal,Female,Food and beverages,47.02,9,21.159,444.339,01/15/2019,11:00,Credit card,423.18,4.761904762,21.159,5.0
+090-62-9393,A,Yangon,Member,Male,Health and beauty,21.37,7,7.4795,157.0695,01/15/2019,19:15,Ewallet,149.59,4.761904762,7.4795,8.9
+091-61-7456,A,Yangon,Normal,Female,Fashion accessories,12.51,8,5.004,105.084,01/16/2019,18:00,Cash,100.08,4.761904762,5.004,8.6
+092-35-8970,A,Yangon,Member,Male,Food and beverages,66.05,1,3.3025,69.3525,01/16/2019,12:00,Cash,66.05,4.761904762,3.3025,7.6
+093-72-1536,A,Yangon,Member,Female,Sports and travel,82.61,2,8.261,173.481,01/16/2019,10:30,Credit card,165.22,4.761904762,8.261,6.0
+094-84-8973,C,Naypyitaw,Member,Female,Food and beverages,85.78,8,34.312,720.552,01/16/2019,14:00,Credit card,686.24,4.761904762,34.312,5.6
+095-11-9070,A,Yangon,Normal,Male,Electronic accessories,53.44,9,24.048,505.008,01/16/2019,12:45,Credit card,480.96,4.761904762,24.048,4.7
+096-91-9666,A,Yangon,Member,Female,Fashion accessories,79.97,4,15.994,335.874,01/16/2019,18:00,Credit card,319.88,4.761904762,15.994,7.1
+097-43-7490,A,Yangon,Normal,Female,Food and beverages,70.56,9,31.752,666.792,01/17/2019,12:30,Cash,635.04,4.761904762,31.752,7.5
+098-26-7783,C,Naypyitaw,Normal,Male,Home and lifestyle,75.18,4,15.036,315.756,01/17/2019,14:15,Ewallet,300.72,4.761904762,15.036,6.2
+099-52-5971,A,Yangon,Member,Female,Sports and travel,54.33,9,24.4485,513.4185,01/17/2019,15:30,Ewallet,488.96999999999997,4.761904762,24.4485,6.9
+100-60-2205,A,Yangon,Member,Male,Fashion accessories,67.01,7,23.4535,492.5235,01/17/2019,18:30,Ewallet,469.07000000000005,4.761904762,23.4535,6.2
+101-33-2990,C,Naypyitaw,Normal,Male,Electronic accessories,82.5,2,8.25,173.25,01/17/2019,15:30,Ewallet,165.0,4.761904762,8.25,7.8
+102-61-4572,C,Naypyitaw,Member,Male,Food and beverages,45.81,9,20.6145,432.9045,01/17/2019,14:45,Credit card,412.29,4.761904762,20.6145,9.4
+103-97-7320,C,Naypyitaw,Normal,Male,Sports and travel,82.54,4,16.508,346.668,01/18/2019,14:45,Cash,330.16,4.761904762,16.508,5.0
+104-38-5757,A,Yangon,Member,Male,Fashion accessories,63.28,8,25.312,531.552,01/18/2019,17:15,Cash,506.24,4.761904762,25.312,6.3
+105-35-6588,C,Naypyitaw,Normal,Female,Sports and travel,24.93,7,8.7255,183.2355,01/18/2019,10:45,Cash,174.51,4.761904762,8.7255,4.8
+106-58-1966,C,Naypyitaw,Normal,Male,Electronic accessories,12.22,7,4.277,89.817,01/18/2019,17:15,Credit card,85.54,4.761904762,4.277,7.7
+107-90-4432,A,Yangon,Normal,Male,Food and beverages,42.65,8,17.06,358.26,01/18/2019,13:45,Cash,341.2,4.761904762,17.06,8.4
+108-58-5243,C,Naypyitaw,Normal,Female,Sports and travel,59.2,1,2.96,62.16,01/18/2019,11:45,Credit card,59.2,4.761904762,2.96,9.6
+109-95-6182,A,Yangon,Member,Female,Sports and travel,85.58,5,21.395,449.295,01/19/2019,19:30,Cash,427.9,4.761904762,21.395,5.7
+110-70-7704,B,Mandalay,Member,Female,Health and beauty,21.47,2,2.147,45.087,01/19/2019,18:15,Ewallet,42.94,4.761904762,2.147,9.7
+111-80-2759,C,Naypyitaw,Normal,Male,Sports and travel,82.02,2,8.202,172.242,01/19/2019,17:45,Credit card,164.04,4.761904762,8.202,4.4
+112-22-3482,B,Mandalay,Normal,Male,Health and beauty,87.67,1,4.3835,92.0535,01/19/2019,18:45,Cash,87.67,4.761904762,4.3835,7.6
+113-65-9914,A,Yangon,Member,Male,Food and beverages,23.56,5,5.89,123.69,01/19/2019,11:30,Ewallet,117.8,4.761904762,5.89,4.3
+114-71-3079,C,Naypyitaw,Member,Female,Fashion accessories,86.64,2,8.664,181.944,01/19/2019,11:00,Ewallet,173.28,4.761904762,8.664,9.4
+115-39-5524,A,Yangon,Member,Male,Fashion accessories,99.23,4,19.846,416.766,01/20/2019,11:30,Ewallet,396.92,4.761904762,19.846,7.2
+116-39-8311,B,Mandalay,Member,Female,Food and beverages,75.42,3,11.313,237.573,01/20/2019,13:00,Credit card,226.26,4.761904762,11.313,8.0
+117-49-8186,A,Yangon,Member,Male,Food and beverages,80.63,3,12.0945,253.9845,01/20/2019,14:15,Credit card,241.89,4.761904762,12.0945,9.0
+118-27-1768,C,Naypyitaw,Member,Female,Home and lifestyle,99.5,2,9.95,208.95,01/20/2019,18:15,Cash,199.0,4.761904762,9.95,4.9
+119-87-6490,C,Naypyitaw,Normal,Male,Food and beverages,64.49,6,19.347,406.287,01/20/2019,17:15,Ewallet,386.93999999999994,4.761904762,19.347,4.2
+120-56-7645,B,Mandalay,Member,Male,Sports and travel,37.71,2,3.771,79.191,01/20/2019,10:15,Cash,75.42,4.761904762,3.771,9.3
+121-47-5926,A,Yangon,Member,Male,Fashion accessories,85.38,8,34.152,717.192,01/21/2019,16:45,Cash,683.04,4.761904762,34.152,5.9
+122-13-7016,C,Naypyitaw,Normal,Female,Electronic accessories,65.3,8,26.12,548.52,01/21/2019,19:00,Ewallet,522.4,4.761904762,26.12,4.8
+123-17-9038,B,Mandalay,Member,Female,Fashion accessories,62.31,5,15.5775,327.1275,01/21/2019,16:45,Cash,311.55,4.761904762,15.5775,6.8
+124-12-5873,C,Naypyitaw,Member,Male,Health and beauty,32.83,7,11.4905,241.3005,01/21/2019,12:45,Credit card,229.81,4.761904762,11.4905,7.6
+125-83-7305,C,Naypyitaw,Member,Male,Fashion accessories,78.07,4,15.614,327.894,01/21/2019,19:15,Cash,312.28,4.761904762,15.614,4.2
+126-96-1054,A,Yangon,Member,Male,Home and lifestyle,17.35,1,0.8675,18.2175,01/21/2019,16:00,Ewallet,17.35,4.761904762,0.8675,5.6
+127-41-4462,C,Naypyitaw,Member,Female,Food and beverages,93.19,2,9.319,195.699,01/22/2019,10:00,Credit card,186.38,4.761904762,9.319,4.2
+128-17-1832,A,Yangon,Normal,Male,Food and beverages,39.32,4,7.864,165.144,01/22/2019,18:00,Credit card,157.28,4.761904762,7.864,6.5
+129-66-6954,C,Naypyitaw,Member,Male,Fashion accessories,21.5,1,1.075,22.575,01/22/2019,10:30,Cash,21.5,4.761904762,1.075,9.4
+130-97-9519,B,Mandalay,Normal,Male,Electronic accessories,49.81,8,19.924,418.404,01/22/2019,18:30,Cash,398.48,4.761904762,19.924,9.9
+131-63-4310,C,Naypyitaw,Normal,Male,Electronic accessories,13.82,9,6.219,130.599,01/22/2019,10:15,Credit card,124.38,4.761904762,6.219,7.8
+132-76-8218,A,Yangon,Member,Female,Home and lifestyle,71.62,4,14.324,300.804,01/22/2019,13:15,Cash,286.48,4.761904762,14.324,5.0
+133-17-8970,A,Yangon,Normal,Female,Health and beauty,91.24,3,13.686,287.406,01/23/2019,12:00,Ewallet,273.71999999999997,4.761904762,13.686,9.4
+134-97-3538,B,Mandalay,Member,Male,Fashion accessories,85.35,2,8.535,179.235,01/23/2019,16:45,Cash,170.7,4.761904762,8.535,7.1
+135-25-5547,C,Naypyitaw,Normal,Male,Food and beverages,21.46,5,5.365,112.665,01/23/2019,11:30,Cash,107.30000000000001,4.761904762,5.365,4.9
+136-46-7612,C,Naypyitaw,Normal,Female,Fashion accessories,21.36,3,3.204,67.284,01/23/2019,10:30,Credit card,64.08,4.761904762,3.204,9.5
+137-23-1822,B,Mandalay,Member,Female,Home and lifestyle,83.21,7,29.1235,611.5935,01/23/2019,17:15,Cash,582.4699999999999,4.761904762,29.1235,8.5
+138-57-7150,C,Naypyitaw,Member,Male,Sports and travel,93.18,6,27.954,587.034,01/23/2019,18:00,Cash,559.08,4.761904762,27.954,8.4
+139-83-9966,C,Naypyitaw,Member,Female,Sports and travel,51.46,1,2.573,54.033,01/24/2019,15:00,Cash,51.46,4.761904762,2.573,8.3
+140-42-3198,A,Yangon,Member,Female,Home and lifestyle,54.91,8,21.964,461.244,01/24/2019,12:30,Ewallet,439.28,4.761904762,21.964,5.2
+141-94-5242,C,Naypyitaw,Member,Male,Food and beverages,38.64,2,3.864,81.144,01/24/2019,15:30,Cash,77.28,4.761904762,3.864,5.3
+142-28-2308,C,Naypyitaw,Normal,Female,Home and lifestyle,90.48,5,22.62,475.02,01/24/2019,17:00,Ewallet,452.40000000000003,4.761904762,22.62,8.1
+143-69-5177,B,Mandalay,Normal,Female,Food and beverages,68.04,9,30.618,642.978,01/24/2019,11:45,Ewallet,612.36,4.761904762,30.618,5.3
+144-11-7852,B,Mandalay,Normal,Male,Electronic accessories,35.94,8,14.376,301.896,01/24/2019,18:45,Ewallet,287.52,4.761904762,14.376,6.6
+145-29-4594,A,Yangon,Normal,Male,Home and lifestyle,36.89,2,3.689,77.469,01/25/2019,19:15,Ewallet,73.78,4.761904762,3.689,8.7
+146-11-5566,C,Naypyitaw,Normal,Female,Food and beverages,90.21,9,40.5945,852.4845,01/25/2019,17:00,Credit card,811.89,4.761904762,40.5945,8.7
+147-21-2555,C,Naypyitaw,Normal,Male,Home and lifestyle,11.23,5,2.8075,58.9575,01/25/2019,19:00,Ewallet,56.150000000000006,4.761904762,2.8075,6.7
+148-14-1804,C,Naypyitaw,Normal,Female,Home and lifestyle,39.05,6,11.715,246.015,01/25/2019,10:45,Cash,234.29999999999998,4.761904762,11.715,8.8
+149-47-2279,A,Yangon,Member,Male,Food and beverages,59.89,3,8.9835,188.6535,01/25/2019,16:45,Ewallet,179.67000000000002,4.761904762,8.9835,9.0
+150-18-8083,A,Yangon,Member,Female,Food and beverages,23.34,3,3.501,73.521,01/25/2019,12:15,Cash,70.02,4.761904762,3.501,7.9
+151-95-2387,B,Mandalay,Normal,Male,Health and beauty,18.29,8,7.316,153.636,01/26/2019,17:15,Ewallet,146.32,4.761904762,7.316,5.4
+152-33-3679,A,Yangon,Normal,Female,Home and lifestyle,83.37,2,8.337,175.077,01/26/2019,12:00,Credit card,166.74,4.761904762,8.337,5.6
+153-68-9173,C,Naypyitaw,Member,Female,Sports and travel,90.5,2,9.05,190.05,01/26/2019,14:15,Ewallet,181.0,4.761904762,9.05,5.9
+154-96-5223,C,Naypyitaw,Member,Female,Home and lifestyle,84.12,5,21.03,441.63,01/26/2019,13:45,Ewallet,420.6,4.761904762,21.03,4.7
+155-90-4186,A,Yangon,Member,Male,Home and lifestyle,90.89,6,27.267,572.607,01/26/2019,10:45,Credit card,545.34,4.761904762,27.267,5.6
+156-90-3573,C,Naypyitaw,Member,Male,Food and beverages,59.78,2,5.978,125.538,01/26/2019,18:15,Ewallet,119.56,4.761904762,5.978,5.3
+157-18-3599,C,Naypyitaw,Normal,Female,Home and lifestyle,83.1,5,20.775,436.275,01/27/2019,17:30,Cash,415.5,4.761904762,20.775,6.7
+158-75-9428,A,Yangon,Member,Female,Fashion accessories,44.56,7,15.596,327.516,01/27/2019,13:00,Ewallet,311.92,4.761904762,15.596,9.5
+159-34-8368,A,Yangon,Normal,Male,Home and lifestyle,69.96,8,27.984,587.664,01/27/2019,11:00,Ewallet,559.68,4.761904762,27.984,4.6
+160-31-3541,C,Naypyitaw,Normal,Male,Fashion accessories,99.0,7,34.65,727.65,01/27/2019,14:00,Ewallet,693.0,4.761904762,34.65,8.3
+161-13-7809,C,Naypyitaw,Normal,Male,Sports and travel,30.32,8,12.128,254.688,01/27/2019,15:30,Credit card,242.56,4.761904762,12.128,8.1
+162-67-9996,C,Naypyitaw,Member,Male,Food and beverages,45.09,9,20.2905,426.1005,01/27/2019,13:15,Ewallet,405.81000000000006,4.761904762,20.2905,4.6
+163-84-7981,B,Mandalay,Member,Male,Home and lifestyle,53.2,5,13.3,279.3,01/28/2019,16:00,Ewallet,266.0,4.761904762,13.3,9.5
+164-27-6475,B,Mandalay,Normal,Male,Fashion accessories,22.42,5,5.605,117.705,01/28/2019,16:00,Cash,112.10000000000001,4.761904762,5.605,7.4
+165-50-8184,B,Mandalay,Normal,Female,Fashion accessories,17.29,4,3.458,72.618,01/28/2019,14:15,Ewallet,69.16,4.761904762,3.458,6.2
+166-46-8141,A,Yangon,Normal,Male,Fashion accessories,84.68,9,38.106,800.226,01/28/2019,11:30,Ewallet,762.1200000000001,4.761904762,38.106,8.5
+167-85-2622,B,Mandalay,Member,Female,Electronic accessories,97.91,5,24.4775,514.0275,01/28/2019,19:00,Ewallet,489.54999999999995,4.761904762,24.4775,5.5
+168-95-3074,A,Yangon,Normal,Male,Health and beauty,46.43,2,4.643,97.503,01/28/2019,19:15,Ewallet,92.86,4.761904762,4.643,8.2
+169-66-1645,A,Yangon,Member,Male,Sports and travel,17.89,8,7.156,150.276,01/29/2019,16:15,Cash,143.12,4.761904762,7.156,4.2
+170-49-9801,B,Mandalay,Normal,Female,Home and lifestyle,15.92,7,5.572,117.012,01/29/2019,19:30,Cash,111.44,4.761904762,5.572,9.0
+171-21-7136,B,Mandalay,Normal,Female,Electronic accessories,90.22,8,36.088,757.848,01/29/2019,17:30,Credit card,721.76,4.761904762,36.088,6.7
+172-62-9646,B,Mandalay,Normal,Male,Home and lifestyle,51.74,3,7.761,162.981,01/29/2019,19:45,Ewallet,155.22,4.761904762,7.761,7.8
+173-19-3969,C,Naypyitaw,Member,Female,Home and lifestyle,38.8,4,7.76,162.96,01/29/2019,10:15,Credit card,155.2,4.761904762,7.76,5.3
+174-94-8643,B,Mandalay,Member,Female,Food and beverages,52.88,5,13.22,277.62,01/29/2019,17:45,Credit card,264.40000000000003,4.761904762,13.22,8.1
+175-71-3681,C,Naypyitaw,Normal,Female,Food and beverages,38.65,6,11.595,243.495,01/30/2019,19:45,Ewallet,231.89999999999998,4.761904762,11.595,8.6
+176-55-5225,A,Yangon,Member,Female,Food and beverages,54.01,1,2.7005,56.7105,01/30/2019,17:00,Cash,54.01,4.761904762,2.7005,6.8
+177-63-2386,C,Naypyitaw,Normal,Male,Electronic accessories,87.36,4,17.472,366.912,01/30/2019,15:30,Cash,349.44,4.761904762,17.472,7.7
+178-74-3866,B,Mandalay,Member,Female,Home and lifestyle,63.31,5,15.8275,332.3775,01/30/2019,18:30,Ewallet,316.55,4.761904762,15.8275,6.7
+179-62-6490,A,Yangon,Member,Male,Health and beauty,72.52,7,25.382,533.022,01/30/2019,13:15,Ewallet,507.64,4.761904762,25.382,9.4
+180-35-5124,A,Yangon,Member,Male,Sports and travel,42.82,5,10.705,224.805,01/30/2019,11:00,Cash,214.1,4.761904762,10.705,7.0
+181-30-4850,A,Yangon,Normal,Male,Food and beverages,76.47,1,3.8235,80.2935,01/31/2019,19:00,Ewallet,76.47,4.761904762,3.8235,9.1
+182-49-8679,C,Naypyitaw,Member,Male,Food and beverages,70.0,7,24.5,514.5,01/31/2019,12:45,Ewallet,490.0,4.761904762,24.5,8.8
+183-45-9378,B,Mandalay,Member,Female,Home and lifestyle,20.76,8,8.304,174.384,01/31/2019,17:45,Ewallet,166.08,4.761904762,8.304,6.5
+184-48-2333,A,Yangon,Normal,Female,Home and lifestyle,61.54,7,21.539,452.319,01/31/2019,15:15,Cash,430.78,4.761904762,21.539,5.4
+185-64-7766,A,Yangon,Normal,Male,Electronic accessories,33.11,4,6.622,139.062,01/31/2019,15:30,Credit card,132.44,4.761904762,6.622,6.4
+186-33-5853,A,Yangon,Normal,Male,Electronic accessories,82.37,8,32.948,691.908,01/31/2019,14:45,Credit card,658.96,4.761904762,32.948,9.0
+187-31-7212,C,Naypyitaw,Normal,Male,Food and beverages,48.33,5,12.0825,253.7325,02/01/2019,12:30,Ewallet,241.64999999999998,4.761904762,12.0825,5.4
+188-65-6408,C,Naypyitaw,Member,Male,Home and lifestyle,99.52,9,44.784,940.464,02/01/2019,10:45,Cash,895.68,4.761904762,44.784,7.1
+189-45-9942,B,Mandalay,Member,Female,Health and beauty,18.33,5,4.5825,96.2325,02/01/2019,16:45,Ewallet,91.64999999999999,4.761904762,4.5825,8.8
+190-29-2762,C,Naypyitaw,Member,Male,Sports and travel,80.23,1,4.0115,84.2415,02/01/2019,16:30,Cash,80.23,4.761904762,4.0115,6.1
+191-90-8101,A,Yangon,Member,Female,Home and lifestyle,70.63,9,31.7835,667.4535,02/01/2019,14:00,Ewallet,635.67,4.761904762,31.7835,7.9
+192-82-1153,B,Mandalay,Member,Male,Home and lifestyle,79.07,5,19.7675,415.1175,02/01/2019,11:30,Cash,395.34999999999997,4.761904762,19.7675,5.5
+193-75-2524,A,Yangon,Normal,Male,Fashion accessories,37.68,6,11.304,237.384,02/02/2019,19:45,Cash,226.07999999999998,4.761904762,11.304,4.7
+194-82-3343,A,Yangon,Member,Male,Electronic accessories,54.28,4,10.856,227.976,02/02/2019,11:45,Credit card,217.12,4.761904762,10.856,8.8
+195-26-6760,C,Naypyitaw,Member,Male,Sports and travel,81.69,6,24.507,514.647,02/02/2019,13:45,Ewallet,490.14,4.761904762,24.507,4.6
+196-98-1060,B,Mandalay,Member,Female,Food and beverages,30.93,8,12.372,259.812,02/02/2019,15:15,Credit card,247.44,4.761904762,12.372,5.6
+197-52-2639,C,Naypyitaw,Normal,Female,Home and lifestyle,30.34,3,4.551,95.571,02/02/2019,15:30,Credit card,91.02,4.761904762,4.551,9.1
+198-51-8970,C,Naypyitaw,Normal,Female,Food and beverages,59.59,5,14.8975,312.8475,02/02/2019,19:30,Cash,297.95000000000005,4.761904762,14.8975,6.1
+199-12-2252,B,Mandalay,Member,Male,Home and lifestyle,57.12,2,5.712,119.952,02/03/2019,17:15,Ewallet,114.24,4.761904762,5.712,9.8
+200-53-4549,A,Yangon,Normal,Male,Food and beverages,35.4,2,3.54,74.34,02/03/2019,17:00,Cash,70.8,4.761904762,3.54,9.9
+201-21-3322,A,Yangon,Normal,Female,Sports and travel,36.83,7,12.8905,270.7005,02/03/2019,14:15,Cash,257.81,4.761904762,12.8905,5.6
+202-53-5090,B,Mandalay,Normal,Female,Electronic accessories,35.01,6,10.503,220.563,02/03/2019,16:15,Cash,210.06,4.761904762,10.503,4.2
+203-58-4004,A,Yangon,Normal,Male,Sports and travel,79.44,4,15.888,333.648,02/03/2019,11:15,Ewallet,317.76,4.761904762,15.888,8.2
+204-26-1329,B,Mandalay,Normal,Male,Fashion accessories,68.67,5,17.1675,360.5175,02/03/2019,15:15,Ewallet,343.35,4.761904762,17.1675,6.7
+205-66-8982,B,Mandalay,Normal,Female,Health and beauty,84.92,1,4.246,89.166,02/04/2019,12:00,Cash,84.92,4.761904762,4.246,4.6
+206-21-2341,C,Naypyitaw,Normal,Male,Electronic accessories,97.79,7,34.2265,718.7565,02/04/2019,12:30,Ewallet,684.5300000000001,4.761904762,34.2265,8.2
+207-89-9407,B,Mandalay,Member,Male,Sports and travel,52.67,8,21.068,442.428,02/04/2019,12:00,Cash,421.36,4.761904762,21.068,4.2
+208-92-6895,C,Naypyitaw,Member,Female,Fashion accessories,16.0,9,7.2,151.2,02/04/2019,16:15,Ewallet,144.0,4.761904762,7.2,9.2
+209-30-2750,A,Yangon,Normal,Male,Health and beauty,14.33,8,5.732,120.372,02/04/2019,17:45,Ewallet,114.64,4.761904762,5.732,4.8
+210-89-9901,A,Yangon,Member,Female,Fashion accessories,36.61,5,9.1525,192.2025,02/04/2019,16:00,Credit card,183.05,4.761904762,9.1525,4.8
+211-81-7609,A,Yangon,Member,Male,Home and lifestyle,93.93,3,14.0895,295.8795,02/05/2019,14:15,Cash,281.79,4.761904762,14.0895,5.1
+212-98-6387,A,Yangon,Normal,Female,Home and lifestyle,57.09,9,25.6905,539.5005,02/05/2019,12:45,Credit card,513.8100000000001,4.761904762,25.6905,9.8
+213-24-4993,C,Naypyitaw,Member,Male,Food and beverages,34.46,6,10.338,217.098,02/05/2019,15:00,Credit card,206.76,4.761904762,10.338,8.2
+214-35-9238,A,Yangon,Normal,Female,Electronic accessories,45.93,5,11.4825,241.1325,02/05/2019,13:45,Cash,229.65,4.761904762,11.4825,8.8
+215-41-5873,B,Mandalay,Normal,Female,Home and lifestyle,63.87,3,9.5805,201.1905,02/05/2019,11:30,Cash,191.60999999999999,4.761904762,9.5805,6.4
+216-25-5806,B,Mandalay,Normal,Female,Fashion accessories,68.77,6,20.631,433.251,02/05/2019,14:45,Ewallet,412.62,4.761904762,20.631,6.0
+217-26-6913,B,Mandalay,Member,Female,Electronic accessories,23.85,3,3.5775,75.1275,02/06/2019,17:00,Cash,71.55000000000001,4.761904762,3.5775,5.4
+218-94-4157,C,Naypyitaw,Member,Male,Home and lifestyle,97.93,6,29.379,616.959,02/06/2019,18:30,Credit card,587.58,4.761904762,29.379,6.9
+219-16-5430,A,Yangon,Member,Male,Food and beverages,59.03,4,11.806,247.926,02/06/2019,12:00,Credit card,236.12,4.761904762,11.806,7.3
+220-16-5232,A,Yangon,Member,Female,Sports and travel,22.21,2,2.221,46.641,02/06/2019,14:15,Cash,44.42,4.761904762,2.221,7.8
+221-57-9007,A,Yangon,Normal,Male,Food and beverages,90.43,8,36.172,759.612,02/06/2019,11:00,Credit card,723.44,4.761904762,36.172,5.5
+222-68-2500,C,Naypyitaw,Normal,Male,Health and beauty,16.72,4,3.344,70.224,02/06/2019,17:30,Ewallet,66.88,4.761904762,3.344,9.7
+223-91-4294,B,Mandalay,Member,Male,Home and lifestyle,91.7,9,41.265,866.565,02/07/2019,10:45,Credit card,825.3000000000001,4.761904762,41.265,5.0
+224-48-4042,B,Mandalay,Normal,Male,Health and beauty,99.69,7,34.8915,732.7215,02/07/2019,10:30,Ewallet,697.8299999999999,4.761904762,34.8915,9.8
+225-27-2466,A,Yangon,Normal,Male,Health and beauty,73.04,2,7.304,153.384,02/07/2019,11:15,Credit card,146.08,4.761904762,7.304,4.1
+226-26-8693,B,Mandalay,Member,Female,Fashion accessories,79.34,4,15.868,333.228,02/07/2019,15:15,Ewallet,317.36,4.761904762,15.868,6.9
+227-40-4223,B,Mandalay,Normal,Female,Electronic accessories,40.36,5,10.09,211.89,02/07/2019,12:45,Ewallet,201.8,4.761904762,10.09,6.0
+228-69-8980,C,Naypyitaw,Member,Female,Fashion accessories,94.74,3,14.211,298.431,02/07/2019,13:45,Cash,284.21999999999997,4.761904762,14.211,6.7
+229-12-3983,C,Naypyitaw,Normal,Female,Home and lifestyle,57.67,9,25.9515,544.9815,02/08/2019,11:15,Ewallet,519.03,4.761904762,25.9515,7.4
+230-64-8126,C,Naypyitaw,Member,Male,Health and beauty,75.91,5,18.9775,398.5275,02/08/2019,16:00,Cash,379.54999999999995,4.761904762,18.9775,6.6
+231-48-8694,C,Naypyitaw,Normal,Male,Sports and travel,93.17,2,9.317,195.657,02/08/2019,10:45,Credit card,186.34,4.761904762,9.317,6.5
+232-13-6468,A,Yangon,Normal,Female,Health and beauty,97.77,3,14.6655,307.9755,02/08/2019,16:15,Credit card,293.31,4.761904762,14.6655,8.4
+233-95-1920,C,Naypyitaw,Member,Male,Sports and travel,84.99,9,38.2455,803.1555,02/08/2019,10:45,Credit card,764.91,4.761904762,38.2455,8.1
+234-22-9684,B,Mandalay,Member,Male,Fashion accessories,37.27,7,13.0445,273.9345,02/08/2019,15:30,Ewallet,260.89000000000004,4.761904762,13.0445,9.0
+235-51-9502,A,Yangon,Member,Female,Fashion accessories,96.99,2,9.699,203.679,02/09/2019,17:15,Credit card,193.98,4.761904762,9.699,5.5
+236-51-1545,B,Mandalay,Member,Male,Electronic accessories,66.53,9,29.9385,628.7085,02/09/2019,11:45,Credit card,598.77,4.761904762,29.9385,7.7
+237-39-5346,B,Mandalay,Normal,Female,Health and beauty,93.76,4,18.752,393.792,02/09/2019,14:45,Cash,375.04,4.761904762,18.752,7.5
+238-22-4810,B,Mandalay,Normal,Female,Food and beverages,70.85,9,31.8825,669.5325,02/09/2019,17:15,Cash,637.65,4.761904762,31.8825,6.2
+239-48-3032,C,Naypyitaw,Member,Male,Fashion accessories,37.65,2,3.765,79.065,02/09/2019,11:45,Credit card,75.3,4.761904762,3.765,6.9
+240-71-9436,C,Naypyitaw,Normal,Male,Fashion accessories,43.3,4,8.66,181.86,02/09/2019,15:15,Credit card,173.2,4.761904762,8.66,5.9
+241-66-1271,A,Yangon,Member,Female,Electronic accessories,59.54,5,14.885,312.585,02/10/2019,17:00,Ewallet,297.7,4.761904762,14.885,4.9
+242-65-2771,A,Yangon,Member,Female,Sports and travel,81.1,2,8.11,170.31,02/10/2019,11:45,Ewallet,162.2,4.761904762,8.11,5.3
+243-19-8069,C,Naypyitaw,Normal,Male,Electronic accessories,38.62,1,1.931,40.551,02/10/2019,18:30,Credit card,38.62,4.761904762,1.931,4.6
+244-34-9190,B,Mandalay,Normal,Female,Health and beauty,62.18,7,21.763,457.023,02/10/2019,17:45,Cash,435.26,4.761904762,21.763,8.1
+245-93-4760,A,Yangon,Member,Female,Home and lifestyle,41.11,1,2.0555,43.1655,02/10/2019,16:30,Credit card,41.11,4.761904762,2.0555,8.0
+246-12-2165,C,Naypyitaw,Member,Female,Home and lifestyle,83.42,8,33.368,700.728,02/10/2019,14:15,Ewallet,667.36,4.761904762,33.368,9.7
+247-39-3033,C,Naypyitaw,Member,Male,Sports and travel,52.01,3,7.8015,163.8315,02/11/2019,15:15,Cash,156.03,4.761904762,7.8015,8.4
+248-77-1145,C,Naypyitaw,Normal,Female,Fashion accessories,16.91,6,5.073,106.533,02/11/2019,12:45,Cash,101.46000000000001,4.761904762,5.073,4.3
+249-71-5388,B,Mandalay,Normal,Male,Sports and travel,24.94,7,8.729,183.309,02/11/2019,19:45,Ewallet,174.58,4.761904762,8.729,9.3
+250-34-9623,C,Naypyitaw,Normal,Female,Fashion accessories,15.5,1,0.775,16.275,02/11/2019,11:15,Credit card,15.5,4.761904762,0.775,9.2
+251-74-9173,C,Naypyitaw,Normal,Male,Fashion accessories,54.94,6,16.482,346.122,02/11/2019,11:45,Credit card,329.64,4.761904762,16.482,6.7
+252-88-3632,C,Naypyitaw,Member,Female,Home and lifestyle,19.57,7,6.8495,143.8395,02/11/2019,17:45,Credit card,136.99,4.761904762,6.8495,7.5
+253-24-9056,C,Naypyitaw,Member,Male,Sports and travel,20.27,6,6.081,127.701,02/12/2019,19:15,Ewallet,121.62,4.761904762,6.081,9.9
+254-97-2828,A,Yangon,Member,Male,Electronic accessories,94.69,4,18.938,397.698,02/12/2019,14:45,Cash,378.76,4.761904762,18.938,7.2
+255-70-5805,A,Yangon,Member,Male,Fashion accessories,88.54,1,4.427,92.967,02/12/2019,13:30,Ewallet,88.54,4.761904762,4.427,9.4
+256-48-8486,C,Naypyitaw,Member,Female,Food and beverages,50.69,9,22.8105,479.0205,02/12/2019,13:00,Credit card,456.21,4.761904762,22.8105,4.5
+257-55-9202,B,Mandalay,Member,Female,Food and beverages,98.72,4,19.744,414.624,02/12/2019,10:00,Ewallet,394.88,4.761904762,19.744,5.1
+258-71-2868,A,Yangon,Normal,Female,Electronic accessories,10.02,7,3.507,73.647,02/12/2019,11:15,Cash,70.14,4.761904762,3.507,6.6
+259-34-8878,C,Naypyitaw,Normal,Male,Food and beverages,65.26,7,22.841,479.661,02/13/2019,17:30,Ewallet,456.82000000000005,4.761904762,22.841,7.5
+260-61-6690,A,Yangon,Member,Female,Health and beauty,65.48,2,6.548,137.508,02/13/2019,19:00,Credit card,130.96,4.761904762,6.548,8.9
+261-81-8827,A,Yangon,Member,Male,Fashion accessories,51.17,1,2.5585,53.7285,02/13/2019,14:15,Cash,51.17,4.761904762,2.5585,9.9
+262-72-6429,B,Mandalay,Normal,Female,Electronic accessories,45.73,8,18.292,384.132,02/13/2019,16:30,Ewallet,365.84,4.761904762,18.292,6.3
+263-83-8274,C,Naypyitaw,Normal,Male,Sports and travel,50.98,8,20.392,428.232,02/13/2019,17:45,Ewallet,407.84,4.761904762,20.392,4.3
+264-66-3265,C,Naypyitaw,Normal,Male,Fashion accessories,47.35,7,16.5725,348.0225,02/13/2019,16:15,Cash,331.45,4.761904762,16.5725,8.8
+265-50-7402,B,Mandalay,Normal,Male,Electronic accessories,75.74,8,30.296,636.216,02/14/2019,16:45,Cash,605.92,4.761904762,30.296,7.6
+266-15-2796,B,Mandalay,Member,Female,Home and lifestyle,22.18,3,3.327,69.867,02/14/2019,14:15,Credit card,66.53999999999999,4.761904762,3.327,5.2
+267-63-8214,C,Naypyitaw,Member,Female,Sports and travel,27.79,2,2.779,58.359,02/14/2019,15:45,Cash,55.58,4.761904762,2.779,7.0
+268-96-3736,C,Naypyitaw,Member,Female,Home and lifestyle,26.25,7,9.1875,192.9375,02/14/2019,19:15,Credit card,183.75,4.761904762,9.1875,8.5
+269-18-2913,B,Mandalay,Member,Male,Fashion accessories,33.62,8,13.448,282.408,02/14/2019,18:30,Ewallet,268.96,4.761904762,13.448,8.6
+270-70-8657,A,Yangon,Member,Male,Sports and travel,57.27,1,2.8635,60.1335,02/14/2019,15:45,Credit card,57.27,4.761904762,2.8635,7.0
+271-44-8312,A,Yangon,Normal,Female,Food and beverages,20.01,9,9.0045,189.0945,02/15/2019,14:30,Ewallet,180.09,4.761904762,9.0045,5.8
+272-97-9194,B,Mandalay,Member,Female,Electronic accessories,88.14,4,17.628,370.188,02/15/2019,19:15,Cash,352.56,4.761904762,17.628,9.8
+273-41-8906,A,Yangon,Normal,Female,Fashion accessories,36.76,4,7.352,154.392,02/15/2019,13:30,Ewallet,147.04,4.761904762,7.352,8.0
+274-22-8287,B,Mandalay,Member,Male,Health and beauty,24.63,3,3.6945,77.5845,02/15/2019,17:30,Cash,73.89,4.761904762,3.6945,6.4
+275-98-5675,A,Yangon,Member,Male,Sports and travel,70.81,6,21.243,446.103,02/15/2019,16:30,Ewallet,424.86,4.761904762,21.243,5.7
+276-23-2380,A,Yangon,Member,Male,Sports and travel,13.43,1,0.6715,14.1015,02/15/2019,16:00,Ewallet,13.43,4.761904762,0.6715,8.4
+277-20-2640,C,Naypyitaw,Member,Male,Fashion accessories,65.8,6,19.74,414.54,02/16/2019,16:15,Ewallet,394.79999999999995,4.761904762,19.74,5.5
+278-65-8490,C,Naypyitaw,Member,Male,Fashion accessories,72.84,2,7.284,152.964,02/16/2019,11:15,Ewallet,145.68,4.761904762,7.284,5.0
+279-38-2218,A,Yangon,Normal,Female,Home and lifestyle,29.34,9,13.203,277.263,02/16/2019,12:15,Credit card,264.06,4.761904762,13.203,7.2
+280-34-7881,A,Yangon,Normal,Male,Food and beverages,13.78,2,1.378,28.938,02/16/2019,18:45,Ewallet,27.56,4.761904762,1.378,5.7
+281-85-1954,C,Naypyitaw,Normal,Male,Home and lifestyle,42.73,7,14.9555,314.0655,02/16/2019,12:15,Credit card,299.10999999999996,4.761904762,14.9555,7.8
+282-97-8291,C,Naypyitaw,Member,Male,Home and lifestyle,18.87,1,0.9435,19.8135,02/16/2019,18:45,Cash,18.87,4.761904762,0.9435,4.7
+283-88-5133,C,Naypyitaw,Member,Male,Food and beverages,20.48,7,7.168,150.528,02/17/2019,19:00,Cash,143.36,4.761904762,7.168,7.9
+284-81-6370,B,Mandalay,Normal,Male,Health and beauty,32.88,5,8.22,172.62,02/17/2019,13:15,Credit card,164.4,4.761904762,8.22,5.7
+285-14-6295,A,Yangon,Member,Female,Home and lifestyle,36.59,8,14.636,307.356,02/17/2019,18:30,Cash,292.72,4.761904762,14.636,4.0
+286-27-9228,C,Naypyitaw,Member,Male,Home and lifestyle,57.7,4,11.54,242.34,02/17/2019,16:30,Cash,230.8,4.761904762,11.54,4.8
+287-69-4020,A,Yangon,Normal,Male,Sports and travel,71.06,7,24.871,522.291,02/17/2019,17:15,Ewallet,497.42,4.761904762,24.871,9.6
+288-37-5036,B,Mandalay,Member,Male,Food and beverages,63.35,6,19.005,399.105,02/17/2019,13:30,Ewallet,380.1,4.761904762,19.005,9.2
+289-86-6233,B,Mandalay,Normal,Female,Electronic accessories,23.35,5,5.8375,122.5875,02/18/2019,12:30,Ewallet,116.75,4.761904762,5.8375,5.4
+290-49-1317,C,Naypyitaw,Member,Female,Health and beauty,25.49,4,5.098,107.058,02/18/2019,14:30,Credit card,101.96,4.761904762,5.098,8.7
+291-67-2591,B,Mandalay,Normal,Female,Health and beauty,89.09,7,31.1815,654.8115,02/18/2019,10:45,Credit card,623.63,4.761904762,31.1815,7.7
+292-49-7183,A,Yangon,Member,Male,Food and beverages,60.25,5,15.0625,316.3125,02/18/2019,19:30,Cash,301.25,4.761904762,15.0625,9.8
+293-86-2312,C,Naypyitaw,Member,Female,Fashion accessories,88.29,5,22.0725,463.5225,02/18/2019,15:30,Ewallet,441.45000000000005,4.761904762,22.0725,6.2
+294-15-5311,A,Yangon,Normal,Male,Fashion accessories,43.44,1,2.172,45.612,02/18/2019,14:00,Credit card,43.44,4.761904762,2.172,8.1
+295-28-3383,A,Yangon,Member,Male,Sports and travel,65.3,2,6.53,137.13,02/19/2019,11:30,Credit card,130.6,4.761904762,6.53,4.4
+296-49-3139,B,Mandalay,Member,Female,Sports and travel,57.13,5,14.2825,299.9325,02/19/2019,11:45,Ewallet,285.65000000000003,4.761904762,14.2825,6.4
+297-68-2704,B,Mandalay,Normal,Male,Food and beverages,38.72,3,5.808,121.968,02/19/2019,15:15,Credit card,116.16,4.761904762,5.808,9.8
+298-22-1362,B,Mandalay,Member,Male,Sports and travel,52.29,2,5.229,109.809,02/19/2019,17:45,Ewallet,104.58,4.761904762,5.229,7.2
+299-54-5286,B,Mandalay,Normal,Male,Health and beauty,55.22,4,11.044,231.924,02/19/2019,11:00,Cash,220.88,4.761904762,11.044,5.7
+300-36-3469,B,Mandalay,Member,Female,Health and beauty,28.07,4,5.614,117.894,02/19/2019,11:00,Cash,112.28,4.761904762,5.614,4.7
+301-69-7150,C,Naypyitaw,Member,Male,Electronic accessories,38.35,4,7.67,161.07,02/20/2019,10:15,Cash,153.4,4.761904762,7.67,8.2
+302-14-1556,A,Yangon,Member,Male,Fashion accessories,81.23,4,16.246,341.166,02/20/2019,11:45,Ewallet,324.92,4.761904762,16.246,7.9
+303-67-3808,A,Yangon,Member,Female,Food and beverages,92.42,3,13.863,291.123,02/20/2019,16:45,Credit card,277.26,4.761904762,13.863,6.2
+304-40-8561,A,Yangon,Normal,Male,Home and lifestyle,42.38,7,14.833,311.493,02/20/2019,14:15,Cash,296.66,4.761904762,14.833,9.7
+305-41-7506,A,Yangon,Member,Male,Fashion accessories,37.63,9,16.9335,355.6035,02/20/2019,10:30,Cash,338.67,4.761904762,16.9335,4.1
+306-62-4741,B,Mandalay,Normal,Female,Home and lifestyle,27.57,5,6.8925,144.7425,02/20/2019,15:45,Cash,137.85,4.761904762,6.8925,5.8
+307-48-4998,A,Yangon,Member,Male,Electronic accessories,71.06,4,14.212,298.452,02/21/2019,17:00,Credit card,284.24,4.761904762,14.212,9.5
+308-91-3403,C,Naypyitaw,Member,Male,Electronic accessories,39.08,2,3.908,82.068,02/21/2019,12:45,Credit card,78.16,4.761904762,3.908,5.9
+309-11-9780,C,Naypyitaw,Member,Male,Sports and travel,98.9,2,9.89,207.69,02/21/2019,10:30,Ewallet,197.8,4.761904762,9.89,5.5
+310-21-1294,A,Yangon,Member,Male,Electronic accessories,39.31,5,9.8275,206.3775,02/21/2019,13:00,Cash,196.55,4.761904762,9.8275,7.2
+311-75-6343,A,Yangon,Normal,Male,Electronic accessories,45.47,7,15.9145,334.2045,02/21/2019,17:45,Credit card,318.28999999999996,4.761904762,15.9145,8.9
+312-22-2136,C,Naypyitaw,Normal,Female,Home and lifestyle,64.3,9,28.935,607.635,02/21/2019,14:00,Ewallet,578.6999999999999,4.761904762,28.935,4.6
+313-26-8009,C,Naypyitaw,Normal,Female,Sports and travel,82.15,7,28.7525,603.8025,02/22/2019,17:00,Cash,575.0500000000001,4.761904762,28.7525,9.7
+314-69-5543,B,Mandalay,Normal,Female,Electronic accessories,52.26,5,13.065,274.365,02/22/2019,19:15,Credit card,261.3,4.761904762,13.065,8.8
+315-97-2007,C,Naypyitaw,Member,Female,Fashion accessories,48.04,6,14.412,302.652,02/22/2019,18:45,Credit card,288.24,4.761904762,14.412,5.1
+316-79-6352,B,Mandalay,Normal,Male,Electronic accessories,99.61,3,14.9415,313.7715,02/22/2019,16:30,Ewallet,298.83,4.761904762,14.9415,8.3
+317-72-2435,B,Mandalay,Normal,Male,Sports and travel,10.94,5,2.735,57.435,02/22/2019,11:30,Cash,54.699999999999996,4.761904762,2.735,6.3
+318-69-3382,B,Mandalay,Member,Male,Food and beverages,90.56,8,36.224,760.704,02/22/2019,14:15,Cash,724.48,4.761904762,36.224,6.4
+319-46-6084,B,Mandalay,Member,Male,Sports and travel,23.42,1,1.171,24.591,02/23/2019,13:15,Credit card,23.42,4.761904762,1.171,8.7
+320-31-8059,B,Mandalay,Member,Male,Home and lifestyle,80.73,1,4.0365,84.7665,02/23/2019,18:30,Cash,80.73,4.761904762,4.0365,9.8
+321-77-2040,A,Yangon,Member,Female,Food and beverages,65.61,7,22.9635,482.2335,02/23/2019,16:15,Ewallet,459.27,4.761904762,22.9635,4.8
+322-21-9073,C,Naypyitaw,Normal,Female,Fashion accessories,40.77,5,10.1925,214.0425,02/23/2019,17:15,Credit card,203.85000000000002,4.761904762,10.1925,6.5
+323-74-9213,B,Mandalay,Normal,Male,Health and beauty,88.65,5,22.1625,465.4125,02/23/2019,15:30,Credit card,443.25,4.761904762,22.1625,6.9
+324-91-3353,C,Naypyitaw,Member,Male,Sports and travel,11.16,1,0.558,11.718,02/23/2019,17:30,Ewallet,11.16,4.761904762,0.558,6.3
+325-23-5799,C,Naypyitaw,Member,Male,Home and lifestyle,30.4,9,13.68,287.28,02/24/2019,12:00,Credit card,273.59999999999997,4.761904762,13.68,6.2
+326-56-9476,B,Mandalay,Member,Female,Fashion accessories,61.02,1,3.051,64.071,02/24/2019,15:45,Cash,61.02,4.761904762,3.051,4.3
+327-85-9954,A,Yangon,Normal,Male,Food and beverages,41.64,5,10.41,218.61,02/24/2019,15:00,Cash,208.2,4.761904762,10.41,8.1
+328-61-3428,B,Mandalay,Normal,Male,Fashion accessories,64.93,9,29.2185,613.5885,02/24/2019,17:15,Credit card,584.3700000000001,4.761904762,29.2185,6.6
+329-85-6126,A,Yangon,Member,Male,Sports and travel,12.17,4,2.434,51.114,02/24/2019,10:00,Ewallet,48.68,4.761904762,2.434,5.2
+330-38-8813,C,Naypyitaw,Member,Female,Electronic accessories,20.48,8,8.192,172.032,02/24/2019,13:15,Ewallet,163.84,4.761904762,8.192,8.9
+331-88-4356,A,Yangon,Normal,Male,Sports and travel,21.44,6,6.432,135.072,02/25/2019,18:00,Cash,128.64000000000001,4.761904762,6.432,8.8
+332-13-8266,A,Yangon,Member,Female,Health and beauty,27.04,3,4.056,85.176,02/25/2019,10:00,Ewallet,81.12,4.761904762,4.056,6.9
+333-22-1038,A,Yangon,Member,Female,Sports and travel,51.34,4,10.268,215.628,02/25/2019,14:15,Credit card,205.36,4.761904762,10.268,5.8
+334-24-3844,C,Naypyitaw,Normal,Female,Food and beverages,77.69,2,7.769,163.149,02/25/2019,14:00,Credit card,155.38,4.761904762,7.769,7.8
+335-38-2098,C,Naypyitaw,Member,Female,Food and beverages,91.5,1,4.575,96.075,02/25/2019,19:15,Cash,91.5,4.761904762,4.575,5.7
+336-41-4155,A,Yangon,Normal,Female,Sports and travel,85.18,8,34.072,715.512,02/25/2019,17:30,Cash,681.44,4.761904762,34.072,5.4
+337-31-6658,A,Yangon,Member,Female,Food and beverages,27.72,1,1.386,29.106,02/26/2019,18:00,Cash,27.72,4.761904762,1.386,8.4
+338-76-3896,B,Mandalay,Member,Male,Electronic accessories,49.7,1,2.485,52.185,02/26/2019,10:45,Ewallet,49.7,4.761904762,2.485,4.2
+339-65-1988,A,Yangon,Normal,Male,Fashion accessories,27.95,4,5.59,117.39,02/26/2019,18:30,Credit card,111.8,4.761904762,5.59,4.6
+340-30-7446,B,Mandalay,Normal,Male,Sports and travel,33.8,6,10.14,212.94,02/26/2019,17:15,Credit card,202.79999999999998,4.761904762,10.14,4.0
+341-89-5179,A,Yangon,Member,Female,Electronic accessories,55.32,9,24.894,522.774,02/26/2019,18:00,Credit card,497.88,4.761904762,24.894,4.9
+342-15-2682,B,Mandalay,Normal,Male,Fashion accessories,16.13,1,0.8065,16.9365,02/26/2019,18:30,Cash,16.13,4.761904762,0.8065,4.4
+343-66-6626,C,Naypyitaw,Member,Female,Fashion accessories,29.64,7,10.374,217.854,02/27/2019,19:00,Credit card,207.48000000000002,4.761904762,10.374,10.0
+344-10-1933,A,Yangon,Member,Female,Electronic accessories,94.18,5,23.545,494.445,02/27/2019,10:00,Ewallet,470.90000000000003,4.761904762,23.545,5.7
+345-24-2980,A,Yangon,Normal,Female,Home and lifestyle,51.95,8,20.78,436.38,02/27/2019,18:30,Ewallet,415.6,4.761904762,20.78,4.9
+346-44-4056,A,Yangon,Member,Male,Sports and travel,50.08,7,17.528,368.088,02/27/2019,15:45,Credit card,350.56,4.761904762,17.528,5.4
+347-34-1791,A,Yangon,Member,Female,Fashion accessories,11.31,4,2.262,47.502,02/27/2019,16:00,Cash,45.24,4.761904762,2.262,9.6
+348-21-6390,B,Mandalay,Normal,Female,Fashion accessories,32.27,4,6.454,135.534,02/27/2019,19:15,Credit card,129.08,4.761904762,6.454,7.1
+349-89-4610,A,Yangon,Normal,Male,Food and beverages,87.97,6,26.391,554.211,02/28/2019,16:45,Ewallet,527.8199999999999,4.761904762,26.391,6.2
+350-81-6179,C,Naypyitaw,Member,Male,Fashion accessories,24.82,6,7.446,156.366,02/28/2019,17:00,Ewallet,148.92000000000002,4.761904762,7.446,9.2
+351-55-1984,C,Naypyitaw,Normal,Female,Electronic accessories,47.36,9,21.312,447.552,02/28/2019,17:15,Ewallet,426.24,4.761904762,21.312,6.4
+352-26-4676,A,Yangon,Normal,Female,Fashion accessories,11.29,5,2.8225,59.2725,02/28/2019,13:00,Credit card,56.449999999999996,4.761904762,2.8225,6.0
+353-62-9711,C,Naypyitaw,Normal,Male,Home and lifestyle,53.05,8,21.22,445.62,02/28/2019,17:30,Ewallet,424.4,4.761904762,21.22,5.2
+354-88-2050,A,Yangon,Normal,Male,Sports and travel,11.89,5,2.9725,62.4225,02/28/2019,13:30,Cash,59.45,4.761904762,2.9725,6.3
+355-55-4633,A,Yangon,Member,Male,Sports and travel,83.76,2,8.376,175.896,03/01/2019,15:30,Credit card,167.52,4.761904762,8.376,5.9
+356-80-1959,C,Naypyitaw,Member,Female,Fashion accessories,84.24,6,25.272,530.712,03/01/2019,16:45,Credit card,505.43999999999994,4.761904762,25.272,8.1
+357-53-9884,A,Yangon,Member,Male,Health and beauty,80.9,9,36.405,764.505,03/01/2019,13:45,Ewallet,728.1,4.761904762,36.405,5.7
+358-33-5473,C,Naypyitaw,Normal,Male,Health and beauty,35.5,3,5.325,111.825,03/01/2019,16:15,Ewallet,106.5,4.761904762,5.325,7.5
+359-12-8725,B,Mandalay,Normal,Male,Electronic accessories,85.35,1,4.2675,89.6175,03/01/2019,17:00,Cash,85.35,4.761904762,4.2675,4.4
+360-24-4224,A,Yangon,Normal,Female,Health and beauty,58.87,1,2.9435,61.8135,03/01/2019,19:00,Credit card,58.87,4.761904762,2.9435,5.1
+361-87-2875,B,Mandalay,Normal,Male,Electronic accessories,43.64,3,6.546,137.466,03/02/2019,16:45,Ewallet,130.92000000000002,4.761904762,6.546,6.4
+362-18-6797,C,Naypyitaw,Normal,Male,Food and beverages,66.28,5,16.57,347.97,03/02/2019,16:45,Cash,331.4,4.761904762,16.57,9.6
+363-57-8099,B,Mandalay,Normal,Male,Electronic accessories,11.11,3,1.6665,34.9965,03/02/2019,16:30,Ewallet,33.33,4.761904762,1.6665,6.3
+364-72-6109,B,Mandalay,Normal,Male,Health and beauty,22.87,9,10.2915,216.1215,03/02/2019,19:15,Credit card,205.83,4.761904762,10.2915,8.0
+365-11-6463,C,Naypyitaw,Member,Male,Fashion accessories,76.81,8,30.724,645.204,03/02/2019,19:45,Ewallet,614.48,4.761904762,30.724,5.5
+366-81-9586,B,Mandalay,Member,Female,Food and beverages,31.97,3,4.7955,100.7055,03/02/2019,18:00,Credit card,95.91,4.761904762,4.7955,4.8
+367-73-4788,B,Mandalay,Normal,Female,Health and beauty,63.82,9,28.719,603.099,03/03/2019,11:00,Ewallet,574.38,4.761904762,28.719,4.4
+368-90-5167,C,Naypyitaw,Normal,Female,Electronic accessories,44.66,6,13.398,281.358,03/03/2019,16:30,Credit card,267.96,4.761904762,13.398,5.8
+369-30-9465,B,Mandalay,Normal,Male,Home and lifestyle,86.93,7,30.4255,638.9355,03/03/2019,13:00,Cash,608.51,4.761904762,30.4255,4.9
+370-73-2389,C,Naypyitaw,Member,Female,Sports and travel,95.72,4,19.144,402.024,03/03/2019,17:45,Credit card,382.88,4.761904762,19.144,5.0
+371-47-7154,B,Mandalay,Member,Female,Health and beauty,89.52,4,17.904,375.984,03/03/2019,10:15,Cash,358.08,4.761904762,17.904,8.6
+372-54-9920,C,Naypyitaw,Normal,Female,Electronic accessories,34.36,2,3.436,72.156,03/03/2019,11:45,Credit card,68.72,4.761904762,3.436,4.1
+373-42-3043,C,Naypyitaw,Normal,Male,Food and beverages,27.47,5,6.8675,144.2175,03/04/2019,17:30,Cash,137.35,4.761904762,6.8675,7.3
+374-50-1778,B,Mandalay,Member,Male,Health and beauty,52.7,8,21.08,442.68,03/04/2019,10:45,Ewallet,421.6,4.761904762,21.08,6.3
+375-95-4762,B,Mandalay,Member,Female,Health and beauty,10.66,7,3.731,78.351,03/04/2019,19:45,Credit card,74.62,4.761904762,3.731,7.0
+376-97-7731,B,Mandalay,Member,Female,Sports and travel,12.32,7,4.312,90.552,03/04/2019,14:00,Ewallet,86.24000000000001,4.761904762,4.312,7.4
+377-55-6791,A,Yangon,Member,Male,Electronic accessories,59.8,6,17.94,376.74,03/04/2019,16:45,Cash,358.79999999999995,4.761904762,17.94,5.9
+378-88-9783,A,Yangon,Normal,Male,Home and lifestyle,56.84,3,8.526,179.046,03/04/2019,18:00,Credit card,170.52,4.761904762,8.526,5.8
+379-63-3720,A,Yangon,Member,Female,Food and beverages,99.51,5,24.8775,522.4275,03/05/2019,16:00,Credit card,497.55,4.761904762,24.8775,8.4
+380-83-7047,C,Naypyitaw,Member,Male,Electronic accessories,28.17,1,1.4085,29.5785,03/05/2019,14:45,Ewallet,28.17,4.761904762,1.4085,9.2
+381-11-7368,B,Mandalay,Normal,Female,Food and beverages,33.23,7,11.6305,244.2405,03/05/2019,19:30,Credit card,232.60999999999999,4.761904762,11.6305,5.2
+382-42-2949,C,Naypyitaw,Member,Male,Health and beauty,20.22,9,9.099,191.079,03/05/2019,15:00,Credit card,181.98,4.761904762,9.099,4.6
+383-42-7732,A,Yangon,Member,Female,Sports and travel,92.58,1,4.629,97.209,03/05/2019,18:30,Ewallet,92.58,4.761904762,4.629,9.4
+384-35-1917,B,Mandalay,Member,Female,Sports and travel,80.0,2,8.0,168.0,03/05/2019,12:30,Credit card,160.0,4.761904762,8.0,6.1
+385-75-8014,C,Naypyitaw,Normal,Male,Fashion accessories,84.01,3,12.6015,264.6315,03/06/2019,16:30,Ewallet,252.03000000000003,4.761904762,12.6015,7.3
+386-55-4041,B,Mandalay,Member,Female,Home and lifestyle,91.25,3,13.6875,287.4375,03/06/2019,15:45,Ewallet,273.75,4.761904762,13.6875,6.2
+387-53-2895,C,Naypyitaw,Normal,Female,Sports and travel,57.24,8,22.896,480.816,03/06/2019,12:15,Ewallet,457.92,4.761904762,22.896,4.8
+388-84-9508,B,Mandalay,Normal,Female,Health and beauty,50.61,7,17.7135,371.9835,03/06/2019,16:00,Ewallet,354.27,4.761904762,17.7135,7.5
+389-76-1634,A,Yangon,Member,Male,Home and lifestyle,39.74,6,11.922,250.362,03/06/2019,16:15,Ewallet,238.44,4.761904762,11.922,7.2
+390-15-3056,A,Yangon,Member,Male,Electronic accessories,63.03,4,12.606,264.726,03/06/2019,15:15,Cash,252.12,4.761904762,12.606,5.2
+391-15-4144,B,Mandalay,Member,Male,Sports and travel,50.89,9,22.9005,480.9105,03/07/2019,17:00,Cash,458.01,4.761904762,22.9005,6.7
+392-41-1552,C,Naypyitaw,Member,Female,Home and lifestyle,50.64,1,2.532,53.172,03/07/2019,13:30,Ewallet,50.64,4.761904762,2.532,8.8
+393-85-6383,A,Yangon,Normal,Male,Health and beauty,94.32,2,9.432,198.072,03/07/2019,10:15,Cash,188.64,4.761904762,9.432,7.5
+394-81-4389,A,Yangon,Member,Female,Fashion accessories,98.56,4,19.712,413.952,03/07/2019,10:15,Cash,394.24,4.761904762,19.712,4.6
+395-93-9442,A,Yangon,Member,Female,Food and beverages,81.68,3,12.252,257.292,03/07/2019,17:30,Credit card,245.04000000000002,4.761904762,12.252,7.3
+396-16-1458,B,Mandalay,Member,Male,Food and beverages,78.11,1,3.9055,82.0155,03/07/2019,19:00,Ewallet,78.11,4.761904762,3.9055,8.2
+397-93-1207,B,Mandalay,Normal,Male,Health and beauty,71.25,5,17.8125,374.0625,03/08/2019,10:45,Cash,356.25,4.761904762,17.8125,8.8
+398-13-1021,C,Naypyitaw,Member,Female,Health and beauty,24.95,7,8.7325,183.3825,03/08/2019,11:45,Credit card,174.65,4.761904762,8.7325,7.8
+399-35-1894,C,Naypyitaw,Member,Female,Food and beverages,15.32,2,1.532,32.172,03/08/2019,10:45,Credit card,30.64,4.761904762,1.532,4.9
+400-12-8294,C,Naypyitaw,Normal,Male,Fashion accessories,72.17,5,18.0425,378.8925,03/08/2019,12:45,Ewallet,360.85,4.761904762,18.0425,8.3
+401-50-8867,B,Mandalay,Normal,Male,Home and lifestyle,75.59,6,22.677,476.217,03/08/2019,17:45,Ewallet,453.54,4.761904762,22.677,8.1
+402-23-8179,B,Mandalay,Member,Male,Food and beverages,14.23,7,4.9805,104.5905,03/08/2019,15:15,Credit card,99.61,4.761904762,4.9805,4.1
+403-96-2560,C,Naypyitaw,Member,Female,Health and beauty,93.52,1,4.676,98.196,03/09/2019,14:00,Ewallet,93.52,4.761904762,4.676,6.5
+404-54-2266,C,Naypyitaw,Member,Female,Sports and travel,18.2,7,6.37,133.77,03/09/2019,18:45,Ewallet,127.39999999999999,4.761904762,6.37,6.0
+405-28-4638,B,Mandalay,Member,Female,Electronic accessories,35.73,4,7.146,150.066,03/09/2019,19:30,Credit card,142.92,4.761904762,7.146,8.0
+406-54-2927,C,Naypyitaw,Member,Female,Fashion accessories,70.52,8,28.208,592.368,03/09/2019,16:00,Credit card,564.16,4.761904762,28.208,5.3
+407-62-5790,A,Yangon,Normal,Female,Fashion accessories,25.29,4,5.058,106.218,03/09/2019,18:30,Ewallet,101.16,4.761904762,5.058,7.5
+408-41-1306,B,Mandalay,Normal,Male,Sports and travel,14.99,6,4.497,94.437,03/09/2019,19:45,Cash,89.94,4.761904762,4.497,9.5
+409-53-4665,C,Naypyitaw,Member,Male,Sports and travel,39.8,9,17.91,376.11,03/10/2019,18:30,Ewallet,358.2,4.761904762,17.91,8.8
+410-79-8057,B,Mandalay,Member,Female,Health and beauty,78.94,5,19.735,414.435,03/10/2019,11:30,Cash,394.7,4.761904762,19.735,9.5
+411-92-1661,A,Yangon,Normal,Female,Food and beverages,47.23,4,9.446,198.366,03/10/2019,15:15,Credit card,188.92,4.761904762,9.446,9.9
+412-46-9503,B,Mandalay,Member,Male,Home and lifestyle,68.77,8,27.508,577.668,03/10/2019,13:30,Cash,550.16,4.761904762,27.508,4.1
+413-68-9946,B,Mandalay,Member,Male,Fashion accessories,62.17,9,27.9765,587.5065,03/10/2019,11:15,Credit card,559.53,4.761904762,27.9765,7.7
+414-44-7236,B,Mandalay,Member,Male,Fashion accessories,12.0,4,2.4,50.4,03/10/2019,17:15,Ewallet,48.0,4.761904762,2.4,6.5
+415-63-7078,B,Mandalay,Member,Male,Sports and travel,98.97,3,14.8455,311.7555,03/11/2019,18:15,Ewallet,296.90999999999997,4.761904762,14.8455,9.2
+416-88-1352,A,Yangon,Member,Female,Food and beverages,13.73,8,5.492,115.332,03/11/2019,14:15,Credit card,109.84,4.761904762,5.492,5.5
+417-16-8005,B,Mandalay,Normal,Male,Fashion accessories,97.1,5,24.275,509.775,03/11/2019,17:00,Credit card,485.5,4.761904762,24.275,9.9
+418-94-1158,B,Mandalay,Member,Female,Home and lifestyle,59.49,2,5.949,124.929,03/11/2019,19:45,Credit card,118.98,4.761904762,5.949,7.7
+419-67-1956,C,Naypyitaw,Member,Male,Sports and travel,96.68,9,43.506,913.626,03/11/2019,15:30,Ewallet,870.1200000000001,4.761904762,43.506,8.8
+420-33-9595,B,Mandalay,Member,Male,Home and lifestyle,20.33,3,3.0495,64.0395,03/11/2019,19:45,Ewallet,60.989999999999995,4.761904762,3.0495,4.5
+421-46-4453,C,Naypyitaw,Normal,Male,Food and beverages,54.14,2,5.414,113.694,03/12/2019,18:45,Cash,108.28,4.761904762,5.414,5.1
+422-29-1955,A,Yangon,Normal,Female,Fashion accessories,25.26,1,1.263,26.523,03/12/2019,14:45,Credit card,25.26,4.761904762,1.263,8.6
+423-33-2712,A,Yangon,Normal,Female,Electronic accessories,14.59,8,5.836,122.556,03/12/2019,15:30,Cash,116.72,4.761904762,5.836,4.1
+424-60-5703,A,Yangon,Normal,Male,Fashion accessories,65.58,3,9.837,206.577,03/12/2019,13:00,Ewallet,196.74,4.761904762,9.837,8.9
+425-45-6631,A,Yangon,Member,Female,Food and beverages,28.7,7,10.045,210.945,03/12/2019,16:00,Cash,200.9,4.761904762,10.045,4.1
+426-75-2394,C,Naypyitaw,Normal,Female,Fashion accessories,62.89,1,3.1445,66.0345,03/12/2019,19:30,Cash,62.89,4.761904762,3.1445,7.9
+427-67-5732,B,Mandalay,Member,Male,Fashion accessories,20.11,1,1.0055,21.1155,03/13/2019,15:15,Ewallet,20.11,4.761904762,1.0055,6.2
+428-21-4714,A,Yangon,Member,Male,Health and beauty,39.88,9,17.946,376.866,03/13/2019,15:45,Ewallet,358.92,4.761904762,17.946,7.7
+429-27-3958,B,Mandalay,Normal,Female,Fashion accessories,80.35,8,32.14,674.94,03/13/2019,17:30,Credit card,642.8,4.761904762,32.14,8.2
+430-35-4591,C,Naypyitaw,Normal,Female,Fashion accessories,49.33,3,7.3995,155.3895,03/13/2019,13:30,Cash,147.99,4.761904762,7.3995,6.1
+431-96-1525,C,Naypyitaw,Normal,Female,Home and lifestyle,66.5,6,19.95,418.95,03/13/2019,16:00,Ewallet,399.0,4.761904762,19.95,4.6
+432-87-1001,C,Naypyitaw,Normal,Male,Electronic accessories,68.27,3,10.2405,215.0505,03/13/2019,11:15,Ewallet,204.81,4.761904762,10.2405,4.4
+433-46-5648,A,Yangon,Normal,Male,Home and lifestyle,85.94,4,17.188,360.948,03/14/2019,15:45,Cash,343.76,4.761904762,17.188,7.5
+434-71-2525,B,Mandalay,Member,Female,Home and lifestyle,39.24,1,1.962,41.202,03/14/2019,10:30,Ewallet,39.24,4.761904762,1.962,7.1
+435-69-2646,B,Mandalay,Normal,Male,Sports and travel,71.86,5,17.965,377.265,03/14/2019,15:45,Credit card,359.3,4.761904762,17.965,8.5
+436-23-5599,B,Mandalay,Normal,Male,Health and beauty,96.55,1,4.8275,101.3775,03/14/2019,11:15,Credit card,96.55,4.761904762,4.8275,7.1
+437-98-4155,C,Naypyitaw,Normal,Female,Home and lifestyle,75.72,1,3.786,79.506,03/14/2019,16:15,Cash,75.72,4.761904762,3.786,6.5
+438-11-4814,A,Yangon,Member,Female,Food and beverages,54.09,7,18.9315,397.5615,03/14/2019,10:15,Credit card,378.63,4.761904762,18.9315,6.4
+439-79-4216,C,Naypyitaw,Normal,Male,Food and beverages,66.76,6,20.028,420.588,03/15/2019,16:15,Ewallet,400.56000000000006,4.761904762,20.028,4.2
+440-98-9219,C,Naypyitaw,Member,Male,Fashion accessories,76.57,2,7.657,160.797,03/15/2019,17:30,Ewallet,153.14,4.761904762,7.657,6.0
+441-75-5356,B,Mandalay,Normal,Female,Sports and travel,65.1,2,6.51,136.71,03/15/2019,15:00,Ewallet,130.2,4.761904762,6.51,9.9
+442-74-6543,C,Naypyitaw,Normal,Male,Health and beauty,11.5,7,4.025,84.525,03/15/2019,12:30,Ewallet,80.5,4.761904762,4.025,9.2
+443-85-8062,B,Mandalay,Member,Male,Health and beauty,27.53,1,1.3765,28.9065,03/15/2019,15:45,Cash,27.53,4.761904762,1.3765,6.0
+444-56-7430,A,Yangon,Normal,Female,Fashion accessories,82.94,2,8.294,174.174,03/15/2019,11:00,Credit card,165.88,4.761904762,8.294,7.5
+445-20-4081,B,Mandalay,Member,Female,Food and beverages,34.54,8,13.816,290.136,03/16/2019,10:30,Credit card,276.32,4.761904762,13.816,9.1
+446-76-1629,A,Yangon,Member,Male,Electronic accessories,75.84,6,22.752,477.792,03/16/2019,19:30,Ewallet,455.04,4.761904762,22.752,6.6
+447-23-6724,B,Mandalay,Member,Male,Sports and travel,43.49,2,4.349,91.329,03/16/2019,13:45,Cash,86.98,4.761904762,4.349,4.1
+448-19-4432,C,Naypyitaw,Normal,Male,Fashion accessories,56.97,7,19.9395,418.7295,03/16/2019,11:00,Ewallet,398.78999999999996,4.761904762,19.9395,4.4
+449-10-7276,C,Naypyitaw,Normal,Female,Sports and travel,16.12,4,3.224,67.704,03/16/2019,10:45,Ewallet,64.48,4.761904762,3.224,7.1
+450-29-6895,A,Yangon,Normal,Male,Food and beverages,26.31,2,2.631,55.251,03/16/2019,16:45,Cash,52.62,4.761904762,2.631,9.8
+451-52-8115,A,Yangon,Member,Male,Food and beverages,96.15,6,28.845,605.745,03/17/2019,19:30,Cash,576.9000000000001,4.761904762,28.845,8.2
+452-10-1575,A,Yangon,Normal,Female,Electronic accessories,90.11,9,40.5495,851.5395,03/17/2019,15:15,Ewallet,810.99,4.761904762,40.5495,4.4
+453-93-4192,B,Mandalay,Member,Female,Electronic accessories,68.7,9,30.915,649.215,03/17/2019,18:15,Credit card,618.3000000000001,4.761904762,30.915,5.1
+454-46-3734,B,Mandalay,Normal,Male,Health and beauty,51.37,8,20.548,431.508,03/17/2019,11:45,Ewallet,410.96,4.761904762,20.548,8.6
+455-85-4568,A,Yangon,Member,Female,Sports and travel,70.82,3,10.623,223.083,03/17/2019,14:00,Credit card,212.45999999999998,4.761904762,10.623,9.0
+456-53-3203,C,Naypyitaw,Member,Female,Sports and travel,65.67,3,9.8505,206.8605,03/17/2019,17:45,Credit card,197.01,4.761904762,9.8505,7.7
+457-88-2925,B,Mandalay,Member,Male,Food and beverages,61.17,2,6.117,128.457,03/18/2019,15:45,Cash,122.34,4.761904762,6.117,7.9
+458-70-2939,B,Mandalay,Normal,Female,Health and beauty,15.33,5,3.8325,80.4825,03/18/2019,14:45,Cash,76.65,4.761904762,3.8325,4.2
+459-87-1968,B,Mandalay,Member,Female,Fashion accessories,66.95,4,13.39,281.19,03/18/2019,12:30,Ewallet,267.8,4.761904762,13.39,9.0
+460-46-1281,A,Yangon,Member,Male,Sports and travel,79.2,7,27.72,582.12,03/18/2019,11:00,Credit card,554.4,4.761904762,27.72,8.7
+461-38-7262,A,Yangon,Member,Female,Health and beauty,99.47,4,19.894,417.774,03/18/2019,12:45,Credit card,397.88,4.761904762,19.894,5.6
+462-44-5293,A,Yangon,Member,Male,Health and beauty,11.0,9,4.95,103.95,03/18/2019,12:30,Ewallet,99.0,4.761904762,4.95,8.3
+463-68-7980,A,Yangon,Member,Male,Food and beverages,75.72,2,7.572,159.012,03/19/2019,15:45,Ewallet,151.44,4.761904762,7.572,5.3
+464-42-2229,A,Yangon,Member,Female,Health and beauty,61.46,6,18.438,387.198,03/19/2019,17:45,Ewallet,368.76,4.761904762,18.438,4.2
+465-21-5585,C,Naypyitaw,Normal,Female,Electronic accessories,49.06,7,17.171,360.591,03/19/2019,11:45,Cash,343.42,4.761904762,17.171,5.2
+466-29-3740,C,Naypyitaw,Normal,Female,Electronic accessories,21.48,4,4.296,90.216,03/19/2019,16:45,Ewallet,85.92,4.761904762,4.296,5.1
+467-97-6370,A,Yangon,Member,Male,Home and lifestyle,46.82,6,14.046,294.966,03/19/2019,10:00,Ewallet,280.92,4.761904762,14.046,6.0
+468-52-1125,B,Mandalay,Normal,Female,Food and beverages,41.89,7,14.6615,307.8915,03/19/2019,19:30,Credit card,293.23,4.761904762,14.6615,6.5
+469-98-8473,A,Yangon,Normal,Male,Fashion accessories,37.25,4,7.45,156.45,03/20/2019,16:00,Ewallet,149.0,4.761904762,7.45,7.1
+470-38-6342,C,Naypyitaw,Member,Female,Home and lifestyle,75.78,8,30.312,636.552,03/20/2019,10:45,Credit card,606.24,4.761904762,30.312,6.9
+471-65-7638,C,Naypyitaw,Member,Female,Electronic accessories,73.07,9,32.8815,690.5115,03/20/2019,14:00,Credit card,657.6299999999999,4.761904762,32.8815,5.6
+472-52-4249,B,Mandalay,Member,Female,Home and lifestyle,63.01,1,3.1505,66.1605,03/20/2019,13:45,Cash,63.01,4.761904762,3.1505,4.2
+473-32-8595,C,Naypyitaw,Normal,Male,Food and beverages,94.48,7,33.068,694.428,03/20/2019,16:00,Ewallet,661.36,4.761904762,33.068,7.6
+474-47-7294,A,Yangon,Member,Female,Food and beverages,41.49,9,18.6705,392.0805,03/20/2019,16:30,Ewallet,373.41,4.761904762,18.6705,6.4
+475-54-2969,B,Mandalay,Normal,Female,Health and beauty,31.94,5,7.985,167.685,03/21/2019,19:00,Credit card,159.70000000000002,4.761904762,7.985,5.8
+476-17-9320,A,Yangon,Member,Male,Sports and travel,69.03,2,6.903,144.963,03/21/2019,16:00,Cash,138.06,4.761904762,6.903,9.2
+477-17-7812,A,Yangon,Normal,Male,Health and beauty,27.89,6,8.367,175.707,03/21/2019,16:15,Cash,167.34,4.761904762,8.367,8.5
+478-14-2198,B,Mandalay,Member,Female,Food and beverages,38.35,7,13.4225,281.8725,03/21/2019,17:30,Ewallet,268.45,4.761904762,13.4225,9.1
+479-43-6238,A,Yangon,Member,Female,Electronic accessories,30.21,2,3.021,63.441,03/21/2019,18:45,Credit card,60.42,4.761904762,3.021,7.0
+480-52-7089,C,Naypyitaw,Normal,Female,Fashion accessories,16.22,2,1.622,34.062,03/21/2019,12:30,Ewallet,32.44,4.761904762,1.622,4.8
+481-39-7257,A,Yangon,Normal,Male,Electronic accessories,84.47,1,4.2235,88.6935,03/22/2019,13:45,Ewallet,84.47,4.761904762,4.2235,8.2
+482-91-8705,B,Mandalay,Normal,Male,Health and beauty,32.91,4,6.582,138.222,03/22/2019,18:00,Ewallet,131.64,4.761904762,6.582,5.2
+483-17-1302,B,Mandalay,Normal,Male,Fashion accessories,52.57,7,18.3995,386.3895,03/22/2019,16:30,Ewallet,367.99,4.761904762,18.3995,6.6
+484-85-1986,B,Mandalay,Normal,Male,Food and beverages,13.9,9,6.255,131.355,03/22/2019,19:00,Credit card,125.10000000000001,4.761904762,6.255,4.4
+485-81-5440,A,Yangon,Normal,Female,Electronic accessories,72.94,3,10.941,229.761,03/22/2019,16:45,Cash,218.82,4.761904762,10.941,9.0
+486-55-4072,B,Mandalay,Member,Male,Food and beverages,39.75,7,13.9125,292.1625,03/22/2019,10:45,Ewallet,278.25,4.761904762,13.9125,4.8
+487-28-4124,B,Mandalay,Normal,Male,Fashion accessories,77.03,7,26.9605,566.1705,03/23/2019,11:30,Ewallet,539.21,4.761904762,26.9605,9.4
+488-57-9125,A,Yangon,Member,Male,Fashion accessories,47.12,7,16.492,346.332,03/23/2019,11:30,Ewallet,329.84,4.761904762,16.492,9.2
+489-75-6105,C,Naypyitaw,Member,Female,Electronic accessories,27.62,2,2.762,58.002,03/23/2019,18:30,Ewallet,55.24,4.761904762,2.762,6.8
+490-73-9133,A,Yangon,Normal,Female,Food and beverages,56.19,6,16.857,353.997,03/23/2019,11:30,Cash,337.14,4.761904762,16.857,8.5
+491-72-6704,B,Mandalay,Member,Male,Home and lifestyle,21.75,2,2.175,45.675,03/23/2019,13:30,Cash,43.5,4.761904762,2.175,7.7
+492-42-8848,B,Mandalay,Normal,Male,Food and beverages,49.65,6,14.895,312.795,03/23/2019,11:00,Cash,297.9,4.761904762,14.895,8.8
+493-98-7924,A,Yangon,Normal,Female,Fashion accessories,38.56,3,5.784,121.464,03/24/2019,16:00,Cash,115.68,4.761904762,5.784,6.6
+494-82-4828,C,Naypyitaw,Member,Female,Food and beverages,92.08,2,9.208,193.368,03/24/2019,14:00,Ewallet,184.16,4.761904762,9.208,8.7
+495-86-4230,B,Mandalay,Member,Female,Health and beauty,15.48,6,4.644,97.524,03/24/2019,14:45,Credit card,92.88,4.761904762,4.644,6.8
+496-84-4173,B,Mandalay,Normal,Female,Home and lifestyle,72.46,2,7.246,152.166,03/24/2019,12:30,Cash,144.92,4.761904762,7.246,9.6
+497-13-5114,B,Mandalay,Normal,Female,Sports and travel,26.45,5,6.6125,138.8625,03/24/2019,15:45,Cash,132.25,4.761904762,6.6125,6.9
+498-79-4553,A,Yangon,Member,Female,Health and beauty,38.71,2,3.871,81.291,03/24/2019,14:15,Ewallet,77.42,4.761904762,3.871,6.8
+499-91-2000,B,Mandalay,Member,Female,Sports and travel,47.4,3,7.11,149.31,03/25/2019,18:15,Ewallet,142.2,4.761904762,7.11,8.7
+500-32-2388,C,Naypyitaw,Member,Female,Electronic accessories,91.72,3,13.758,288.918,03/25/2019,17:15,Ewallet,275.15999999999997,4.761904762,13.758,8.9
+501-84-4712,B,Mandalay,Member,Male,Sports and travel,31.83,6,9.549,200.529,03/25/2019,19:30,Ewallet,190.98,4.761904762,9.549,7.3
+502-97-9189,B,Mandalay,Normal,Male,Food and beverages,18.22,6,5.466,114.786,03/25/2019,18:30,Credit card,109.32,4.761904762,5.466,5.1
+503-63-1454,C,Naypyitaw,Normal,Male,Sports and travel,38.68,3,5.802,121.842,03/25/2019,12:15,Credit card,116.03999999999999,4.761904762,5.802,6.8
+504-98-3772,B,Mandalay,Normal,Male,Fashion accessories,19.42,3,2.913,61.173,03/25/2019,16:15,Cash,58.260000000000005,4.761904762,2.913,9.8
+505-24-8232,A,Yangon,Normal,Male,Health and beauty,21.57,1,1.0785,22.6485,03/26/2019,12:45,Credit card,21.57,4.761904762,1.0785,8.5
+506-85-5806,A,Yangon,Member,Male,Health and beauty,61.65,7,21.5775,453.1275,03/26/2019,19:15,Cash,431.55,4.761904762,21.5775,8.9
+507-24-3875,A,Yangon,Member,Female,Sports and travel,15.48,8,6.192,130.032,03/26/2019,10:00,Cash,123.84,4.761904762,6.192,4.2
+508-98-2440,C,Naypyitaw,Normal,Female,Health and beauty,12.78,2,1.278,26.838,03/26/2019,14:00,Credit card,25.56,4.761904762,1.278,6.8
+509-58-9927,B,Mandalay,Normal,Male,Fashion accessories,74.3,4,14.86,312.06,03/26/2019,16:00,Cash,297.2,4.761904762,14.86,7.9
+510-44-7059,A,Yangon,Normal,Male,Health and beauty,42.55,7,14.8925,312.7425,03/26/2019,18:00,Ewallet,297.84999999999997,4.761904762,14.8925,9.0
+511-20-8010,C,Naypyitaw,Normal,Female,Sports and travel,21.28,8,8.512,178.752,03/27/2019,10:30,Cash,170.24,4.761904762,8.512,4.3
+512-81-8117,B,Mandalay,Normal,Female,Home and lifestyle,32.83,1,1.6415,34.4715,03/27/2019,15:15,Ewallet,32.83,4.761904762,1.6415,9.1
+513-83-3989,C,Naypyitaw,Normal,Female,Home and lifestyle,67.79,4,13.558,284.718,03/27/2019,19:45,Credit card,271.16,4.761904762,13.558,7.3
+514-18-7228,A,Yangon,Normal,Male,Electronic accessories,34.8,6,10.44,219.24,03/27/2019,10:00,Credit card,208.79999999999998,4.761904762,10.44,5.2
+515-35-7471,A,Yangon,Normal,Female,Health and beauty,54.51,3,8.1765,171.7065,03/27/2019,14:45,Cash,163.53,4.761904762,8.1765,5.9
+516-57-2177,A,Yangon,Normal,Male,Sports and travel,20.95,5,5.2375,109.9875,03/27/2019,10:45,Ewallet,104.75,4.761904762,5.2375,5.7
+517-34-1011,C,Naypyitaw,Member,Male,Health and beauty,62.93,9,28.3185,594.6885,03/28/2019,12:15,Cash,566.37,4.761904762,28.3185,7.2
+518-14-5399,C,Naypyitaw,Normal,Female,Food and beverages,38.45,3,5.7675,121.1175,03/28/2019,18:15,Credit card,115.35000000000001,4.761904762,5.7675,4.3
+519-46-9234,A,Yangon,Member,Female,Fashion accessories,66.43,5,16.6075,348.7575,03/28/2019,10:30,Cash,332.15000000000003,4.761904762,16.6075,5.0
+520-57-6445,C,Naypyitaw,Member,Male,Health and beauty,82.76,8,33.104,695.184,03/28/2019,13:00,Cash,662.08,4.761904762,33.104,8.9
+521-55-7570,A,Yangon,Normal,Female,Health and beauty,65.05,6,19.515,409.815,03/28/2019,19:00,Ewallet,390.29999999999995,4.761904762,19.515,4.8
+522-30-1406,A,Yangon,Normal,Female,Home and lifestyle,36.62,4,7.324,153.804,03/28/2019,10:15,Credit card,146.48,4.761904762,7.324,5.4
+523-89-6243,B,Mandalay,Member,Male,Fashion accessories,33.02,8,13.208,277.368,03/29/2019,18:15,Cash,264.16,4.761904762,13.208,6.7
+524-24-7936,C,Naypyitaw,Member,Female,Sports and travel,39.47,3,5.9205,124.3305,03/29/2019,16:15,Ewallet,118.41,4.761904762,5.9205,7.1
+525-45-9906,A,Yangon,Normal,Male,Health and beauty,24.82,3,3.723,78.183,03/29/2019,14:45,Cash,74.46000000000001,4.761904762,3.723,8.6
+526-60-1140,A,Yangon,Member,Male,Home and lifestyle,26.31,4,5.262,110.502,03/29/2019,13:15,Ewallet,105.24,4.761904762,5.262,6.7
+527-95-5882,C,Naypyitaw,Normal,Female,Electronic accessories,81.16,9,36.522,766.962,03/29/2019,13:00,Ewallet,730.4399999999999,4.761904762,36.522,8.7
+528-43-7012,B,Mandalay,Normal,Male,Fashion accessories,44.63,5,11.1575,234.3075,03/29/2019,15:00,Cash,223.15,4.761904762,11.1575,7.7
+529-77-8151,B,Mandalay,Normal,Male,Home and lifestyle,49.24,8,19.696,413.616,03/30/2019,16:00,Credit card,393.92,4.761904762,19.696,4.7
+530-61-4610,A,Yangon,Member,Female,Home and lifestyle,63.46,6,19.038,399.798,03/30/2019,19:30,Credit card,380.76,4.761904762,19.038,4.9
+531-38-7894,C,Naypyitaw,Member,Female,Home and lifestyle,63.07,3,9.4605,198.6705,03/30/2019,16:45,Ewallet,189.21,4.761904762,9.4605,6.6
+532-37-8311,B,Mandalay,Normal,Female,Health and beauty,16.06,8,6.424,134.904,03/30/2019,10:15,Credit card,128.48,4.761904762,6.424,6.4
+533-45-7787,C,Naypyitaw,Member,Male,Health and beauty,84.84,9,38.178,801.738,03/30/2019,17:45,Ewallet,763.5600000000001,4.761904762,38.178,8.5
+534-98-5445,C,Naypyitaw,Member,Male,Electronic accessories,25.96,8,10.384,218.064,03/30/2019,10:00,Credit card,207.68,4.761904762,10.384,7.5
+535-84-2286,A,Yangon,Member,Female,Food and beverages,75.08,4,15.016,315.336,03/31/2019,17:45,Cash,300.32,4.761904762,15.016,6.3
+536-83-8052,B,Mandalay,Member,Male,Food and beverages,79.54,6,23.862,501.102,03/31/2019,17:45,Credit card,477.24,4.761904762,23.862,5.0
+537-40-4654,A,Yangon,Member,Female,Food and beverages,74.34,1,3.717,78.057,03/31/2019,12:00,Ewallet,74.34,4.761904762,3.717,5.4
+538-72-3359,B,Mandalay,Member,Female,Fashion accessories,62.11,4,12.422,260.862,03/31/2019,12:00,Ewallet,248.44,4.761904762,12.422,7.5
+539-51-9636,B,Mandalay,Member,Male,Fashion accessories,11.31,8,4.524,95.004,03/31/2019,11:30,Credit card,90.48,4.761904762,4.524,6.5
+540-51-6047,B,Mandalay,Normal,Female,Electronic accessories,42.43,1,2.1215,44.5515,03/31/2019,15:45,Cash,42.43,4.761904762,2.1215,7.1
+541-45-6203,B,Mandalay,Member,Male,Fashion accessories,64.44,3,9.666,202.986,04/01/2019,19:15,Ewallet,193.32,4.761904762,9.666,5.0
+542-77-2798,B,Mandalay,Member,Male,Food and beverages,44.87,1,2.2435,47.1135,04/01/2019,15:15,Ewallet,44.87,4.761904762,2.2435,8.0
+543-63-6291,C,Naypyitaw,Member,Female,Food and beverages,87.71,9,39.4695,828.8595,04/01/2019,10:30,Ewallet,789.39,4.761904762,39.4695,9.1
+544-54-7284,A,Yangon,Member,Male,Home and lifestyle,37.79,2,3.779,79.359,04/01/2019,10:00,Ewallet,75.58,4.761904762,3.779,5.5
+545-31-8285,C,Naypyitaw,Member,Female,Fashion accessories,36.42,9,16.389,344.169,04/01/2019,19:00,Ewallet,327.78000000000003,4.761904762,16.389,6.9
+546-30-7869,B,Mandalay,Member,Male,Health and beauty,33.94,4,6.788,142.548,04/01/2019,18:45,Cash,135.76,4.761904762,6.788,9.9
+547-18-4097,A,Yangon,Member,Male,Health and beauty,39.95,2,3.995,83.895,04/02/2019,17:30,Credit card,79.9,4.761904762,3.995,6.0
+548-18-1009,B,Mandalay,Member,Male,Home and lifestyle,60.17,4,12.034,252.714,04/02/2019,12:30,Cash,240.68,4.761904762,12.034,7.6
+549-97-6752,A,Yangon,Normal,Female,Home and lifestyle,73.63,6,22.089,463.869,04/02/2019,10:15,Cash,441.78,4.761904762,22.089,4.5
+550-51-7295,C,Naypyitaw,Member,Male,Home and lifestyle,69.63,7,24.3705,511.7805,04/02/2019,12:45,Ewallet,487.40999999999997,4.761904762,24.3705,7.6
+551-89-2072,A,Yangon,Member,Female,Health and beauty,82.69,3,12.4035,260.4735,04/02/2019,10:45,Cash,248.07,4.761904762,12.4035,4.5
+552-35-2316,A,Yangon,Member,Male,Food and beverages,89.73,3,13.4595,282.6495,04/02/2019,10:00,Ewallet,269.19,4.761904762,13.4595,9.8
+553-77-7807,A,Yangon,Member,Male,Home and lifestyle,83.45,8,33.38,700.98,04/03/2019,18:30,Cash,667.6,4.761904762,33.38,8.3
+554-28-4683,A,Yangon,Normal,Female,Electronic accessories,11.71,5,2.9275,61.4775,04/03/2019,13:45,Ewallet,58.550000000000004,4.761904762,2.9275,8.7
+555-69-4273,A,Yangon,Normal,Female,Home and lifestyle,76.23,4,15.246,320.166,04/03/2019,18:00,Ewallet,304.92,4.761904762,15.246,8.2
+556-98-1145,B,Mandalay,Normal,Female,Sports and travel,28.76,7,10.066,211.386,04/03/2019,11:15,Cash,201.32000000000002,4.761904762,10.066,7.5
+557-28-4040,A,Yangon,Normal,Female,Home and lifestyle,21.96,7,7.686,161.406,04/03/2019,19:30,Cash,153.72,4.761904762,7.686,6.7
+558-64-1482,A,Yangon,Normal,Female,Health and beauty,67.46,9,30.357,637.497,04/03/2019,15:45,Credit card,607.14,4.761904762,30.357,9.2
+559-42-1630,C,Naypyitaw,Normal,Male,Fashion accessories,38.78,9,17.451,366.471,04/04/2019,17:45,Credit card,349.02,4.761904762,17.451,9.7
+560-30-9853,A,Yangon,Normal,Male,Home and lifestyle,15.14,5,3.785,79.485,04/04/2019,16:30,Credit card,75.7,4.761904762,3.785,7.0
+561-57-3852,C,Naypyitaw,Normal,Female,Fashion accessories,22.39,8,8.956,188.076,04/04/2019,19:00,Cash,179.12,4.761904762,8.956,9.6
+562-24-1987,B,Mandalay,Normal,Male,Sports and travel,10.08,1,0.504,10.584,04/04/2019,14:15,Cash,10.08,4.761904762,0.504,7.5
+563-80-8327,A,Yangon,Normal,Male,Electronic accessories,91.29,9,41.0805,862.6905,04/04/2019,10:15,Ewallet,821.61,4.761904762,41.0805,7.2
+564-20-9841,C,Naypyitaw,Normal,Male,Fashion accessories,12.22,8,4.888,102.648,04/04/2019,11:15,Credit card,97.76,4.761904762,4.888,6.7
+565-82-2100,C,Naypyitaw,Normal,Female,Food and beverages,28.85,6,8.655,181.755,04/05/2019,18:45,Ewallet,173.10000000000002,4.761904762,8.655,5.3
+566-66-8421,B,Mandalay,Normal,Male,Home and lifestyle,47.46,3,7.119,149.499,04/05/2019,18:00,Ewallet,142.38,4.761904762,7.119,4.0
+567-34-1769,A,Yangon,Normal,Male,Sports and travel,42.09,3,6.3135,132.5835,04/05/2019,19:45,Ewallet,126.27000000000001,4.761904762,6.3135,5.4
+568-73-5358,A,Yangon,Normal,Male,Sports and travel,92.06,8,36.824,773.304,04/05/2019,12:45,Ewallet,736.48,4.761904762,36.824,7.1
+569-94-7780,C,Naypyitaw,Normal,Female,Fashion accessories,13.63,5,3.4075,71.5575,04/05/2019,15:00,Credit card,68.15,4.761904762,3.4075,6.3
+570-48-7602,A,Yangon,Member,Male,Electronic accessories,56.1,7,19.635,412.335,04/05/2019,15:15,Ewallet,392.7,4.761904762,19.635,6.7
+571-33-3349,C,Naypyitaw,Normal,Male,Health and beauty,71.24,5,17.81,374.01,04/06/2019,12:15,Cash,356.2,4.761904762,17.81,9.9
+572-28-6699,A,Yangon,Member,Female,Home and lifestyle,93.85,8,37.54,788.34,04/06/2019,10:45,Cash,750.8,4.761904762,37.54,6.1
+573-51-7764,C,Naypyitaw,Normal,Female,Sports and travel,65.83,4,13.166,276.486,04/06/2019,13:15,Cash,263.32,4.761904762,13.166,6.7
+574-45-8843,A,Yangon,Normal,Male,Electronic accessories,82.34,2,8.234,172.914,04/06/2019,15:30,Credit card,164.68,4.761904762,8.234,4.8
+575-12-1072,B,Mandalay,Member,Male,Food and beverages,17.54,3,2.631,55.251,04/06/2019,19:15,Ewallet,52.62,4.761904762,2.631,4.3
+576-17-6472,A,Yangon,Normal,Female,Sports and travel,44.73,8,17.892,375.732,04/06/2019,16:30,Credit card,357.84,4.761904762,17.892,8.7
+577-79-3472,A,Yangon,Member,Female,Electronic accessories,43.66,7,15.281,320.901,04/07/2019,13:45,Ewallet,305.62,4.761904762,15.281,7.4
+578-77-2804,B,Mandalay,Member,Female,Health and beauty,89.77,2,8.977,188.517,04/07/2019,10:00,Credit card,179.54,4.761904762,8.977,8.6
+579-58-4713,A,Yangon,Member,Female,Health and beauty,23.62,6,7.086,148.806,04/07/2019,11:00,Credit card,141.72,4.761904762,7.086,4.9
+580-69-3475,B,Mandalay,Normal,Female,Sports and travel,23.67,9,10.6515,223.6815,04/07/2019,19:45,Ewallet,213.03000000000003,4.761904762,10.6515,7.4
+581-36-5255,A,Yangon,Normal,Female,Sports and travel,39.57,4,7.914,166.194,04/07/2019,17:00,Credit card,158.28,4.761904762,7.914,5.5
+582-30-8397,C,Naypyitaw,Normal,Female,Fashion accessories,14.9,9,6.705,140.805,04/07/2019,16:00,Ewallet,134.1,4.761904762,6.705,5.4
+583-81-9258,C,Naypyitaw,Member,Male,Home and lifestyle,26.42,2,2.642,55.482,04/08/2019,18:15,Cash,52.84,4.761904762,2.642,4.1
+584-53-3428,A,Yangon,Member,Female,Electronic accessories,96.87,2,9.687,203.427,04/08/2019,11:15,Cash,193.74,4.761904762,9.687,4.8
+585-67-8426,A,Yangon,Normal,Female,Sports and travel,48.54,9,21.843,458.703,04/08/2019,12:30,Cash,436.86,4.761904762,21.843,5.9
+586-95-6249,A,Yangon,Normal,Male,Home and lifestyle,66.88,7,23.408,491.568,04/08/2019,15:30,Credit card,468.15999999999997,4.761904762,23.408,4.7
+587-96-6291,C,Naypyitaw,Normal,Female,Fashion accessories,75.35,7,26.3725,553.8225,04/08/2019,17:30,Cash,527.4499999999999,4.761904762,26.3725,9.9
+588-11-4874,A,Yangon,Normal,Female,Home and lifestyle,43.03,1,2.1515,45.1815,04/08/2019,13:45,Ewallet,43.03,4.761904762,2.1515,5.9
+589-96-5211,C,Naypyitaw,Normal,Male,Sports and travel,23.25,6,6.975,146.475,04/09/2019,19:15,Cash,139.5,4.761904762,6.975,4.8
+590-17-1661,B,Mandalay,Member,Female,Health and beauty,28.59,7,10.0065,210.1365,04/09/2019,18:15,Cash,200.13,4.761904762,10.0065,5.2
+591-53-4374,C,Naypyitaw,Member,Male,Electronic accessories,38.19,6,11.457,240.597,04/09/2019,11:30,Credit card,229.14,4.761904762,11.457,7.5
+592-64-1207,C,Naypyitaw,Member,Male,Electronic accessories,67.25,6,20.175,423.675,04/09/2019,11:15,Ewallet,403.5,4.761904762,20.175,4.4
+593-71-7813,B,Mandalay,Normal,Male,Health and beauty,45.85,2,4.585,96.285,04/09/2019,13:00,Credit card,91.7,4.761904762,4.585,9.2
+594-64-4083,C,Naypyitaw,Member,Male,Sports and travel,10.61,6,3.183,66.843,04/09/2019,17:15,Credit card,63.66,4.761904762,3.183,9.8
+595-26-4719,A,Yangon,Member,Female,Electronic accessories,57.11,4,11.422,239.862,04/10/2019,17:45,Ewallet,228.44,4.761904762,11.422,5.5
+596-93-2679,A,Yangon,Member,Male,Sports and travel,92.94,9,41.823,878.283,04/10/2019,11:30,Credit card,836.46,4.761904762,41.823,6.7
+597-39-1236,C,Naypyitaw,Member,Male,Fashion accessories,83.09,1,4.1545,87.2445,04/10/2019,19:30,Ewallet,83.09,4.761904762,4.1545,4.1
+598-32-5443,A,Yangon,Member,Female,Sports and travel,84.27,8,33.708,707.868,04/10/2019,15:15,Cash,674.16,4.761904762,33.708,7.8
+599-14-7099,C,Naypyitaw,Normal,Male,Home and lifestyle,81.56,5,20.39,428.19,04/10/2019,19:00,Ewallet,407.8,4.761904762,20.39,6.5
+600-74-1285,A,Yangon,Member,Male,Health and beauty,39.14,1,1.957,41.097,04/10/2019,10:15,Ewallet,39.14,4.761904762,1.957,5.6
+601-30-5037,A,Yangon,Normal,Male,Sports and travel,78.87,4,15.774,331.254,04/11/2019,17:00,Ewallet,315.48,4.761904762,15.774,5.2
+602-31-8121,C,Naypyitaw,Normal,Male,Fashion accessories,22.88,1,1.144,24.024,04/11/2019,12:15,Credit card,22.88,4.761904762,1.144,7.9
+603-81-5895,A,Yangon,Normal,Female,Food and beverages,69.19,6,20.757,435.897,04/11/2019,14:45,Ewallet,415.14,4.761904762,20.757,6.5
+604-42-2012,C,Naypyitaw,Normal,Male,Health and beauty,67.74,2,6.774,142.254,04/11/2019,16:00,Ewallet,135.48,4.761904762,6.774,5.1
+605-25-3785,A,Yangon,Normal,Female,Electronic accessories,12.3,5,3.075,64.575,04/11/2019,17:45,Ewallet,61.5,4.761904762,3.075,8.1
+606-23-5576,A,Yangon,Member,Female,Home and lifestyle,80.92,7,28.322,594.762,04/11/2019,15:45,Cash,566.44,4.761904762,28.322,7.4
+607-32-7257,B,Mandalay,Member,Male,Electronic accessories,91.29,2,9.129,191.709,04/12/2019,11:00,Ewallet,182.58,4.761904762,9.129,9.2
+608-75-3408,B,Mandalay,Normal,Male,Fashion accessories,34.07,6,10.221,214.641,04/12/2019,10:45,Credit card,204.42000000000002,4.761904762,10.221,4.7
+609-94-3817,C,Naypyitaw,Normal,Male,Fashion accessories,83.12,6,24.936,523.656,04/12/2019,13:00,Ewallet,498.72,4.761904762,24.936,8.7
+610-82-3496,B,Mandalay,Normal,Male,Electronic accessories,17.42,5,4.355,91.455,04/12/2019,17:45,Ewallet,87.10000000000001,4.761904762,4.355,8.0
+611-84-6299,C,Naypyitaw,Member,Female,Health and beauty,64.0,5,16.0,336.0,04/12/2019,16:00,Cash,320.0,4.761904762,16.0,4.7
+612-71-8574,B,Mandalay,Normal,Female,Electronic accessories,53.71,3,8.0565,169.1865,04/12/2019,17:00,Ewallet,161.13,4.761904762,8.0565,8.2
+613-35-4267,A,Yangon,Member,Female,Sports and travel,59.13,2,5.913,124.173,04/13/2019,17:15,Credit card,118.26,4.761904762,5.913,6.6
+614-91-5406,C,Naypyitaw,Normal,Male,Electronic accessories,93.36,7,32.676,686.196,04/13/2019,19:15,Ewallet,653.52,4.761904762,32.676,9.7
+615-15-2442,C,Naypyitaw,Member,Female,Home and lifestyle,88.42,1,4.421,92.841,04/13/2019,15:15,Credit card,88.42,4.761904762,4.421,4.8
+616-31-5437,A,Yangon,Normal,Male,Home and lifestyle,80.66,6,24.198,508.158,04/13/2019,10:00,Cash,483.96,4.761904762,24.198,7.9
+617-69-9435,C,Naypyitaw,Member,Male,Food and beverages,34.63,6,10.389,218.169,04/13/2019,12:30,Ewallet,207.78000000000003,4.761904762,10.389,6.3
+618-21-1560,C,Naypyitaw,Normal,Male,Home and lifestyle,92.06,3,13.809,289.989,04/13/2019,14:00,Cash,276.18,4.761904762,13.809,9.7
+619-51-9785,B,Mandalay,Member,Male,Electronic accessories,18.78,2,1.878,39.438,04/14/2019,19:15,Ewallet,37.56,4.761904762,1.878,6.0
+620-54-2826,C,Naypyitaw,Member,Male,Home and lifestyle,86.8,2,8.68,182.28,04/14/2019,16:15,Credit card,173.6,4.761904762,8.68,9.8
+621-39-8629,A,Yangon,Member,Female,Health and beauty,39.53,9,17.7885,373.5585,04/14/2019,12:45,Cash,355.77,4.761904762,17.7885,9.4
+622-15-4138,B,Mandalay,Member,Female,Home and lifestyle,14.84,5,3.71,77.91,04/14/2019,19:30,Ewallet,74.2,4.761904762,3.71,5.6
+623-89-8693,B,Mandalay,Member,Male,Sports and travel,70.24,7,24.584,516.264,04/14/2019,19:15,Credit card,491.67999999999995,4.761904762,24.584,8.8
+624-82-8842,A,Yangon,Member,Female,Health and beauty,30.82,5,7.705,161.805,04/14/2019,19:15,Cash,154.1,4.761904762,7.705,10.0
+625-75-8002,A,Yangon,Member,Male,Food and beverages,31.92,7,11.172,234.612,04/15/2019,19:45,Ewallet,223.44,4.761904762,11.172,5.5
+626-11-3978,B,Mandalay,Normal,Male,Sports and travel,37.54,4,7.508,157.668,04/15/2019,19:30,Cash,150.16,4.761904762,7.508,6.6
+627-91-8373,C,Naypyitaw,Normal,Male,Electronic accessories,15.73,8,6.292,132.132,04/15/2019,10:45,Ewallet,125.84,4.761904762,6.292,7.1
+628-29-7097,B,Mandalay,Normal,Female,Electronic accessories,25.94,7,9.079,190.659,04/15/2019,19:15,Credit card,181.58,4.761904762,9.079,5.8
+629-19-6656,A,Yangon,Normal,Male,Electronic accessories,10.46,5,2.615,54.915,04/15/2019,11:00,Credit card,52.300000000000004,4.761904762,2.615,4.1
+630-75-9984,B,Mandalay,Normal,Male,Sports and travel,50.09,6,15.027,315.567,04/15/2019,17:30,Cash,300.54,4.761904762,15.027,5.3
+631-63-5259,A,Yangon,Member,Female,Sports and travel,17.58,5,4.395,92.295,04/16/2019,16:45,Cash,87.89999999999999,4.761904762,4.395,5.7
+632-23-5917,B,Mandalay,Member,Female,Sports and travel,71.44,7,25.004,525.084,04/16/2019,18:15,Ewallet,500.08,4.761904762,25.004,6.7
+633-61-3530,C,Naypyitaw,Member,Female,Health and beauty,31.21,2,3.121,65.541,04/16/2019,11:15,Credit card,62.42,4.761904762,3.121,5.0
+634-50-8045,B,Mandalay,Member,Male,Fashion accessories,94.92,5,23.73,498.33,04/16/2019,10:00,Ewallet,474.6,4.761904762,23.73,9.2
+635-34-6772,B,Mandalay,Member,Male,Health and beauty,88.41,3,13.2615,278.4915,04/16/2019,18:45,Credit card,265.23,4.761904762,13.2615,8.2
+636-17-3964,A,Yangon,Normal,Female,Electronic accessories,36.05,9,16.2225,340.6725,04/16/2019,14:30,Cash,324.45,4.761904762,16.2225,4.5
+637-77-1536,A,Yangon,Normal,Male,Fashion accessories,80.49,6,24.147,507.087,04/17/2019,13:45,Ewallet,482.93999999999994,4.761904762,24.147,7.9
+638-88-8340,A,Yangon,Normal,Female,Home and lifestyle,82.29,3,12.3435,259.2135,04/17/2019,17:00,Ewallet,246.87,4.761904762,12.3435,7.9
+639-69-8179,B,Mandalay,Normal,Female,Electronic accessories,98.79,7,34.5765,726.1065,04/17/2019,13:00,Credit card,691.5300000000001,4.761904762,34.5765,9.7
+640-41-9734,C,Naypyitaw,Member,Male,Food and beverages,63.81,4,12.762,268.002,04/17/2019,18:45,Credit card,255.24,4.761904762,12.762,4.0
+641-87-6777,A,Yangon,Member,Male,Health and beauty,17.38,3,2.607,54.747,04/17/2019,15:15,Credit card,52.14,4.761904762,2.607,5.5
+642-69-3494,A,Yangon,Member,Female,Sports and travel,68.22,8,27.288,573.048,04/17/2019,19:30,Cash,545.76,4.761904762,27.288,9.6
+643-15-3719,B,Mandalay,Normal,Female,Health and beauty,66.25,4,13.25,278.25,04/18/2019,16:00,Ewallet,265.0,4.761904762,13.25,9.6
+644-52-5349,A,Yangon,Member,Female,Sports and travel,67.45,1,3.3725,70.8225,04/18/2019,15:30,Credit card,67.45,4.761904762,3.3725,8.3
+645-11-6179,C,Naypyitaw,Normal,Female,Fashion accessories,37.64,6,11.292,237.132,04/18/2019,16:45,Cash,225.84,4.761904762,11.292,8.6
+646-32-7610,C,Naypyitaw,Member,Male,Food and beverages,87.37,1,4.3685,91.7385,04/18/2019,14:45,Credit card,87.37,4.761904762,4.3685,4.5
+647-40-8154,A,Yangon,Member,Female,Fashion accessories,96.35,5,24.0875,505.8375,04/18/2019,10:30,Ewallet,481.75,4.761904762,24.0875,7.1
+648-14-7488,A,Yangon,Normal,Female,Food and beverages,29.59,7,10.3565,217.4865,04/18/2019,14:30,Credit card,207.13,4.761904762,10.3565,5.4
+649-11-7525,B,Mandalay,Member,Female,Health and beauty,17.93,6,5.379,112.959,04/19/2019,12:15,Ewallet,107.58,4.761904762,5.379,5.1
+650-20-1689,C,Naypyitaw,Member,Male,Sports and travel,27.51,2,2.751,57.771,04/19/2019,14:00,Cash,55.02,4.761904762,2.751,8.9
+651-40-6175,C,Naypyitaw,Normal,Male,Fashion accessories,83.85,4,16.77,352.17,04/19/2019,10:45,Cash,335.4,4.761904762,16.77,4.8
+652-88-9648,A,Yangon,Member,Female,Food and beverages,70.9,2,7.09,148.89,04/19/2019,19:15,Credit card,141.8,4.761904762,7.09,6.8
+653-96-6448,B,Mandalay,Normal,Male,Electronic accessories,67.24,1,3.362,70.602,04/19/2019,17:00,Ewallet,67.24,4.761904762,3.362,9.6
+654-37-7406,C,Naypyitaw,Member,Male,Electronic accessories,46.16,3,6.924,145.404,04/19/2019,10:15,Ewallet,138.48,4.761904762,6.924,5.1
+655-89-9591,C,Naypyitaw,Member,Male,Fashion accessories,62.0,3,9.3,195.3,04/20/2019,13:45,Ewallet,186.0,4.761904762,9.3,9.9
+656-13-2638,B,Mandalay,Member,Female,Sports and travel,37.71,7,13.1985,277.1685,04/20/2019,11:30,Credit card,263.97,4.761904762,13.1985,10.0
+657-49-7928,B,Mandalay,Member,Female,Fashion accessories,52.95,1,2.6475,55.5975,04/20/2019,18:15,Ewallet,52.95,4.761904762,2.6475,7.3
+658-61-4292,C,Naypyitaw,Member,Male,Health and beauty,81.38,9,36.621,769.041,04/20/2019,17:45,Ewallet,732.42,4.761904762,36.621,5.0
+659-61-1419,C,Naypyitaw,Member,Female,Food and beverages,98.31,6,29.493,619.353,04/20/2019,13:00,Ewallet,589.86,4.761904762,29.493,5.9
+660-47-4302,B,Mandalay,Member,Female,Health and beauty,93.92,4,18.784,394.464,04/20/2019,13:00,Ewallet,375.68,4.761904762,18.784,6.5
+661-59-8870,C,Naypyitaw,Member,Male,Electronic accessories,94.05,3,14.1075,296.2575,04/21/2019,18:00,Credit card,282.15,4.761904762,14.1075,5.9
+662-71-1767,A,Yangon,Normal,Male,Food and beverages,46.2,3,6.93,145.53,04/21/2019,11:00,Credit card,138.60000000000002,4.761904762,6.93,5.7
+663-16-2549,A,Yangon,Normal,Female,Fashion accessories,52.19,2,5.219,109.599,04/21/2019,17:15,Ewallet,104.38,4.761904762,5.219,9.8
+664-80-7140,B,Mandalay,Member,Male,Health and beauty,73.51,2,7.351,154.371,04/21/2019,10:15,Ewallet,147.02,4.761904762,7.351,4.9
+665-95-4716,B,Mandalay,Member,Female,Home and lifestyle,93.0,5,23.25,488.25,04/21/2019,12:00,Cash,465.0,4.761904762,23.25,8.4
+666-64-5481,B,Mandalay,Normal,Female,Sports and travel,22.78,9,10.251,215.271,04/21/2019,12:00,Cash,205.02,4.761904762,10.251,4.0
+667-71-8898,A,Yangon,Member,Male,Sports and travel,37.38,2,3.738,78.498,04/22/2019,16:00,Ewallet,74.76,4.761904762,3.738,7.6
+668-30-3293,C,Naypyitaw,Member,Female,Home and lifestyle,22.53,2,2.253,47.313,04/22/2019,19:00,Ewallet,45.06,4.761904762,2.253,9.5
+669-88-7793,A,Yangon,Normal,Female,Electronic accessories,65.08,6,19.524,410.004,04/22/2019,19:00,Cash,390.48,4.761904762,19.524,5.7
+670-96-8993,C,Naypyitaw,Member,Male,Food and beverages,37.57,2,3.757,78.897,04/22/2019,18:45,Cash,75.14,4.761904762,3.757,5.1
+671-48-7356,A,Yangon,Member,Male,Sports and travel,39.35,4,7.87,165.27,04/22/2019,12:00,Ewallet,157.4,4.761904762,7.87,7.9
+672-94-3385,C,Naypyitaw,Normal,Male,Home and lifestyle,16.38,6,4.914,103.194,04/22/2019,14:00,Credit card,98.28,4.761904762,4.914,8.3
+673-54-1671,A,Yangon,Member,Female,Fashion accessories,41.48,5,10.37,217.77,04/23/2019,19:15,Credit card,207.39999999999998,4.761904762,10.37,8.1
+674-45-9656,B,Mandalay,Member,Male,Home and lifestyle,87.62,1,4.381,92.001,04/23/2019,18:30,Ewallet,87.62,4.761904762,4.381,5.9
+675-69-5798,A,Yangon,Normal,Male,Electronic accessories,30.98,6,9.294,195.174,04/23/2019,16:45,Ewallet,185.88,4.761904762,9.294,5.5
+676-30-3355,C,Naypyitaw,Member,Male,Electronic accessories,72.57,1,3.6285,76.1985,04/23/2019,16:45,Cash,72.57,4.761904762,3.6285,9.7
+677-64-8961,A,Yangon,Normal,Male,Health and beauty,66.67,3,10.0005,210.0105,04/23/2019,18:30,Cash,200.01,4.761904762,10.0005,9.5
+678-77-9737,A,Yangon,Member,Female,Sports and travel,87.71,5,21.9275,460.4775,04/23/2019,18:15,Credit card,438.54999999999995,4.761904762,21.9275,6.7
+679-61-5719,A,Yangon,Member,Female,Health and beauty,21.91,5,5.4775,115.0275,04/24/2019,16:15,Ewallet,109.55,4.761904762,5.4775,9.1
+680-91-5839,B,Mandalay,Normal,Male,Home and lifestyle,97.98,6,29.394,617.274,04/24/2019,18:45,Cash,587.88,4.761904762,29.394,6.7
+681-61-4493,A,Yangon,Normal,Female,Food and beverages,62.44,8,24.976,524.496,04/24/2019,10:00,Credit card,499.52,4.761904762,24.976,6.5
+682-51-7164,B,Mandalay,Member,Male,Food and beverages,99.59,5,24.8975,522.8475,04/24/2019,12:45,Credit card,497.95000000000005,4.761904762,24.8975,4.9
+683-51-3672,B,Mandalay,Normal,Male,Electronic accessories,92.04,1,4.602,96.642,04/24/2019,15:00,Credit card,92.04,4.761904762,4.602,6.6
+684-73-1016,A,Yangon,Normal,Female,Food and beverages,29.94,5,7.485,157.185,04/24/2019,11:00,Cash,149.70000000000002,4.761904762,7.485,7.2
+685-18-9616,A,Yangon,Member,Female,Food and beverages,15.05,3,2.2575,47.4075,04/25/2019,19:15,Cash,45.150000000000006,4.761904762,2.2575,4.1
+686-10-1571,A,Yangon,Member,Male,Food and beverages,33.01,4,6.602,138.642,04/25/2019,13:45,Ewallet,132.04,4.761904762,6.602,6.7
+687-57-7172,C,Naypyitaw,Member,Male,Home and lifestyle,57.48,8,22.992,482.832,04/25/2019,14:30,Ewallet,459.84,4.761904762,22.992,8.7
+688-19-9433,A,Yangon,Normal,Female,Food and beverages,25.44,7,8.904,186.984,04/25/2019,17:15,Credit card,178.08,4.761904762,8.904,8.1
+689-67-9123,B,Mandalay,Normal,Male,Fashion accessories,25.07,5,6.2675,131.6175,04/25/2019,13:45,Credit card,125.35,4.761904762,6.2675,7.8
+690-30-8451,A,Yangon,Normal,Female,Food and beverages,51.63,2,5.163,108.423,04/25/2019,14:45,Cash,103.26,4.761904762,5.163,9.5
+691-84-1775,C,Naypyitaw,Normal,Male,Food and beverages,12.99,6,3.897,81.837,04/26/2019,13:15,Cash,77.94,4.761904762,3.897,4.1
+692-68-7869,A,Yangon,Member,Male,Health and beauty,20.97,6,6.291,132.111,04/26/2019,15:45,Ewallet,125.82,4.761904762,6.291,7.3
+693-81-8088,C,Naypyitaw,Normal,Female,Home and lifestyle,47.43,6,14.229,298.809,04/26/2019,12:45,Ewallet,284.58,4.761904762,14.229,8.7
+694-88-9080,C,Naypyitaw,Member,Female,Electronic accessories,15.68,9,7.056,148.176,04/26/2019,15:15,Ewallet,141.12,4.761904762,7.056,7.2
+695-69-4926,A,Yangon,Normal,Female,Health and beauty,45.71,8,18.284,383.964,04/26/2019,14:00,Cash,365.68,4.761904762,18.284,5.9
+696-97-8340,B,Mandalay,Member,Female,Sports and travel,52.66,8,21.064,442.344,04/26/2019,11:15,Credit card,421.28,4.761904762,21.064,4.8
+697-92-8083,C,Naypyitaw,Member,Female,Home and lifestyle,50.61,1,2.5305,53.1405,04/27/2019,19:30,Ewallet,50.61,4.761904762,2.5305,9.3
+698-74-7230,A,Yangon,Member,Female,Fashion accessories,88.23,5,22.0575,463.2075,04/27/2019,11:00,Ewallet,441.15000000000003,4.761904762,22.0575,6.8
+699-17-5940,A,Yangon,Normal,Female,Home and lifestyle,57.71,7,20.1985,424.1685,04/27/2019,16:00,Cash,403.97,4.761904762,20.1985,9.3
+700-81-4456,B,Mandalay,Member,Male,Sports and travel,52.12,6,15.636,328.356,04/27/2019,10:30,Ewallet,312.71999999999997,4.761904762,15.636,7.5
+701-60-9599,C,Naypyitaw,Member,Male,Sports and travel,46.96,5,11.74,246.54,04/27/2019,13:45,Credit card,234.8,4.761904762,11.74,8.0
+702-33-2668,C,Naypyitaw,Normal,Male,Sports and travel,83.59,8,33.436,702.156,04/27/2019,13:15,Cash,668.72,4.761904762,33.436,8.8
+703-29-7420,A,Yangon,Member,Female,Electronic accessories,90.56,3,13.584,285.264,04/28/2019,16:00,Ewallet,271.68,4.761904762,13.584,8.0
+704-67-1365,A,Yangon,Normal,Female,Food and beverages,86.79,6,26.037,546.777,04/28/2019,11:45,Ewallet,520.74,4.761904762,26.037,6.4
+705-20-5531,B,Mandalay,Normal,Female,Home and lifestyle,70.62,5,17.655,370.755,04/28/2019,10:15,Cash,353.1,4.761904762,17.655,7.1
+706-24-6330,B,Mandalay,Member,Male,Food and beverages,22.36,8,8.944,187.824,04/28/2019,16:00,Cash,178.88,4.761904762,8.944,8.8
+707-16-9754,C,Naypyitaw,Member,Female,Food and beverages,34.92,4,6.984,146.664,04/28/2019,19:15,Ewallet,139.68,4.761904762,6.984,6.2
+708-67-9964,C,Naypyitaw,Normal,Female,Fashion accessories,14.15,8,5.66,118.86,04/28/2019,13:00,Credit card,113.2,4.761904762,5.66,6.3
+709-17-6439,A,Yangon,Member,Male,Sports and travel,93.77,2,9.377,196.917,04/29/2019,10:00,Cash,187.54,4.761904762,9.377,4.6
+710-19-7511,C,Naypyitaw,Normal,Female,Electronic accessories,69.47,9,31.2615,656.4915,04/29/2019,10:45,Credit card,625.23,4.761904762,31.2615,9.5
+711-90-2246,B,Mandalay,Normal,Male,Fashion accessories,77.17,9,34.7265,729.2565,04/29/2019,16:45,Ewallet,694.53,4.761904762,34.7265,4.5
+712-17-4839,B,Mandalay,Normal,Male,Health and beauty,38.04,6,11.412,239.652,04/29/2019,10:00,Credit card,228.24,4.761904762,11.412,7.9
+713-34-3376,A,Yangon,Member,Female,Electronic accessories,86.11,4,17.222,361.662,04/29/2019,11:00,Ewallet,344.44,4.761904762,17.222,6.5
+714-75-2827,B,Mandalay,Normal,Female,Food and beverages,33.36,4,6.672,140.112,04/29/2019,19:45,Ewallet,133.44,4.761904762,6.672,6.4
+715-77-9569,B,Mandalay,Member,Female,Electronic accessories,10.15,6,3.045,63.945,04/30/2019,12:00,Ewallet,60.900000000000006,4.761904762,3.045,8.1
+716-71-7910,B,Mandalay,Member,Male,Sports and travel,43.88,5,10.97,230.37,04/30/2019,10:30,Ewallet,219.4,4.761904762,10.97,4.4
+717-19-3196,B,Mandalay,Member,Male,Health and beauty,61.37,6,18.411,386.631,04/30/2019,18:15,Credit card,368.21999999999997,4.761904762,18.411,7.6
+718-45-9843,A,Yangon,Member,Male,Sports and travel,53.08,7,18.578,390.138,04/30/2019,17:00,Ewallet,371.56,4.761904762,18.578,8.6
+719-11-1780,A,Yangon,Normal,Female,Health and beauty,87.59,7,30.6565,643.7865,04/30/2019,11:00,Ewallet,613.13,4.761904762,30.6565,9.0
+720-62-7303,C,Naypyitaw,Member,Female,Fashion accessories,19.49,9,8.7705,184.1805,04/30/2019,15:15,Credit card,175.41,4.761904762,8.7705,5.0
+721-25-9714,B,Mandalay,Normal,Female,Food and beverages,59.84,8,23.936,502.656,05/01/2019,10:30,Cash,478.72,4.761904762,23.936,9.4
+722-19-8569,C,Naypyitaw,Normal,Female,Health and beauty,56.17,6,16.851,353.871,05/01/2019,13:45,Credit card,337.02,4.761904762,16.851,7.9
+723-64-6784,A,Yangon,Member,Male,Health and beauty,35.33,6,10.599,222.579,05/01/2019,18:15,Credit card,211.98,4.761904762,10.599,9.3
+724-68-5941,A,Yangon,Normal,Male,Health and beauty,84.0,5,21.0,441.0,05/01/2019,14:00,Credit card,420.0,4.761904762,21.0,6.9
+725-98-3461,A,Yangon,Normal,Male,Electronic accessories,77.76,1,3.888,81.648,05/01/2019,13:45,Ewallet,77.76,4.761904762,3.888,7.3
+726-93-1685,A,Yangon,Member,Male,Fashion accessories,75.96,9,34.182,717.822,05/01/2019,15:15,Ewallet,683.64,4.761904762,34.182,9.5
+727-30-6341,A,Yangon,Normal,Female,Electronic accessories,88.86,9,39.987,839.727,05/02/2019,18:30,Ewallet,799.74,4.761904762,39.987,9.4
+728-48-5875,A,Yangon,Normal,Female,Food and beverages,75.05,9,33.7725,709.2225,05/02/2019,18:15,Cash,675.4499999999999,4.761904762,33.7725,6.7
+729-56-8697,A,Yangon,Normal,Female,Health and beauty,30.87,8,12.348,259.308,05/02/2019,16:45,Ewallet,246.96,4.761904762,12.348,5.6
+730-30-8165,B,Mandalay,Normal,Male,Fashion accessories,73.5,3,11.025,231.525,05/02/2019,19:15,Cash,220.5,4.761904762,11.025,6.4
+731-30-1301,C,Naypyitaw,Member,Male,Fashion accessories,37.69,1,1.8845,39.5745,05/02/2019,19:15,Ewallet,37.69,4.761904762,1.8845,6.3
+732-16-9789,A,Yangon,Normal,Female,Home and lifestyle,31.8,8,12.72,267.12,05/02/2019,15:15,Credit card,254.4,4.761904762,12.72,5.7
+733-31-5330,B,Mandalay,Normal,Female,Food and beverages,16.57,7,5.7995,121.7895,05/03/2019,11:15,Ewallet,115.99000000000001,4.761904762,5.7995,5.6
+734-98-8003,B,Mandalay,Normal,Male,Fashion accessories,76.96,5,19.24,404.04,05/03/2019,11:45,Cash,384.79999999999995,4.761904762,19.24,9.2
+735-38-4537,C,Naypyitaw,Normal,Female,Health and beauty,73.99,7,25.8965,543.8265,05/03/2019,19:45,Cash,517.93,4.761904762,25.8965,4.4
+736-11-5558,A,Yangon,Member,Male,Health and beauty,31.1,4,6.22,130.62,05/03/2019,10:00,Ewallet,124.4,4.761904762,6.22,8.1
+737-61-9474,C,Naypyitaw,Normal,Male,Fashion accessories,77.44,9,34.848,731.808,05/03/2019,17:45,Credit card,696.96,4.761904762,34.848,5.0
+738-59-5082,A,Yangon,Member,Male,Electronic accessories,92.61,2,9.261,194.481,05/03/2019,11:00,Ewallet,185.22,4.761904762,9.261,6.1
+739-32-5183,B,Mandalay,Normal,Female,Food and beverages,19.72,9,8.874,186.354,05/04/2019,14:45,Ewallet,177.48,4.761904762,8.874,4.4
+740-53-9652,B,Mandalay,Member,Female,Health and beauty,30.94,9,13.923,292.383,05/04/2019,17:15,Ewallet,278.46000000000004,4.761904762,13.923,5.6
+741-31-4754,B,Mandalay,Member,Male,Fashion accessories,77.52,5,19.38,406.98,05/04/2019,14:15,Credit card,387.59999999999997,4.761904762,19.38,8.6
+742-46-2724,B,Mandalay,Member,Female,Health and beauty,34.71,1,1.7355,36.4455,05/04/2019,12:30,Cash,34.71,4.761904762,1.7355,9.3
+743-65-9706,C,Naypyitaw,Member,Male,Fashion accessories,66.22,7,23.177,486.717,05/04/2019,15:30,Credit card,463.53999999999996,4.761904762,23.177,5.3
+744-72-2653,A,Yangon,Member,Male,Food and beverages,17.3,4,3.46,72.66,05/04/2019,14:30,Cash,69.2,4.761904762,3.46,6.8
+745-28-1022,A,Yangon,Normal,Male,Fashion accessories,50.7,9,22.815,479.115,05/05/2019,13:45,Cash,456.3,4.761904762,22.815,6.8
+746-38-6926,C,Naypyitaw,Normal,Male,Home and lifestyle,76.52,6,22.956,482.076,05/05/2019,14:15,Cash,459.12,4.761904762,22.956,9.2
+747-34-8295,A,Yangon,Normal,Female,Fashion accessories,71.79,3,10.7685,226.1385,05/05/2019,18:15,Credit card,215.37,4.761904762,10.7685,8.6
+748-17-9553,B,Mandalay,Member,Male,Fashion accessories,83.36,6,25.008,525.168,05/05/2019,19:15,Ewallet,500.15999999999997,4.761904762,25.008,7.1
+749-67-4727,A,Yangon,Normal,Male,Food and beverages,88.97,6,26.691,560.511,05/05/2019,19:15,Ewallet,533.8199999999999,4.761904762,26.691,8.0
+750-81-7272,B,Mandalay,Member,Female,Fashion accessories,79.59,5,19.8975,417.8475,05/05/2019,18:15,Ewallet,397.95000000000005,4.761904762,19.8975,9.1
+751-14-1514,C,Naypyitaw,Member,Male,Food and beverages,70.44,2,7.044,147.924,05/06/2019,12:30,Ewallet,140.88,4.761904762,7.044,4.1
+752-74-7019,A,Yangon,Normal,Male,Home and lifestyle,12.86,2,1.286,27.006,05/06/2019,19:30,Ewallet,25.72,4.761904762,1.286,6.4
+753-73-9033,C,Naypyitaw,Normal,Female,Food and beverages,58.15,7,20.3525,427.4025,05/06/2019,13:00,Credit card,407.05,4.761904762,20.3525,9.4
+754-98-4081,A,Yangon,Member,Female,Health and beauty,13.39,2,1.339,28.119,05/06/2019,15:15,Credit card,26.78,4.761904762,1.339,8.4
+755-30-4967,B,Mandalay,Member,Female,Food and beverages,82.73,6,24.819,521.199,05/06/2019,13:15,Credit card,496.38,4.761904762,24.819,7.3
+756-55-3159,C,Naypyitaw,Normal,Male,Home and lifestyle,38.87,5,9.7175,204.0675,05/06/2019,16:00,Credit card,194.35,4.761904762,9.7175,7.2
+757-22-3547,A,Yangon,Normal,Female,Sports and travel,60.62,4,12.124,254.604,05/07/2019,12:00,Credit card,242.48,4.761904762,12.124,6.1
+758-45-3649,B,Mandalay,Normal,Female,Fashion accessories,35.15,7,12.3025,258.3525,05/07/2019,12:00,Credit card,246.04999999999998,4.761904762,12.3025,7.1
+759-67-4083,C,Naypyitaw,Normal,Male,Food and beverages,80.43,8,32.172,675.612,05/07/2019,15:30,Credit card,643.44,4.761904762,32.172,7.9
+760-90-2037,C,Naypyitaw,Member,Male,Fashion accessories,89.79,4,17.958,377.118,05/07/2019,18:45,Ewallet,359.16,4.761904762,17.958,6.5
+761-43-8604,A,Yangon,Normal,Male,Electronic accessories,45.88,1,2.294,48.174,05/07/2019,16:15,Cash,45.88,4.761904762,2.294,8.3
+762-29-3634,A,Yangon,Normal,Male,Health and beauty,87.66,1,4.383,92.043,05/07/2019,17:15,Credit card,87.66,4.761904762,4.383,9.2
+763-25-2778,A,Yangon,Normal,Male,Health and beauty,34.04,1,1.702,35.742,05/08/2019,18:30,Cash,34.04,4.761904762,1.702,4.9
+764-79-8378,B,Mandalay,Member,Female,Electronic accessories,58.12,1,2.906,61.026,05/08/2019,19:15,Credit card,58.12,4.761904762,2.906,6.7
+765-67-3179,A,Yangon,Member,Female,Electronic accessories,87.29,5,21.8225,458.2725,05/08/2019,18:45,Credit card,436.45000000000005,4.761904762,21.8225,6.4
+766-13-2929,C,Naypyitaw,Member,Female,Food and beverages,39.33,4,7.866,165.186,05/08/2019,16:30,Ewallet,157.32,4.761904762,7.866,8.1
+767-33-2013,C,Naypyitaw,Member,Male,Electronic accessories,95.86,9,43.137,905.877,05/08/2019,18:15,Cash,862.74,4.761904762,43.137,5.5
+768-35-2828,A,Yangon,Normal,Male,Sports and travel,20.97,3,3.1455,66.0555,05/08/2019,11:45,Ewallet,62.91,4.761904762,3.1455,7.8
+769-94-3023,A,Yangon,Member,Male,Fashion accessories,11.64,7,4.074,85.554,05/09/2019,18:45,Ewallet,81.48,4.761904762,4.074,9.3
+770-30-6891,C,Naypyitaw,Normal,Female,Fashion accessories,91.37,8,36.548,767.508,05/09/2019,12:00,Cash,730.96,4.761904762,36.548,6.5
+771-69-2080,B,Mandalay,Normal,Female,Home and lifestyle,16.18,6,4.854,101.934,05/09/2019,14:45,Ewallet,97.08,4.761904762,4.854,9.5
+772-54-3563,A,Yangon,Normal,Male,Electronic accessories,99.27,1,4.9635,104.2335,05/09/2019,15:15,Credit card,99.27,4.761904762,4.9635,10.0
+773-23-4586,A,Yangon,Normal,Female,Electronic accessories,95.63,8,38.252,803.292,05/09/2019,17:30,Credit card,765.04,4.761904762,38.252,4.6
+774-97-5431,C,Naypyitaw,Member,Male,Sports and travel,22.33,3,3.3495,70.3395,05/09/2019,18:45,Credit card,66.99,4.761904762,3.3495,5.4
+775-67-7643,A,Yangon,Member,Female,Health and beauty,58.38,8,23.352,490.392,05/10/2019,11:15,Credit card,467.04,4.761904762,23.352,9.7
+776-13-4959,B,Mandalay,Member,Female,Health and beauty,26.64,4,5.328,111.888,05/10/2019,15:45,Credit card,106.56,4.761904762,5.328,9.7
+777-33-1161,C,Naypyitaw,Normal,Female,Fashion accessories,48.53,8,19.412,407.652,05/10/2019,19:45,Ewallet,388.24,4.761904762,19.412,4.6
+778-39-1593,A,Yangon,Normal,Male,Fashion accessories,15.53,1,0.7765,16.3065,05/10/2019,14:00,Ewallet,15.53,4.761904762,0.7765,4.1
+779-28-4390,C,Naypyitaw,Normal,Female,Food and beverages,30.15,3,4.5225,94.9725,05/10/2019,10:00,Credit card,90.44999999999999,4.761904762,4.5225,5.0
+780-92-1663,A,Yangon,Normal,Female,Sports and travel,42.69,6,12.807,268.947,05/10/2019,19:30,Credit card,256.14,4.761904762,12.807,10.0
+781-85-1541,A,Yangon,Normal,Male,Home and lifestyle,49.48,9,22.266,467.586,05/11/2019,13:30,Ewallet,445.32,4.761904762,22.266,5.1
+782-67-6093,A,Yangon,Member,Female,Home and lifestyle,97.97,2,9.797,205.737,05/11/2019,19:30,Cash,195.94,4.761904762,9.797,7.0
+783-40-1867,B,Mandalay,Normal,Male,Sports and travel,82.71,1,4.1355,86.8455,05/11/2019,15:45,Ewallet,82.71,4.761904762,4.1355,9.1
+784-73-9623,B,Mandalay,Member,Male,Home and lifestyle,76.37,3,11.4555,240.5655,05/11/2019,10:45,Ewallet,229.11,4.761904762,11.4555,4.1
+785-54-6469,C,Naypyitaw,Normal,Male,Health and beauty,58.33,4,11.666,244.986,05/11/2019,12:15,Ewallet,233.32,4.761904762,11.666,7.6
+786-64-7256,A,Yangon,Normal,Male,Home and lifestyle,85.6,5,21.4,449.4,05/11/2019,18:30,Ewallet,428.0,4.761904762,21.4,5.7
+787-64-2169,A,Yangon,Member,Male,Home and lifestyle,40.54,3,6.081,127.701,05/12/2019,11:45,Ewallet,121.62,4.761904762,6.081,9.2
+788-72-2651,B,Mandalay,Member,Female,Sports and travel,73.8,2,7.38,154.98,05/12/2019,11:00,Cash,147.6,4.761904762,7.38,5.7
+789-56-2019,A,Yangon,Normal,Male,Sports and travel,99.44,2,9.944,208.824,05/12/2019,15:30,Credit card,198.88,4.761904762,9.944,8.1
+790-54-2283,B,Mandalay,Normal,Male,Home and lifestyle,38.32,7,13.412,281.652,05/12/2019,19:45,Credit card,268.24,4.761904762,13.412,8.0
+791-29-3010,A,Yangon,Normal,Male,Electronic accessories,70.66,9,31.797,667.737,05/12/2019,19:15,Cash,635.9399999999999,4.761904762,31.797,5.3
+792-24-2733,C,Naypyitaw,Normal,Male,Sports and travel,85.99,2,8.599,180.579,05/12/2019,11:15,Credit card,171.98,4.761904762,8.599,4.2
+793-56-3125,A,Yangon,Member,Female,Food and beverages,92.42,7,32.347,679.287,05/13/2019,18:30,Credit card,646.94,4.761904762,32.347,6.5
+794-84-4471,A,Yangon,Normal,Male,Food and beverages,74.61,7,26.1135,548.3835,05/13/2019,12:45,Credit card,522.27,4.761904762,26.1135,5.7
+795-78-6624,B,Mandalay,Member,Female,Health and beauty,35.52,7,12.432,261.072,05/13/2019,17:30,Cash,248.64000000000001,4.761904762,12.432,8.9
+796-70-9329,A,Yangon,Normal,Male,Home and lifestyle,39.37,3,5.9055,124.0155,05/13/2019,12:30,Cash,118.10999999999999,4.761904762,5.9055,8.8
+797-59-6068,A,Yangon,Member,Female,Electronic accessories,11.87,7,4.1545,87.2445,05/13/2019,15:00,Credit card,83.08999999999999,4.761904762,4.1545,6.7
+798-79-4920,B,Mandalay,Member,Male,Health and beauty,78.48,1,3.924,82.404,05/13/2019,13:00,Credit card,78.48,4.761904762,3.924,7.6
+799-60-7900,C,Naypyitaw,Normal,Male,Home and lifestyle,13.85,1,0.6925,14.5425,05/14/2019,12:00,Credit card,13.85,4.761904762,0.6925,7.6
+800-28-2449,C,Naypyitaw,Member,Female,Sports and travel,87.82,5,21.955,461.055,05/14/2019,14:45,Ewallet,439.09999999999997,4.761904762,21.955,9.0
+801-44-6017,B,Mandalay,Normal,Male,Food and beverages,20.68,2,2.068,43.428,05/14/2019,14:45,Ewallet,41.36,4.761904762,2.068,6.6
+802-78-8999,B,Mandalay,Member,Female,Fashion accessories,25.47,9,11.4615,240.6915,05/14/2019,13:30,Ewallet,229.23,4.761904762,11.4615,5.7
+803-46-3096,B,Mandalay,Normal,Male,Electronic accessories,52.89,7,18.5115,388.7415,05/14/2019,14:30,Cash,370.23,4.761904762,18.5115,5.6
+804-30-9895,B,Mandalay,Member,Female,Fashion accessories,76.41,4,15.282,320.922,05/14/2019,13:45,Credit card,305.64,4.761904762,15.282,7.2
+805-14-4331,B,Mandalay,Normal,Male,Food and beverages,22.51,4,4.502,94.542,05/15/2019,13:30,Cash,90.04,4.761904762,4.502,6.7
+806-48-6105,C,Naypyitaw,Normal,Male,Fashion accessories,49.61,2,4.961,104.181,05/15/2019,17:15,Cash,99.22,4.761904762,4.961,6.6
+807-44-3839,C,Naypyitaw,Member,Female,Sports and travel,53.46,5,13.365,280.665,05/15/2019,14:45,Cash,267.3,4.761904762,13.365,4.5
+808-66-1685,B,Mandalay,Member,Male,Home and lifestyle,29.11,4,5.822,122.262,05/15/2019,13:45,Credit card,116.44,4.761904762,5.822,8.3
+809-69-8531,A,Yangon,Member,Male,Sports and travel,20.4,1,1.02,21.42,05/15/2019,13:30,Ewallet,20.4,4.761904762,1.02,5.3
+810-69-8736,B,Mandalay,Member,Male,Fashion accessories,85.28,8,34.112,716.352,05/15/2019,18:45,Credit card,682.24,4.761904762,34.112,5.2
+811-40-2619,A,Yangon,Normal,Male,Sports and travel,55.22,3,8.283,173.943,05/16/2019,18:00,Credit card,165.66,4.761904762,8.283,6.5
+812-33-7868,B,Mandalay,Member,Male,Food and beverages,11.29,6,3.387,71.127,05/16/2019,19:15,Cash,67.74,4.761904762,3.387,5.4
+813-39-2431,B,Mandalay,Normal,Male,Electronic accessories,82.27,4,16.454,345.534,05/16/2019,19:00,Cash,329.08,4.761904762,16.454,7.5
+814-39-5998,C,Naypyitaw,Member,Female,Sports and travel,98.27,9,44.2215,928.6515,05/16/2019,16:45,Cash,884.43,4.761904762,44.2215,6.2
+815-44-2974,A,Yangon,Normal,Female,Food and beverages,64.53,7,22.5855,474.2955,05/16/2019,19:30,Ewallet,451.71000000000004,4.761904762,22.5855,6.7
+816-23-1631,A,Yangon,Normal,Female,Electronic accessories,55.33,9,24.8985,522.8685,05/16/2019,17:30,Ewallet,497.96999999999997,4.761904762,24.8985,7.2
+817-19-3014,C,Naypyitaw,Normal,Male,Home and lifestyle,89.06,3,13.359,280.539,05/17/2019,10:00,Ewallet,267.18,4.761904762,13.359,5.2
+818-98-1204,C,Naypyitaw,Normal,Female,Fashion accessories,95.73,1,4.7865,100.5165,05/17/2019,19:45,Credit card,95.73,4.761904762,4.7865,4.9
+819-79-6675,C,Naypyitaw,Member,Male,Home and lifestyle,77.91,5,19.4775,409.0275,05/17/2019,14:15,Cash,389.54999999999995,4.761904762,19.4775,9.3
+820-82-6347,C,Naypyitaw,Member,Male,Health and beauty,50.09,3,7.5135,157.7835,05/17/2019,19:15,Credit card,150.27,4.761904762,7.5135,6.6
+821-65-3643,A,Yangon,Normal,Male,Food and beverages,63.3,6,18.99,398.79,05/17/2019,15:00,Ewallet,379.79999999999995,4.761904762,18.99,6.5
+822-91-3297,A,Yangon,Member,Male,Electronic accessories,73.08,8,29.232,613.872,05/17/2019,19:00,Cash,584.64,4.761904762,29.232,4.2
+823-66-1689,B,Mandalay,Member,Female,Sports and travel,27.48,4,5.496,115.416,05/18/2019,10:15,Ewallet,109.92,4.761904762,5.496,7.0
+824-42-1671,B,Mandalay,Normal,Male,Home and lifestyle,50.25,5,12.5625,263.8125,05/18/2019,13:30,Cash,251.25,4.761904762,12.5625,7.3
+825-84-2171,C,Naypyitaw,Member,Female,Electronic accessories,84.68,5,21.17,444.57,05/18/2019,10:00,Cash,423.40000000000003,4.761904762,21.17,7.4
+826-97-7342,C,Naypyitaw,Member,Male,Food and beverages,68.93,4,13.786,289.506,05/18/2019,17:15,Credit card,275.72,4.761904762,13.786,8.2
+827-30-2449,C,Naypyitaw,Member,Female,Health and beauty,47.01,4,9.402,197.442,05/18/2019,11:00,Credit card,188.04,4.761904762,9.402,5.1
+828-35-3539,B,Mandalay,Normal,Female,Home and lifestyle,69.7,4,13.94,292.74,05/18/2019,17:45,Ewallet,278.8,4.761904762,13.94,5.5
+829-23-6432,B,Mandalay,Member,Female,Fashion accessories,20.64,4,4.128,86.688,05/19/2019,12:00,Credit card,82.56,4.761904762,4.128,8.9
+830-46-3361,B,Mandalay,Normal,Female,Electronic accessories,46.13,4,9.226,193.746,05/19/2019,13:45,Credit card,184.52,4.761904762,9.226,9.7
+831-30-4670,B,Mandalay,Member,Female,Fashion accessories,81.38,5,20.345,427.245,05/19/2019,14:00,Credit card,406.9,4.761904762,20.345,4.8
+832-46-2938,B,Mandalay,Member,Female,Electronic accessories,29.85,2,2.985,62.685,05/19/2019,10:30,Cash,59.7,4.761904762,2.985,7.0
+833-98-7588,B,Mandalay,Member,Male,Electronic accessories,26.74,2,2.674,56.154,05/19/2019,15:00,Credit card,53.48,4.761904762,2.674,5.3
+834-50-7304,B,Mandalay,Normal,Female,Food and beverages,95.57,9,43.0065,903.1365,05/19/2019,11:30,Ewallet,860.1299999999999,4.761904762,43.0065,4.4
+835-59-8875,C,Naypyitaw,Normal,Male,Food and beverages,28.89,2,2.889,60.669,05/20/2019,16:15,Cash,57.78,4.761904762,2.889,6.0
+836-80-1597,C,Naypyitaw,Member,Female,Food and beverages,33.48,6,10.044,210.924,05/20/2019,10:00,Cash,200.88,4.761904762,10.044,4.9
+837-42-1572,C,Naypyitaw,Normal,Male,Sports and travel,97.27,2,9.727,204.267,05/20/2019,16:30,Credit card,194.54,4.761904762,9.727,8.3
+838-37-8097,C,Naypyitaw,Member,Female,Electronic accessories,76.12,5,19.03,399.63,05/20/2019,13:15,Cash,380.6,4.761904762,19.03,7.2
+839-52-7566,B,Mandalay,Normal,Female,Home and lifestyle,72.96,4,14.592,306.432,05/20/2019,15:15,Ewallet,291.84,4.761904762,14.592,4.9
+840-95-5624,A,Yangon,Normal,Male,Fashion accessories,86.76,7,30.366,637.686,05/20/2019,17:00,Ewallet,607.32,4.761904762,30.366,4.1
+841-79-2517,B,Mandalay,Member,Female,Food and beverages,20.42,7,7.147,150.087,05/21/2019,15:45,Cash,142.94,4.761904762,7.147,8.8
+842-79-4648,A,Yangon,Member,Female,Food and beverages,73.54,6,22.062,463.302,05/21/2019,18:45,Credit card,441.24,4.761904762,22.062,5.1
+843-83-2537,C,Naypyitaw,Member,Female,Fashion accessories,55.33,5,13.8325,290.4825,05/21/2019,15:45,Credit card,276.65,4.761904762,13.8325,7.6
+844-31-4137,B,Mandalay,Member,Male,Fashion accessories,84.62,1,4.231,88.851,05/21/2019,18:30,Cash,84.62,4.761904762,4.231,6.0
+845-83-1097,C,Naypyitaw,Normal,Female,Electronic accessories,55.73,3,8.3595,175.5495,05/21/2019,11:15,Ewallet,167.19,4.761904762,8.3595,7.5
+846-25-4750,B,Mandalay,Normal,Male,Food and beverages,65.82,9,29.619,621.999,05/21/2019,13:00,Cash,592.3799999999999,4.761904762,29.619,5.9
+847-95-9535,C,Naypyitaw,Normal,Female,Fashion accessories,53.0,1,2.65,55.65,05/22/2019,17:00,Credit card,53.0,4.761904762,2.65,4.5
+848-49-6413,A,Yangon,Member,Female,Sports and travel,53.03,5,13.2575,278.4075,05/22/2019,18:15,Credit card,265.15,4.761904762,13.2575,5.3
+849-69-5666,A,Yangon,Member,Male,Sports and travel,79.12,2,7.912,166.152,05/22/2019,18:30,Cash,158.24,4.761904762,7.912,5.1
+850-19-1610,A,Yangon,Normal,Female,Food and beverages,66.57,4,13.314,279.594,05/22/2019,14:30,Ewallet,266.28,4.761904762,13.314,6.6
+851-73-2854,B,Mandalay,Member,Female,Fashion accessories,66.99,1,3.3495,70.3395,05/22/2019,18:45,Cash,66.99,4.761904762,3.3495,7.9
+852-58-6055,A,Yangon,Normal,Male,Electronic accessories,50.53,3,7.5795,159.1695,05/22/2019,15:45,Ewallet,151.59,4.761904762,7.5795,5.6
+853-41-3324,B,Mandalay,Normal,Female,Electronic accessories,57.8,7,20.23,424.83,05/23/2019,13:00,Ewallet,404.59999999999997,4.761904762,20.23,4.1
+854-29-6774,A,Yangon,Normal,Male,Electronic accessories,77.11,3,11.5665,242.8965,05/23/2019,10:15,Cash,231.32999999999998,4.761904762,11.5665,7.1
+855-94-2749,A,Yangon,Normal,Male,Health and beauty,84.33,4,16.866,354.186,05/23/2019,12:15,Cash,337.32,4.761904762,16.866,7.6
+856-23-8548,B,Mandalay,Normal,Male,Food and beverages,72.69,2,7.269,152.649,05/23/2019,15:15,Ewallet,145.38,4.761904762,7.269,9.8
+857-49-3105,B,Mandalay,Member,Female,Electronic accessories,93.17,3,13.9755,293.4855,05/23/2019,13:15,Ewallet,279.51,4.761904762,13.9755,7.5
+858-37-8193,A,Yangon,Member,Male,Sports and travel,83.83,9,37.7235,792.1935,05/23/2019,18:15,Ewallet,754.47,4.761904762,37.7235,6.8
+859-72-3113,B,Mandalay,Member,Male,Fashion accessories,60.57,3,9.0855,190.7955,05/24/2019,12:15,Ewallet,181.71,4.761904762,9.0855,7.4
+860-34-6879,A,Yangon,Normal,Female,Home and lifestyle,70.43,5,17.6075,369.7575,05/24/2019,10:30,Credit card,352.15000000000003,4.761904762,17.6075,9.6
+861-12-8264,B,Mandalay,Normal,Male,Home and lifestyle,93.37,2,9.337,196.077,05/24/2019,10:30,Cash,186.74,4.761904762,9.337,9.0
+862-51-3274,C,Naypyitaw,Normal,Female,Electronic accessories,65.73,4,13.146,276.066,05/24/2019,18:30,Ewallet,262.92,4.761904762,13.146,5.9
+863-15-7744,C,Naypyitaw,Normal,Female,Home and lifestyle,84.23,7,29.4805,619.0905,05/24/2019,10:00,Cash,589.61,4.761904762,29.4805,5.4
+864-59-6546,C,Naypyitaw,Member,Female,Home and lifestyle,71.99,7,25.1965,529.1265,05/24/2019,16:30,Ewallet,503.92999999999995,4.761904762,25.1965,5.6
+865-28-7852,C,Naypyitaw,Member,Female,Health and beauty,59.67,3,8.9505,187.9605,05/25/2019,18:45,Cash,179.01,4.761904762,8.9505,7.0
+866-60-3551,C,Naypyitaw,Normal,Male,Sports and travel,31.77,5,7.9425,166.7925,05/25/2019,12:30,Cash,158.85,4.761904762,7.9425,8.5
+867-21-1007,A,Yangon,Normal,Male,Sports and travel,48.34,1,2.417,50.757,05/25/2019,14:30,Ewallet,48.34,4.761904762,2.417,7.0
+868-33-3555,C,Naypyitaw,Normal,Male,Health and beauty,97.1,1,4.855,101.955,05/25/2019,13:00,Ewallet,97.1,4.761904762,4.855,4.4
+869-50-9676,C,Naypyitaw,Member,Male,Health and beauty,69.2,5,17.3,363.3,05/25/2019,12:00,Cash,346.0,4.761904762,17.3,8.3
+870-94-8239,C,Naypyitaw,Member,Male,Home and lifestyle,60.8,9,27.36,574.56,05/25/2019,19:00,Cash,547.1999999999999,4.761904762,27.36,8.8
+871-64-6000,C,Naypyitaw,Member,Female,Food and beverages,93.97,1,4.6985,98.6685,05/26/2019,16:15,Cash,93.97,4.761904762,4.6985,5.7
+872-56-9078,B,Mandalay,Normal,Male,Fashion accessories,62.79,1,3.1395,65.9295,05/26/2019,11:30,Credit card,62.79,4.761904762,3.1395,8.0
+873-57-3285,A,Yangon,Normal,Male,Fashion accessories,57.35,4,11.47,240.87,05/26/2019,16:30,Ewallet,229.4,4.761904762,11.47,6.6
+874-91-7971,C,Naypyitaw,Member,Male,Home and lifestyle,78.34,4,15.668,329.028,05/26/2019,14:45,Credit card,313.36,4.761904762,15.668,9.3
+875-93-4525,C,Naypyitaw,Normal,Female,Fashion accessories,74.14,2,7.414,155.694,05/26/2019,18:00,Credit card,148.28,4.761904762,7.414,9.1
+876-21-3822,C,Naypyitaw,Member,Female,Health and beauty,27.38,9,12.321,258.741,05/26/2019,12:45,Ewallet,246.42,4.761904762,12.321,7.2
+877-89-7530,A,Yangon,Normal,Male,Sports and travel,52.42,9,23.589,495.369,05/27/2019,13:00,Ewallet,471.78000000000003,4.761904762,23.589,8.1
+878-12-1282,B,Mandalay,Member,Female,Fashion accessories,52.53,2,5.253,110.313,05/27/2019,15:45,Credit card,105.06,4.761904762,5.253,9.3
+879-49-7629,A,Yangon,Normal,Male,Home and lifestyle,44.04,9,19.818,416.178,05/27/2019,10:15,Ewallet,396.36,4.761904762,19.818,7.0
+880-42-4200,B,Mandalay,Member,Male,Food and beverages,56.56,6,16.968,356.328,05/27/2019,12:00,Cash,339.36,4.761904762,16.968,5.9
+881-17-1612,C,Naypyitaw,Member,Female,Home and lifestyle,47.18,8,18.872,396.312,05/27/2019,17:30,Cash,377.44,4.761904762,18.872,8.5
+882-41-1687,C,Naypyitaw,Member,Female,Electronic accessories,27.94,4,5.588,117.348,05/27/2019,13:00,Credit card,111.76,4.761904762,5.588,5.3
+883-13-8133,A,Yangon,Member,Male,Home and lifestyle,47.11,2,4.711,98.931,05/28/2019,17:45,Credit card,94.22,4.761904762,4.711,6.3
+884-79-7509,A,Yangon,Member,Male,Health and beauty,16.5,2,1.65,34.65,05/28/2019,12:45,Ewallet,33.0,4.761904762,1.65,9.2
+885-28-3591,B,Mandalay,Member,Female,Sports and travel,61.82,9,27.819,584.199,05/28/2019,18:15,Ewallet,556.38,4.761904762,27.819,8.3
+886-18-8183,B,Mandalay,Normal,Male,Sports and travel,86.83,1,4.3415,91.1715,05/28/2019,13:45,Credit card,86.83,4.761904762,4.3415,6.4
+887-10-9766,A,Yangon,Normal,Female,Fashion accessories,75.28,7,26.348,553.308,05/28/2019,18:00,Credit card,526.96,4.761904762,26.348,5.3
+888-30-1669,B,Mandalay,Normal,Male,Health and beauty,42.44,3,6.366,133.686,05/28/2019,11:15,Cash,127.32,4.761904762,6.366,6.1
+889-22-8329,A,Yangon,Member,Female,Electronic accessories,17.84,3,2.676,56.196,05/29/2019,14:30,Cash,53.519999999999996,4.761904762,2.676,5.7
+890-13-1923,B,Mandalay,Member,Male,Health and beauty,28.19,2,2.819,59.199,05/29/2019,13:00,Ewallet,56.38,4.761904762,2.819,5.1
+891-68-9438,A,Yangon,Normal,Male,Home and lifestyle,59.09,6,17.727,372.267,05/29/2019,14:00,Cash,354.54,4.761904762,17.727,8.5
+892-36-9004,A,Yangon,Member,Female,Health and beauty,28.64,2,2.864,60.144,05/29/2019,18:15,Ewallet,57.28,4.761904762,2.864,5.5
+893-34-7274,A,Yangon,Member,Male,Health and beauty,58.96,4,11.792,247.632,05/29/2019,11:15,Ewallet,235.84,4.761904762,11.792,6.7
+894-77-4864,B,Mandalay,Member,Male,Electronic accessories,30.84,9,13.878,291.438,05/29/2019,18:30,Ewallet,277.56,4.761904762,13.878,6.3
+895-29-8833,B,Mandalay,Member,Female,Home and lifestyle,86.4,9,38.88,816.48,05/30/2019,13:45,Cash,777.6,4.761904762,38.88,9.9
+896-14-1226,B,Mandalay,Member,Male,Food and beverages,45.75,6,13.725,288.225,05/30/2019,10:15,Credit card,274.5,4.761904762,13.725,6.3
+897-70-1264,A,Yangon,Normal,Male,Food and beverages,32.1,4,6.42,134.82,05/30/2019,10:00,Credit card,128.4,4.761904762,6.42,4.5
+898-59-1645,B,Mandalay,Normal,Male,Sports and travel,83.11,7,29.0885,610.8585,05/30/2019,18:30,Cash,581.77,4.761904762,29.0885,4.5
+899-92-8544,B,Mandalay,Normal,Female,Fashion accessories,40.86,1,2.043,42.903,05/30/2019,17:00,Credit card,40.86,4.761904762,2.043,7.5
+900-20-6569,A,Yangon,Normal,Female,Health and beauty,20.03,4,4.006,84.126,05/30/2019,14:00,Ewallet,80.12,4.761904762,4.006,7.6
+901-56-3504,C,Naypyitaw,Normal,Female,Sports and travel,61.34,5,15.335,322.035,05/31/2019,12:30,Credit card,306.70000000000005,4.761904762,15.335,6.5
+902-94-1587,A,Yangon,Member,Male,Electronic accessories,62.34,8,24.936,523.656,05/31/2019,16:00,Cash,498.72,4.761904762,24.936,6.6
+903-39-5079,B,Mandalay,Member,Male,Food and beverages,74.32,2,7.432,156.072,05/31/2019,15:15,Credit card,148.64,4.761904762,7.432,4.3
+904-30-7299,A,Yangon,Member,Male,Health and beauty,31.62,5,7.905,166.005,05/31/2019,11:45,Ewallet,158.1,4.761904762,7.905,7.1
+905-71-2715,C,Naypyitaw,Member,Male,Electronic accessories,49.94,6,14.982,314.622,05/31/2019,10:15,Ewallet,299.64,4.761904762,14.982,7.0
+906-43-7450,A,Yangon,Normal,Female,Fashion accessories,35.41,5,8.8525,185.9025,05/31/2019,10:15,Cash,177.04999999999998,4.761904762,8.8525,4.9
+907-56-6433,B,Mandalay,Normal,Male,Electronic accessories,17.29,9,7.7805,163.3905,06/01/2019,19:00,Cash,155.60999999999999,4.761904762,7.7805,4.6
+908-84-8096,C,Naypyitaw,Normal,Male,Health and beauty,88.9,1,4.445,93.345,06/01/2019,19:30,Cash,88.9,4.761904762,4.445,4.7
+909-32-7416,B,Mandalay,Member,Male,Fashion accessories,75.6,3,11.34,238.14,06/01/2019,17:30,Ewallet,226.79999999999998,4.761904762,11.34,4.6
+910-78-7763,C,Naypyitaw,Normal,Female,Electronic accessories,37.13,2,3.713,77.973,06/01/2019,16:30,Credit card,74.26,4.761904762,3.713,7.7
+911-20-8950,C,Naypyitaw,Member,Male,Fashion accessories,63.94,3,9.591,201.411,06/01/2019,12:45,Credit card,191.82,4.761904762,9.591,5.2
+912-44-9915,A,Yangon,Normal,Male,Health and beauty,28.11,9,12.6495,265.6395,06/01/2019,11:15,Cash,252.99,4.761904762,12.6495,5.5
+913-25-7049,A,Yangon,Normal,Male,Health and beauty,90.12,9,40.554,851.634,06/02/2019,19:30,Credit card,811.08,4.761904762,40.554,5.0
+914-75-5578,B,Mandalay,Member,Male,Fashion accessories,20.34,2,2.034,42.714,06/02/2019,16:00,Credit card,40.68,4.761904762,2.034,9.7
+915-49-1155,A,Yangon,Member,Male,Home and lifestyle,10.35,3,1.5525,32.6025,06/02/2019,17:45,Cash,31.049999999999997,4.761904762,1.5525,9.1
+916-56-2958,A,Yangon,Normal,Female,Sports and travel,55.18,4,11.036,231.756,06/02/2019,16:45,Cash,220.72,4.761904762,11.036,5.4
+917-79-7344,C,Naypyitaw,Normal,Male,Electronic accessories,62.48,9,28.116,590.436,06/02/2019,14:15,Ewallet,562.3199999999999,4.761904762,28.116,6.0
+918-29-7144,A,Yangon,Member,Male,Electronic accessories,62.11,3,9.3165,195.6465,06/02/2019,10:45,Ewallet,186.32999999999998,4.761904762,9.3165,5.3
+919-81-4830,C,Naypyitaw,Normal,Male,Home and lifestyle,14.91,7,5.2185,109.5885,06/03/2019,10:00,Ewallet,104.37,4.761904762,5.2185,7.0
+920-96-9831,C,Naypyitaw,Normal,Male,Home and lifestyle,38.26,3,5.739,120.519,06/03/2019,19:00,Ewallet,114.78,4.761904762,5.739,4.1
+921-72-7659,C,Naypyitaw,Member,Male,Home and lifestyle,54.93,7,19.2255,403.7355,06/03/2019,16:30,Credit card,384.51,4.761904762,19.2255,8.0
+922-67-7040,B,Mandalay,Normal,Male,Food and beverages,29.49,7,10.3215,216.7515,06/03/2019,13:30,Credit card,206.42999999999998,4.761904762,10.3215,7.1
+923-56-6925,B,Mandalay,Member,Male,Food and beverages,88.54,9,39.843,836.703,06/03/2019,11:45,Ewallet,796.86,4.761904762,39.843,9.4
+924-24-8358,B,Mandalay,Normal,Male,Fashion accessories,17.84,2,1.784,37.464,06/03/2019,12:45,Ewallet,35.68,4.761904762,1.784,5.0
+925-30-7370,C,Naypyitaw,Member,Male,Food and beverages,53.86,6,16.158,339.318,06/04/2019,17:30,Cash,323.15999999999997,4.761904762,16.158,8.8
+926-66-1948,B,Mandalay,Normal,Male,Health and beauty,72.23,9,32.5035,682.5735,06/04/2019,15:30,Credit card,650.07,4.761904762,32.5035,8.8
+927-55-9179,B,Mandalay,Member,Female,Fashion accessories,33.56,2,3.356,70.476,06/04/2019,19:00,Credit card,67.12,4.761904762,3.356,4.8
+928-23-7115,A,Yangon,Normal,Female,Electronic accessories,66.18,2,6.618,138.978,06/04/2019,18:45,Ewallet,132.36,4.761904762,6.618,6.4
+929-85-8568,B,Mandalay,Member,Female,Sports and travel,84.64,5,21.16,444.36,06/04/2019,10:00,Credit card,423.2,4.761904762,21.16,5.0
+930-48-1392,B,Mandalay,Normal,Female,Health and beauty,27.13,8,10.852,227.892,06/04/2019,19:30,Cash,217.04,4.761904762,10.852,5.5
+931-86-8374,C,Naypyitaw,Normal,Male,Electronic accessories,92.55,9,41.6475,874.5975,06/05/2019,14:15,Cash,832.9499999999999,4.761904762,41.6475,5.6
+932-91-2138,C,Naypyitaw,Normal,Female,Electronic accessories,59.82,2,5.982,125.622,06/05/2019,11:30,Credit card,119.64,4.761904762,5.982,7.3
+933-15-8418,C,Naypyitaw,Normal,Female,Fashion accessories,36.93,5,9.2325,193.8825,06/05/2019,15:30,Ewallet,184.65,4.761904762,9.2325,6.5
+934-32-4674,C,Naypyitaw,Normal,Male,Home and lifestyle,48.78,7,17.073,358.533,06/05/2019,10:15,Credit card,341.46000000000004,4.761904762,17.073,9.7
+935-55-3597,C,Naypyitaw,Normal,Female,Home and lifestyle,38.1,6,11.43,240.03,06/05/2019,17:45,Cash,228.60000000000002,4.761904762,11.43,4.8
+936-23-3659,C,Naypyitaw,Normal,Female,Health and beauty,75.26,6,22.578,474.138,06/05/2019,14:15,Ewallet,451.56000000000006,4.761904762,22.578,9.8
+937-81-6661,B,Mandalay,Normal,Male,Home and lifestyle,81.67,7,28.5845,600.2745,06/06/2019,16:15,Credit card,571.69,4.761904762,28.5845,5.4
+938-87-6626,C,Naypyitaw,Normal,Male,Electronic accessories,84.96,3,12.744,267.624,06/06/2019,15:45,Ewallet,254.88,4.761904762,12.744,8.6
+939-93-9472,C,Naypyitaw,Member,Male,Home and lifestyle,98.72,3,14.808,310.968,06/06/2019,16:15,Ewallet,296.15999999999997,4.761904762,14.808,6.0
+940-49-7999,A,Yangon,Member,Female,Food and beverages,81.22,9,36.549,767.529,06/06/2019,18:15,Cash,730.98,4.761904762,36.549,4.9
+941-23-5249,B,Mandalay,Normal,Female,Home and lifestyle,64.12,8,25.648,538.608,06/06/2019,19:45,Ewallet,512.96,4.761904762,25.648,9.1
+942-96-5757,B,Mandalay,Member,Male,Electronic accessories,40.53,5,10.1325,212.7825,06/06/2019,16:45,Credit card,202.65,4.761904762,10.1325,5.9
+943-57-5088,B,Mandalay,Normal,Male,Fashion accessories,59.01,6,17.703,371.763,06/07/2019,14:30,Ewallet,354.06,4.761904762,17.703,8.0
+944-92-8789,C,Naypyitaw,Normal,Female,Health and beauty,13.7,1,0.685,14.385,06/07/2019,12:15,Ewallet,13.7,4.761904762,0.685,7.4
+945-60-3946,C,Naypyitaw,Member,Male,Sports and travel,77.03,1,3.8515,80.8815,06/07/2019,14:45,Credit card,77.03,4.761904762,3.8515,6.8
+946-51-6394,C,Naypyitaw,Normal,Female,Home and lifestyle,50.14,4,10.028,210.588,06/07/2019,14:45,Cash,200.56,4.761904762,10.028,7.0
+947-82-6075,A,Yangon,Normal,Male,Electronic accessories,11.8,2,1.18,24.78,06/07/2019,13:30,Cash,23.6,4.761904762,1.18,8.4
+948-54-8230,C,Naypyitaw,Member,Male,Sports and travel,15.63,7,5.4705,114.8805,06/07/2019,18:30,Credit card,109.41000000000001,4.761904762,5.4705,4.5
+949-82-2531,A,Yangon,Member,Female,Sports and travel,44.87,2,4.487,94.227,06/08/2019,19:00,Credit card,89.74,4.761904762,4.487,8.0
+950-28-3990,B,Mandalay,Normal,Male,Food and beverages,62.51,2,6.251,131.271,06/08/2019,16:30,Cash,125.02,4.761904762,6.251,9.4
+951-23-1933,C,Naypyitaw,Member,Male,Sports and travel,51.78,5,12.945,271.845,06/08/2019,17:45,Ewallet,258.9,4.761904762,12.945,4.3
+952-62-3723,A,Yangon,Member,Male,Fashion accessories,65.73,4,13.146,276.066,06/08/2019,15:45,Credit card,262.92,4.761904762,13.146,4.8
+953-49-1285,A,Yangon,Normal,Female,Electronic accessories,53.23,8,21.292,447.132,06/08/2019,12:15,Ewallet,425.84,4.761904762,21.292,8.3
+954-18-7816,C,Naypyitaw,Member,Male,Electronic accessories,69.55,4,13.91,292.11,06/08/2019,19:15,Credit card,278.2,4.761904762,13.91,6.6
+955-61-2762,B,Mandalay,Member,Male,Home and lifestyle,29.72,6,8.916,187.236,06/09/2019,10:45,Cash,178.32,4.761904762,8.916,6.4
+956-68-1040,B,Mandalay,Normal,Male,Home and lifestyle,20.16,5,5.04,105.84,06/09/2019,15:00,Ewallet,100.8,4.761904762,5.04,4.8
+957-77-9259,B,Mandalay,Member,Male,Home and lifestyle,63.68,2,6.368,133.728,06/09/2019,18:15,Ewallet,127.36,4.761904762,6.368,7.0
+958-17-8804,A,Yangon,Member,Male,Fashion accessories,53.62,8,21.448,450.408,06/09/2019,11:30,Credit card,428.96,4.761904762,21.448,4.8
+959-95-4198,A,Yangon,Normal,Male,Sports and travel,12.42,2,1.242,26.082,06/09/2019,11:30,Ewallet,24.84,4.761904762,1.242,6.9
+960-64-8183,A,Yangon,Normal,Female,Sports and travel,44.24,9,19.908,418.068,06/09/2019,11:15,Credit card,398.16,4.761904762,19.908,8.6
+961-71-3479,A,Yangon,Normal,Female,Food and beverages,19.55,9,8.7975,184.7475,06/10/2019,17:15,Cash,175.95000000000002,4.761904762,8.7975,5.5
+962-39-6154,B,Mandalay,Member,Male,Fashion accessories,57.82,3,8.673,182.133,06/10/2019,16:30,Ewallet,173.46,4.761904762,8.673,6.9
+963-20-2492,C,Naypyitaw,Normal,Female,Home and lifestyle,45.62,4,9.124,191.604,06/10/2019,15:15,Credit card,182.48,4.761904762,9.124,10.0
+964-30-2348,A,Yangon,Normal,Female,Health and beauty,65.18,8,26.072,547.512,06/10/2019,18:00,Ewallet,521.44,4.761904762,26.072,8.1
+965-57-8851,A,Yangon,Member,Male,Food and beverages,82.5,9,37.125,779.625,06/10/2019,18:30,Credit card,742.5,4.761904762,37.125,9.0
+966-42-8156,B,Mandalay,Normal,Female,Health and beauty,36.97,3,5.5455,116.4555,06/10/2019,16:00,Credit card,110.91,4.761904762,5.5455,6.5
+967-82-4516,C,Naypyitaw,Normal,Female,Sports and travel,96.59,5,24.1475,507.0975,06/11/2019,19:30,Credit card,482.95000000000005,4.761904762,24.1475,8.6
+968-18-5577,C,Naypyitaw,Normal,Female,Food and beverages,58.21,8,23.284,488.964,06/11/2019,12:00,Cash,465.68,4.761904762,23.284,4.2
+969-97-8468,B,Mandalay,Normal,Female,Food and beverages,65.65,3,9.8475,206.7975,06/11/2019,14:45,Ewallet,196.95000000000002,4.761904762,9.8475,4.7
+970-96-2447,B,Mandalay,Member,Female,Electronic accessories,71.26,7,24.941,523.761,06/11/2019,13:15,Cash,498.82000000000005,4.761904762,24.941,5.2
+971-85-7581,C,Naypyitaw,Normal,Female,Sports and travel,70.01,8,28.004,588.084,06/11/2019,18:30,Credit card,560.08,4.761904762,28.004,6.4
+972-85-7317,A,Yangon,Normal,Female,Sports and travel,55.99,3,8.3985,176.3685,06/11/2019,17:45,Credit card,167.97,4.761904762,8.3985,9.1
+973-56-1526,C,Naypyitaw,Member,Female,Fashion accessories,48.59,2,4.859,102.039,06/12/2019,15:15,Cash,97.18,4.761904762,4.859,6.1
+974-28-7748,B,Mandalay,Normal,Male,Food and beverages,14.84,7,5.194,109.074,06/12/2019,14:00,Cash,103.88,4.761904762,5.194,7.9
+975-31-8986,A,Yangon,Member,Male,Sports and travel,11.99,9,5.3955,113.3055,06/12/2019,13:30,Ewallet,107.91,4.761904762,5.3955,8.3
+976-47-4740,A,Yangon,Member,Female,Food and beverages,42.22,1,2.111,44.331,06/12/2019,10:45,Credit card,42.22,4.761904762,2.111,7.5
+977-60-2846,B,Mandalay,Member,Female,Fashion accessories,40.03,3,6.0045,126.0945,06/12/2019,14:15,Cash,120.09,4.761904762,6.0045,6.1
+978-80-1771,B,Mandalay,Normal,Male,Fashion accessories,44.89,5,11.2225,235.6725,06/12/2019,11:45,Credit card,224.45,4.761904762,11.2225,7.5
+979-31-9770,B,Mandalay,Member,Female,Electronic accessories,22.45,3,3.3675,70.7175,06/13/2019,12:30,Credit card,67.35,4.761904762,3.3675,6.1
+980-95-1193,C,Naypyitaw,Member,Female,Food and beverages,76.44,1,3.822,80.262,06/13/2019,15:45,Ewallet,76.44,4.761904762,3.822,4.5
+981-97-2185,C,Naypyitaw,Member,Male,Sports and travel,87.13,7,30.4955,640.4055,06/13/2019,18:00,Ewallet,609.91,4.761904762,30.4955,10.0
+982-64-5005,A,Yangon,Normal,Male,Sports and travel,94.48,7,33.068,694.428,06/13/2019,13:15,Ewallet,661.36,4.761904762,33.068,4.8
+983-15-3261,B,Mandalay,Normal,Male,Food and beverages,54.31,8,21.724,456.204,06/13/2019,15:15,Cash,434.48,4.761904762,21.724,4.4
+984-34-7716,A,Yangon,Normal,Female,Food and beverages,73.08,5,18.27,383.67,06/13/2019,11:45,Credit card,365.4,4.761904762,18.27,9.3
+985-21-9921,A,Yangon,Normal,Female,Food and beverages,87.0,5,21.75,456.75,06/14/2019,16:30,Cash,435.0,4.761904762,21.75,5.8
+986-36-8815,A,Yangon,Normal,Male,Home and lifestyle,47.65,5,11.9125,250.1625,06/14/2019,18:45,Cash,238.25,4.761904762,11.9125,7.9
+987-92-4451,A,Yangon,Normal,Male,Sports and travel,37.85,1,1.8925,39.7425,06/14/2019,14:45,Ewallet,37.85,4.761904762,1.8925,6.0
+988-74-3800,B,Mandalay,Normal,Female,Fashion accessories,94.31,5,23.5775,495.1275,06/14/2019,15:15,Credit card,471.55,4.761904762,23.5775,6.3
+989-49-9333,A,Yangon,Member,Male,Sports and travel,56.41,6,16.923,355.383,06/14/2019,19:45,Credit card,338.46,4.761904762,16.923,5.6
+990-44-2455,B,Mandalay,Member,Female,Home and lifestyle,54.75,1,2.7375,57.4875,06/14/2019,12:30,Ewallet,54.75,4.761904762,2.7375,6.1
+991-93-6808,B,Mandalay,Member,Female,Food and beverages,26.06,7,9.121,191.541,06/15/2019,14:30,Credit card,182.42,4.761904762,9.121,6.5
+992-22-5796,C,Naypyitaw,Member,Male,Electronic accessories,19.73,1,0.9865,20.7165,06/15/2019,19:30,Ewallet,19.73,4.761904762,0.9865,8.3
+993-58-2325,B,Mandalay,Normal,Male,Food and beverages,85.79,2,8.579,180.159,06/15/2019,17:15,Cash,171.58,4.761904762,8.579,7.1
+994-71-2159,C,Naypyitaw,Member,Female,Food and beverages,65.27,2,6.527,137.067,06/15/2019,17:15,Cash,130.54,4.761904762,6.527,9.7
+995-52-5987,B,Mandalay,Member,Male,Home and lifestyle,39.32,5,9.83,206.43,06/15/2019,13:15,Ewallet,196.6,4.761904762,9.83,4.3
+996-48-1340,B,Mandalay,Member,Male,Sports and travel,27.26,7,9.541,200.361,06/15/2019,10:45,Cash,190.82000000000002,4.761904762,9.541,7.0
+997-58-1703,B,Mandalay,Member,Male,Food and beverages,59.99,1,2.9995,62.9895,06/16/2019,13:15,Cash,59.99,4.761904762,2.9995,7.5
+998-71-6482,C,Naypyitaw,Normal,Male,Sports and travel,62.55,1,3.1275,65.6775,06/16/2019,18:30,Ewallet,62.55,4.761904762,3.1275,9.5
+999-63-7376,C,Naypyitaw,Normal,Female,Health and beauty,28.63,1,1.4315,30.0615,06/16/2019,12:30,Cash,28.63,4.761904762,1.4315,4.3
+1000-18-6463,A,Yangon,Normal,Female,Fashion accessories,86.63,6,25.989,545.769,06/16/2019,11:00,Credit card,519.78,4.761904762,25.989,7.4

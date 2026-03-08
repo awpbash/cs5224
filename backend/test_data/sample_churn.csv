@@ -1,0 +1,41 @@
+tenure,monthly_charges,total_charges,contract_type,payment_method,churn
+1,29.85,29.85,Month-to-month,Electronic check,Yes
+34,56.95,1889.5,One year,Mailed check,No
+2,53.85,108.15,Month-to-month,Mailed check,Yes
+45,42.3,1840.75,One year,Bank transfer,No
+2,70.7,151.65,Month-to-month,Electronic check,Yes
+8,99.65,820.5,Month-to-month,Electronic check,Yes
+22,89.1,1949.4,One year,Credit card,No
+10,29.75,301.9,Month-to-month,Bank transfer,No
+28,104.8,3046.05,One year,Electronic check,No
+62,56.15,3487.95,Two year,Mailed check,No
+13,49.95,587.45,Month-to-month,Electronic check,Yes
+16,18.95,326.8,Two year,Credit card,No
+58,100.35,5681.1,Two year,Bank transfer,No
+49,89.85,4472.7,One year,Credit card,No
+14,76.85,1024.1,Month-to-month,Electronic check,Yes
+1,89.15,89.15,Month-to-month,Electronic check,Yes
+52,60.65,3168.35,Two year,Bank transfer,No
+31,74.4,2291.5,One year,Mailed check,No
+4,95.75,386.5,Month-to-month,Electronic check,Yes
+70,24.1,1702.35,Two year,Credit card,No
+3,85.45,261.7,Month-to-month,Electronic check,Yes
+7,65.5,458.1,Month-to-month,Bank transfer,Yes
+18,35.25,637.3,One year,Mailed check,No
+40,75.25,3010.6,Two year,Credit card,No
+9,91.4,808.9,Month-to-month,Electronic check,Yes
+55,45.2,2485.6,Two year,Bank transfer,No
+20,82.7,1651.5,One year,Mailed check,No
+5,49.85,244.3,Month-to-month,Electronic check,Yes
+33,70.1,2314.85,One year,Bank transfer,No
+67,88.95,5969.6,Two year,Credit card,No
+12,55.6,670.95,Month-to-month,Electronic check,Yes
+25,39.95,1001.05,One year,Mailed check,No
+44,105.1,4616.45,Two year,Bank transfer,No
+6,78.3,470.55,Month-to-month,Electronic check,Yes
+38,61.45,2327.85,One year,Credit card,No
+15,94.2,1419.25,Month-to-month,Electronic check,Yes
+50,30.5,1527.35,Two year,Mailed check,No
+29,67.8,1963.6,One year,Bank transfer,No
+3,88.6,266.55,Month-to-month,Electronic check,Yes
+60,50.75,3043.25,Two year,Credit card,No
