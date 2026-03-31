@@ -33,7 +33,7 @@ def handler(event, context):
             "projectName": name,
             "taskType": task_type,
             "useCase": use_case,
-            "status": "created",
+            "status": "CREATED",
             "createdAt": now,
             "updatedAt": now,
         }
@@ -48,7 +48,7 @@ def handler(event, context):
                 "projectName": name,
                 "taskType": task_type,
                 "useCase": use_case,
-                "status": "created",
+                "status": "CREATED",
                 "createdAt": now,
                 "updatedAt": now,
             }),

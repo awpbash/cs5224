@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 from shared.config import DATA_BUCKET
+from shared.db import update_job
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -18,8 +19,24 @@ s3 = boto3.client("s3")
 
 
 def handler(event, context):
+    job_id = event.get("jobId")
+    project_id = event.get("projectId")
+    try:
+        return _run(event)
+    except Exception as e:
+        logger.exception("etl_preprocess failed")
+        if job_id and project_id:
+            update_job(project_id, job_id, {"status": "FAILED", "failureReason": str(e)[:500]})
+        raise
+
+
+def _run(event):
     user_id = event["userId"]
     project_id = event["projectId"]
+    job_id = event.get("jobId")
+
+    if job_id:
+        update_job(project_id, job_id, {"status": "PREPROCESSING", "currentStep": "preprocessing"})
     dataset_s3_path = event["datasetS3Path"]
     task_type = event.get("taskType", "classification")
 
@@ -44,16 +61,57 @@ def handler(event, context):
             df = df[valid_features + [target_col]]
             logger.info("Using %d selected features", len(valid_features))
 
+    # --- Drop columns that are all null or constant ---
+    for col in list(df.columns):
+        if col == target_col:
+            continue
+        if df[col].isnull().all() or df[col].nunique() <= 1:
+            df = df.drop(columns=[col])
+            logger.info("Dropped constant/empty column: %s", col)
+
+    # --- Convert boolean columns to int ---
+    for col in df.select_dtypes(include=["bool"]).columns:
+        df[col] = df[col].astype(int)
+
+    # --- Handle datetime columns: extract numeric features ---
+    for col in df.select_dtypes(include=["datetime64", "datetime64[ns]"]).columns:
+        if col == target_col:
+            continue
+        df[f"{col}_year"] = df[col].dt.year
+        df[f"{col}_month"] = df[col].dt.month
+        df[f"{col}_dayofweek"] = df[col].dt.dayofweek
+        df = df.drop(columns=[col])
+        logger.info("Expanded datetime column: %s", col)
+
+    # --- Try to convert string columns that look numeric ---
+    for col in df.select_dtypes(include=["object"]).columns:
+        if col == target_col:
+            continue
+        converted = pd.to_numeric(df[col], errors="coerce")
+        if converted.notna().sum() > 0.5 * len(df):
+            df[col] = converted
+            logger.info("Converted %s to numeric", col)
+
     # --- Imputation ---
     for col in df.select_dtypes(include=["number"]).columns:
         if col != target_col:
             df[col] = df[col].fillna(df[col].median())
     for col in df.select_dtypes(include=["object"]).columns:
         if col != target_col:
-            df[col] = df[col].fillna(df[col].mode().iloc[0] if not df[col].mode().empty else "unknown")
+            mode = df[col].mode()
+            df[col] = df[col].fillna(mode.iloc[0] if len(mode) > 0 else "unknown")
 
     # Drop rows where target is null
     df = df.dropna(subset=[target_col])
+
+    # --- Drop high-cardinality string columns (>50 unique = probably IDs) ---
+    for col in df.select_dtypes(include=["object"]).columns:
+        if col == target_col:
+            continue
+        if df[col].nunique() > 50:
+            df = df.drop(columns=[col])
+            logger.info("Dropped high-cardinality column: %s (%d unique)", col, df[col].nunique() if col in df.columns else 0)
+            continue
 
     # --- Encode categorical features ---
     label_encoders = {}

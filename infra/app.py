@@ -12,7 +12,7 @@ from stacks.monitoring_stack import MonitoringStack
 app = cdk.App()
 
 env = cdk.Environment(region="ap-southeast-1")
-tags = {"project": "cloudforge-ml", "environment": "dev"}
+tags = {"project": "retailmind", "environment": "dev"}
 
 network = NetworkStack(app, "CloudForgeNetwork", env=env)
 storage = StorageStack(app, "CloudForgeStorage", env=env)
@@ -34,6 +34,7 @@ api = ApiStack(
     data_bucket=storage.data_bucket,
     projects_table=storage.projects_table,
     jobs_table=storage.jobs_table,
+    chats_table=storage.chats_table,
     user_pool=auth.user_pool,
     state_machine=pipeline.state_machine,
     env=env,

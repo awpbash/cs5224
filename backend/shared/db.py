@@ -113,3 +113,7 @@ def get_latest_job(project_id: str) -> Optional[dict]:
     )
     items = resp.get("Items", [])
     return _convert_decimals(items[0]) if items else None
+
+
+def delete_project(user_id: str, project_id: str) -> None:
+    projects_table.delete_item(Key={"userId": user_id, "projectId": project_id})

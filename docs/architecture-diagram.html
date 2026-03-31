@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RetailMind — AWS Architecture</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #fff; padding: 24px; }
+  .page { max-width: 1500px; margin: 0 auto; }
+  h1 { font-size: 20px; font-weight: 700; color: #232f3e; margin-bottom: 4px; }
+  .meta { font-size: 11px; color: #879196; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<div class="page">
+<h1>RetailMind — AWS Cloud Architecture</h1>
+<p class="meta">CS5224 Cloud Computing &bull; 12 AWS Services &bull; Region: ap-southeast-1 (Singapore)</p>
+
+<svg viewBox="0 0 1400 1060" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:'Segoe UI',system-ui,sans-serif;">
+<defs>
+  <!-- Arrow markers -->
+  <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#545b64"/></marker>
+  <marker id="arrow-gray" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><polygon points="0 0,7 2.5,0 5" fill="#879196"/></marker>
+
+  <!-- ══════ AWS Service Icon Symbols ══════ -->
+
+  <!-- Amazon S3 — green bucket -->
+  <symbol id="icon-s3" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#3F8624"/>
+    <ellipse cx="24" cy="14" rx="11" ry="4" fill="#fff" opacity="0.9"/>
+    <path d="M13 14v18c0 2.2 4.9 4 11 4s11-1.8 11-4V14" fill="none" stroke="#fff" stroke-width="2" opacity="0.85"/>
+    <ellipse cx="24" cy="24" rx="11" ry="4" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.5"/>
+  </symbol>
+
+  <!-- Amazon DynamoDB — blue with table rows -->
+  <symbol id="icon-ddb" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#3334B9"/>
+    <rect x="12" y="12" width="24" height="6" rx="2" fill="#fff" opacity="0.9"/>
+    <rect x="12" y="21" width="24" height="6" rx="2" fill="#fff" opacity="0.7"/>
+    <rect x="12" y="30" width="16" height="6" rx="2" fill="#fff" opacity="0.5"/>
+  </symbol>
+
+  <!-- AWS Lambda — orange with lambda glyph -->
+  <symbol id="icon-lambda" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#D86613"/>
+    <text x="24" y="34" text-anchor="middle" font-size="28" font-weight="700" fill="#fff" font-family="serif">&#955;</text>
+  </symbol>
+
+  <!-- Amazon API Gateway — purple/red with gateway lines -->
+  <symbol id="icon-apigw" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#A166FF"/>
+    <line x1="12" y1="16" x2="36" y2="16" stroke="#fff" stroke-width="2.5" opacity="0.9"/>
+    <line x1="12" y1="24" x2="36" y2="24" stroke="#fff" stroke-width="2.5" opacity="0.9"/>
+    <line x1="12" y1="32" x2="36" y2="32" stroke="#fff" stroke-width="2.5" opacity="0.9"/>
+    <circle cx="36" cy="16" r="3" fill="#fff" opacity="0.8"/>
+    <circle cx="36" cy="24" r="3" fill="#fff" opacity="0.8"/>
+    <circle cx="36" cy="32" r="3" fill="#fff" opacity="0.8"/>
+  </symbol>
+
+  <!-- Amazon CloudFront — purple globe -->
+  <symbol id="icon-cf" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#8C4FFF"/>
+    <circle cx="24" cy="24" r="12" fill="none" stroke="#fff" stroke-width="2" opacity="0.9"/>
+    <ellipse cx="24" cy="24" rx="6" ry="12" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
+    <line x1="12" y1="24" x2="36" y2="24" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
+    <line x1="14" y1="18" x2="34" y2="18" stroke="#fff" stroke-width="1" opacity="0.5"/>
+    <line x1="14" y1="30" x2="34" y2="30" stroke="#fff" stroke-width="1" opacity="0.5"/>
+  </symbol>
+
+  <!-- Amazon Cognito — red with person icon -->
+  <symbol id="icon-cognito" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#DD344C"/>
+    <circle cx="24" cy="17" r="6" fill="#fff" opacity="0.9"/>
+    <path d="M12 38c0-6.6 5.4-12 12-12s12 5.4 12 12" fill="#fff" opacity="0.7"/>
+  </symbol>
+
+  <!-- AWS Step Functions — pink with connected nodes -->
+  <symbol id="icon-sfn" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#E7157B"/>
+    <circle cx="16" cy="14" r="5" fill="#fff" opacity="0.9"/>
+    <circle cx="32" cy="14" r="5" fill="#fff" opacity="0.9"/>
+    <circle cx="24" cy="32" r="5" fill="#fff" opacity="0.9"/>
+    <line x1="21" y1="14" x2="27" y2="14" stroke="#fff" stroke-width="2"/>
+    <line x1="17" y1="19" x2="23" y2="27" stroke="#fff" stroke-width="2"/>
+    <line x1="31" y1="19" x2="25" y2="27" stroke="#fff" stroke-width="2"/>
+  </symbol>
+
+  <!-- Amazon ECS / Fargate — orange with container grid -->
+  <symbol id="icon-ecs" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#D86613"/>
+    <rect x="12" y="12" width="24" height="24" rx="3" fill="none" stroke="#fff" stroke-width="2" opacity="0.9"/>
+    <rect x="16" y="16" width="7" height="7" rx="1" fill="#fff" opacity="0.8"/>
+    <rect x="25" y="16" width="7" height="7" rx="1" fill="#fff" opacity="0.8"/>
+    <rect x="16" y="25" width="7" height="7" rx="1" fill="#fff" opacity="0.8"/>
+    <rect x="25" y="25" width="7" height="7" rx="1" fill="#fff" opacity="0.8"/>
+  </symbol>
+
+  <!-- Amazon ECR — orange with registry box -->
+  <symbol id="icon-ecr" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#D86613"/>
+    <rect x="12" y="14" width="24" height="20" rx="3" fill="none" stroke="#fff" stroke-width="2" opacity="0.9"/>
+    <line x1="18" y1="14" x2="18" y2="34" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="30" cy="24" r="5" fill="none" stroke="#fff" stroke-width="2" opacity="0.8"/>
+    <circle cx="30" cy="24" r="2" fill="#fff" opacity="0.8"/>
+  </symbol>
+
+  <!-- Amazon Bedrock — teal hexagon with brain -->
+  <symbol id="icon-bedrock" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#01A88D"/>
+    <path d="M24 10l10 6v12l-10 6-10-6V16z" fill="none" stroke="#fff" stroke-width="2.2" opacity="0.9"/>
+    <circle cx="24" cy="22" r="4" fill="#fff" opacity="0.9"/>
+    <path d="M20 29h8" stroke="#fff" stroke-width="2" opacity="0.7"/>
+  </symbol>
+
+  <!-- Amazon VPC — purple with network -->
+  <symbol id="icon-vpc" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#8C4FFF"/>
+    <rect x="10" y="10" width="28" height="28" rx="4" fill="none" stroke="#fff" stroke-width="2" opacity="0.9"/>
+    <circle cx="18" cy="24" r="4" fill="#fff" opacity="0.7"/>
+    <circle cx="30" cy="24" r="4" fill="#fff" opacity="0.7"/>
+    <line x1="22" y1="24" x2="26" y2="24" stroke="#fff" stroke-width="2" opacity="0.7"/>
+  </symbol>
+
+  <!-- Amazon CloudWatch — pink clock -->
+  <symbol id="icon-cw" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#E7157B"/>
+    <circle cx="24" cy="24" r="12" fill="none" stroke="#fff" stroke-width="2" opacity="0.9"/>
+    <line x1="24" y1="16" x2="24" y2="24" stroke="#fff" stroke-width="2.5"/>
+    <line x1="24" y1="24" x2="30" y2="28" stroke="#fff" stroke-width="2.5"/>
+    <circle cx="24" cy="24" r="2" fill="#fff" opacity="0.9"/>
+  </symbol>
+
+  <!-- EventBridge — pink with bus lines -->
+  <symbol id="icon-eb" viewBox="0 0 48 48">
+    <rect width="48" height="48" rx="8" fill="#E7157B"/>
+    <line x1="12" y1="18" x2="36" y2="18" stroke="#fff" stroke-width="2" opacity="0.9"/>
+    <line x1="12" y1="24" x2="36" y2="24" stroke="#fff" stroke-width="2" opacity="0.9"/>
+    <line x1="12" y1="30" x2="36" y2="30" stroke="#fff" stroke-width="2" opacity="0.9"/>
+    <circle cx="20" cy="18" r="3" fill="#fff"/>
+    <circle cx="28" cy="24" r="3" fill="#fff"/>
+    <circle cx="20" cy="30" r="3" fill="#fff"/>
+  </symbol>
+
+  <!-- Browser icon -->
+  <symbol id="icon-browser" viewBox="0 0 48 48">
+    <rect x="4" y="6" width="40" height="36" rx="4" fill="#f8f8f8" stroke="#545b64" stroke-width="2"/>
+    <rect x="4" y="6" width="40" height="10" rx="4" fill="#545b64"/>
+    <rect x="4" y="12" width="40" height="4" fill="#545b64"/>
+    <circle cx="12" cy="11" r="2" fill="#DD344C"/>
+    <circle cx="19" cy="11" r="2" fill="#F2A93B"/>
+    <circle cx="26" cy="11" r="2" fill="#3F8624"/>
+  </symbol>
+
+  <!-- Drop shadow filter -->
+  <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+    <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.08"/>
+  </filter>
+</defs>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- BACKGROUND: AWS Cloud Region boundary                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<rect x="30" y="90" width="1340" height="940" rx="8" fill="#fafbfc" stroke="#232f3e" stroke-width="2.5" stroke-dasharray="10,5"/>
+<rect x="30" y="90" width="220" height="30" rx="0" fill="#232f3e"/>
+<text x="44" y="110" font-size="13" font-weight="700" fill="#fff">AWS Cloud (ap-southeast-1)</text>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- ROW 0: USER / BROWSER  (outside AWS cloud)                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<use href="#icon-browser" x="640" y="16" width="48" height="48"/>
+<text x="696" y="36" font-size="13" font-weight="700" fill="#232f3e">User Browser</text>
+<text x="696" y="52" font-size="10" fill="#879196">Next.js SPA (TypeScript)</text>
+
+<!-- Arrows from browser down to 3 services -->
+<!-- Browser → CloudFront (left) -->
+<path d="M 648 64 L 648 76 Q 648 82 642 82 L 312 82 Q 306 82 306 88 L 306 130" fill="none" stroke="#545b64" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="440" y="78" font-size="9" fill="#879196" font-style="italic">HTTPS</text>
+
+<!-- Browser → Cognito (center) -->
+<line x1="664" y1="64" x2="664" y2="130" stroke="#545b64" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="672" y="100" font-size="9" fill="#879196" font-style="italic">Auth (JWT)</text>
+
+<!-- Browser → API Gateway (right) -->
+<path d="M 680 64 L 680 76 Q 680 82 686 82 L 1044 82 Q 1050 82 1050 88 L 1050 130" fill="none" stroke="#545b64" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="880" y="78" font-size="9" fill="#879196" font-style="italic">REST API + JWT</text>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- ROW 1: PRESENTATION TIER (CloudFront, S3 Frontend, Cognito, API GW) -->
+<!-- Y: 130–210                                                 -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<!-- S3 Frontend (far left) -->
+<use href="#icon-s3" x="120" y="138" width="40" height="40" filter="url(#shadow)"/>
+<text x="104" y="196" font-size="11" font-weight="700" fill="#232f3e">Amazon S3</text>
+<text x="100" y="210" font-size="9" fill="#879196" font-style="italic">Frontend bucket</text>
+
+<!-- CloudFront -->
+<use href="#icon-cf" x="286" y="138" width="40" height="40" filter="url(#shadow)"/>
+<text x="256" y="196" font-size="12" font-weight="700" fill="#232f3e">Amazon CloudFront</text>
+<text x="270" y="210" font-size="9" fill="#879196" font-style="italic">cloudforge-cdn</text>
+
+<!-- Cognito -->
+<use href="#icon-cognito" x="644" y="138" width="40" height="40" filter="url(#shadow)"/>
+<text x="616" y="196" font-size="12" font-weight="700" fill="#232f3e">Amazon Cognito</text>
+<text x="622" y="210" font-size="9" fill="#879196" font-style="italic">cloudforge-users</text>
+
+<!-- API Gateway -->
+<use href="#icon-apigw" x="1030" y="138" width="40" height="40" filter="url(#shadow)"/>
+<text x="994" y="196" font-size="12" font-weight="700" fill="#232f3e">Amazon API Gateway</text>
+<text x="1004" y="210" font-size="9" fill="#879196" font-style="italic">cloudforge-api &bull; 17 routes</text>
+
+<!-- CloudFront → S3 Frontend -->
+<line x1="286" y1="158" x2="162" y2="158" stroke="#879196" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+<text x="198" y="152" font-size="8" fill="#879196" font-style="italic">origin</text>
+
+<!-- Cognito → API GW (validates JWT) -->
+<line x1="686" y1="158" x2="1028" y2="158" stroke="#879196" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+<text x="830" y="152" font-size="8" fill="#879196" font-style="italic">validates JWT</text>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- ROW 2: COMPUTE TIER — Lambda functions                    -->
+<!-- Y: 240–400                                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<!-- Lambda group box -->
+<rect x="60" y="244" width="930" height="156" rx="6" fill="#FFF7ED" stroke="#D86613" stroke-width="1.3" stroke-dasharray="6,3" filter="url(#shadow)"/>
+<use href="#icon-lambda" x="70" y="252" width="32" height="32"/>
+<text x="108" y="274" font-size="14" font-weight="700" fill="#232f3e">AWS Lambda</text>
+<text x="220" y="274" font-size="10" fill="#879196">16 Functions &bull; Python 3.12 &bull; cloudforge-*</text>
+
+<!-- Lambda tags row 1: Core API -->
+<rect x="76" y="292" width="100" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="86" y="309" font-size="9" fill="#283593">create_project</text>
+<rect x="182" y="292" width="88" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="192" y="309" font-size="9" fill="#283593">list_projects</text>
+<rect x="276" y="292" width="82" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="286" y="309" font-size="9" fill="#283593">get_project</text>
+<rect x="364" y="292" width="92" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="374" y="309" font-size="9" fill="#283593">delete_project</text>
+<rect x="462" y="292" width="96" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="472" y="309" font-size="9" fill="#283593">update_project</text>
+<rect x="564" y="292" width="92" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="574" y="309" font-size="9" fill="#283593">get_upload_url</text>
+<rect x="662" y="292" width="96" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="672" y="309" font-size="9" fill="#283593">trigger_pipeline</text>
+<rect x="764" y="292" width="88" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="774" y="309" font-size="9" fill="#283593">get_job_status</text>
+
+<!-- Lambda tags row 2: Data + Inference -->
+<rect x="76" y="322" width="100" height="24" rx="4" fill="#E8F5E9" stroke="#A5D6A7"/><text x="86" y="339" font-size="9" fill="#1B5E20">select_preloaded</text>
+<rect x="182" y="322" width="88" height="24" rx="4" fill="#E8F5E9" stroke="#A5D6A7"/><text x="192" y="339" font-size="9" fill="#1B5E20">list_preloaded</text>
+<rect x="276" y="322" width="112" height="24" rx="4" fill="#E8F5E9" stroke="#A5D6A7"/><text x="286" y="339" font-size="9" fill="#1B5E20">recompute_profile</text>
+<rect x="394" y="322" width="84" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="404" y="339" font-size="9" fill="#283593">run_inference</text>
+<rect x="484" y="322" width="112" height="24" rx="4" fill="#E8EAF6" stroke="#9FA8DA"/><text x="494" y="339" font-size="9" fill="#283593">get_model_download</text>
+
+<!-- Lambda tags row 3: AI (Bedrock) -->
+<rect x="76" y="352" width="56" height="24" rx="4" fill="#FCE4EC" stroke="#F48FB1"/><text x="86" y="369" font-size="9" fill="#880E4F">chat</text>
+<rect x="138" y="352" width="108" height="24" rx="4" fill="#FCE4EC" stroke="#F48FB1"/><text x="148" y="369" font-size="9" fill="#880E4F">interpret_results</text>
+<rect x="252" y="352" width="82" height="24" rx="4" fill="#FCE4EC" stroke="#F48FB1"/><text x="262" y="369" font-size="9" fill="#880E4F">results_chat</text>
+<text x="344" y="369" font-size="8" fill="#879196">(Amazon Bedrock)</text>
+
+<!-- Arrow: API Gateway → Lambda box -->
+<line x1="1050" y1="180" x2="1050" y2="316" stroke="#545b64" stroke-width="1.4"/>
+<line x1="1050" y1="316" x2="992" y2="316" stroke="#545b64" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="1058" y="250" font-size="9" fill="#879196" font-style="italic">invoke</text>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- ROW 3: ORCHESTRATION TIER — Step Functions                -->
+<!-- Y: 430–560                                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<rect x="60" y="434" width="930" height="130" rx="6" fill="#FFF0F5" stroke="#E7157B" stroke-width="1.3" stroke-dasharray="6,3" filter="url(#shadow)"/>
+<use href="#icon-sfn" x="70" y="442" width="32" height="32"/>
+<text x="108" y="464" font-size="14" font-weight="700" fill="#232f3e">AWS Step Functions</text>
+<text x="290" y="464" font-size="10" fill="#879196">cloudforge-pipeline &bull; 6 steps</text>
+
+<!-- Pipeline step boxes -->
+<rect x="80" y="480" width="112" height="54" rx="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+<text x="98" y="504" font-size="10" font-weight="600" fill="#333">ProfileData</text>
+<text x="114" y="520" font-size="8" fill="#999">Lambda</text>
+
+<text x="200" y="510" font-size="18" fill="#bbb">&#8594;</text>
+
+<rect x="218" y="480" width="112" height="54" rx="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+<text x="230" y="504" font-size="10" font-weight="600" fill="#333">EtlPreprocess</text>
+<text x="252" y="520" font-size="8" fill="#999">Lambda</text>
+
+<text x="338" y="510" font-size="18" fill="#bbb">&#8594;</text>
+
+<rect x="356" y="480" width="112" height="54" rx="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+<text x="376" y="504" font-size="10" font-weight="600" fill="#333">AutoSelect</text>
+<text x="390" y="520" font-size="8" fill="#999">Lambda</text>
+
+<text x="476" y="510" font-size="18" fill="#bbb">&#8594;</text>
+
+<rect x="494" y="480" width="126" height="54" rx="5" fill="#FFF7ED" stroke="#D86613" stroke-width="1.8"/>
+<text x="512" y="504" font-size="10" font-weight="700" fill="#B45309">RunTraining</text>
+<text x="522" y="520" font-size="8" fill="#D86613">ECS Fargate</text>
+
+<text x="628" y="510" font-size="18" fill="#bbb">&#8594;</text>
+
+<rect x="646" y="480" width="112" height="54" rx="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+<text x="672" y="504" font-size="10" font-weight="600" fill="#333">Evaluate</text>
+<text x="680" y="520" font-size="8" fill="#999">Lambda</text>
+
+<text x="766" y="510" font-size="18" fill="#bbb">&#8594;</text>
+
+<rect x="784" y="480" width="112" height="54" rx="5" fill="#fff" stroke="#ccc" stroke-width="1"/>
+<text x="818" y="504" font-size="10" font-weight="600" fill="#333">Deploy</text>
+<text x="818" y="520" font-size="8" fill="#999">Lambda</text>
+
+<!-- Arrow: Lambda trigger_pipeline → Step Functions -->
+<path d="M 710 376 L 710 410 Q 710 418 710 424 L 710 432" fill="none" stroke="#545b64" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="718" y="414" font-size="9" fill="#879196" font-style="italic">start_execution()</text>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- ROW 4: CONTAINER TIER — ECS Fargate + ECR                 -->
+<!-- Y: 600–690                                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<use href="#icon-ecs" x="120" y="600" width="40" height="40" filter="url(#shadow)"/>
+<text x="100" y="660" font-size="12" font-weight="700" fill="#232f3e">Amazon ECS</text>
+<text x="106" y="674" font-size="10" fill="#879196">Fargate</text>
+<text x="80" y="688" font-size="9" fill="#879196" font-style="italic">cloudforge-cluster</text>
+<text x="80" y="702" font-size="8" fill="#bbb">1 vCPU &bull; 2 GB &bull; Public subnet</text>
+
+<use href="#icon-ecr" x="380" y="600" width="40" height="40" filter="url(#shadow)"/>
+<text x="360" y="660" font-size="12" font-weight="700" fill="#232f3e">Amazon ECR</text>
+<text x="352" y="674" font-size="9" fill="#879196" font-style="italic">tabular-automl image</text>
+<text x="348" y="688" font-size="8" fill="#bbb">sklearn &bull; xgboost &bull; lightgbm</text>
+
+<!-- Arrow: SFN RunTraining → ECS (straight down then left) -->
+<path d="M 557 534 L 557 580 Q 557 590 547 590 L 180 610 Q 165 612 162 618" fill="none" stroke="#545b64" stroke-width="1.4" marker-end="url(#arrow)"/>
+<text x="340" y="582" font-size="9" fill="#879196" font-style="italic">ECS RunTask</text>
+
+<!-- Arrow: ECR → ECS (pull image) -->
+<line x1="380" y1="620" x2="162" y2="620" stroke="#879196" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+<text x="240" y="614" font-size="8" fill="#879196" font-style="italic">pull image</text>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- ROW 5: DATA & AI TIER — S3, DynamoDB, Bedrock             -->
+<!-- Y: 750–860                                                -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<!-- S3 Data — left -->
+<use href="#icon-s3" x="120" y="770" width="40" height="40" filter="url(#shadow)"/>
+<text x="106" y="830" font-size="12" font-weight="700" fill="#232f3e">Amazon S3</text>
+<text x="74" y="844" font-size="9" fill="#879196" font-style="italic">cloudforge-data-{acct}</text>
+<text x="72" y="858" font-size="8" fill="#bbb">CSVs &bull; models &bull; metrics &bull; preloaded</text>
+
+<!-- DynamoDB — center -->
+<use href="#icon-ddb" x="480" y="770" width="40" height="40" filter="url(#shadow)"/>
+<text x="442" y="830" font-size="12" font-weight="700" fill="#232f3e">Amazon DynamoDB</text>
+<text x="456" y="844" font-size="9" fill="#879196" font-style="italic">3 tables (on-demand)</text>
+<text x="448" y="858" font-size="8" fill="#bbb">projects &bull; jobs &bull; chats</text>
+
+<!-- Bedrock — right -->
+<use href="#icon-bedrock" x="840" y="770" width="40" height="40" filter="url(#shadow)"/>
+<text x="816" y="830" font-size="12" font-weight="700" fill="#232f3e">Amazon Bedrock</text>
+<text x="822" y="844" font-size="9" fill="#879196" font-style="italic">Claude 3 Haiku</text>
+<text x="802" y="858" font-size="8" fill="#bbb">chatbot &bull; interpret &bull; results Q&amp;A</text>
+
+<!-- Arrow: ECS Fargate → S3 Data (straight down) -->
+<line x1="140" y1="704" x2="140" y2="768" stroke="#545b64" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="148" y="742" font-size="8" fill="#879196" font-style="italic">model.pkl + metrics</text>
+
+<!-- Arrow: Lambda → S3 (down-left, no crossing) -->
+<path d="M 140 400 L 140 768" fill="none" stroke="#879196" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+<text x="148" y="422" font-size="8" fill="#879196" font-style="italic">S3 read/write</text>
+
+<!-- Arrow: Lambda → DynamoDB (straight down, center path) -->
+<path d="M 500 400 L 500 768" fill="none" stroke="#879196" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+<text x="508" y="422" font-size="8" fill="#879196" font-style="italic">DynamoDB R/W</text>
+
+<!-- Arrow: Lambda → Bedrock (straight down, right path) -->
+<path d="M 860 400 L 860 768" fill="none" stroke="#879196" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrow-gray)"/>
+<text x="868" y="422" font-size="8" fill="#879196" font-style="italic">InvokeModel</text>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- ROW 6: NETWORKING & MONITORING                            -->
+<!-- Y: 900–1000                                               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<use href="#icon-vpc" x="120" y="920" width="40" height="40" filter="url(#shadow)"/>
+<text x="106" y="978" font-size="11" font-weight="700" fill="#232f3e">Amazon VPC</text>
+<text x="72" y="992" font-size="8" fill="#bbb">2 public subnets &bull; 0 NAT &bull; S3/DDB gateway endpoints</text>
+
+<use href="#icon-cw" x="440" y="920" width="40" height="40" filter="url(#shadow)"/>
+<text x="404" y="978" font-size="11" font-weight="700" fill="#232f3e">Amazon CloudWatch</text>
+<text x="398" y="992" font-size="8" fill="#bbb">API + pipeline metrics &bull; Lambda logs &bull; dashboard</text>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- RIGHT SIDEBAR: Cost estimate + Legend                     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<!-- Cost note -->
+<rect x="1080" y="440" width="270" height="120" rx="6" fill="#FFFDE7" stroke="#FDD835" stroke-width="1.2" filter="url(#shadow)"/>
+<text x="1098" y="466" font-size="12" font-weight="700" fill="#333">Estimated Cost</text>
+<text x="1098" y="484" font-size="10" fill="#666">~$5&#8211;12/month (demo/dev)</text>
+<line x1="1098" y1="492" x2="1330" y2="492" stroke="#FDD835" stroke-width="0.5"/>
+<text x="1098" y="510" font-size="9" fill="#666">No NAT Gateway ($0)</text>
+<text x="1098" y="526" font-size="9" fill="#666">Fargate ~$0.05/job</text>
+<text x="1098" y="542" font-size="9" fill="#666">Bedrock ~$0.001/call</text>
+
+<!-- Legend -->
+<rect x="1080" y="580" width="270" height="110" rx="6" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="1" filter="url(#shadow)"/>
+<text x="1098" y="602" font-size="11" font-weight="700" fill="#333">Legend</text>
+
+<rect x="1098" y="612" width="14" height="14" rx="2" fill="#E8EAF6" stroke="#9FA8DA"/>
+<text x="1118" y="624" font-size="9" fill="#666">Core API Lambda</text>
+
+<rect x="1098" y="632" width="14" height="14" rx="2" fill="#E8F5E9" stroke="#A5D6A7"/>
+<text x="1118" y="644" font-size="9" fill="#666">Data Lambda</text>
+
+<rect x="1098" y="652" width="14" height="14" rx="2" fill="#FCE4EC" stroke="#F48FB1"/>
+<text x="1118" y="664" font-size="9" fill="#666">AI Lambda (Bedrock)</text>
+
+<rect x="1220" y="612" width="14" height="14" rx="2" fill="#FFF7ED" stroke="#D86613"/>
+<text x="1240" y="624" font-size="9" fill="#666">Fargate / Compute</text>
+
+<rect x="1220" y="632" width="14" height="14" rx="2" fill="#FFF0F5" stroke="#E7157B"/>
+<text x="1240" y="644" font-size="9" fill="#666">Orchestration</text>
+
+<!-- Services count -->
+<rect x="1080" y="710" width="270" height="50" rx="6" fill="#EDE7F6" stroke="#B39DDB" stroke-width="1" filter="url(#shadow)"/>
+<text x="1098" y="732" font-size="10" font-weight="700" fill="#4527A0">12 AWS Services</text>
+<text x="1098" y="748" font-size="8" fill="#7E57C2">S3 &bull; DDB &bull; Lambda &bull; APIGW &bull; CF &bull; Cognito &bull; SFN &bull; ECS &bull; ECR &bull; Bedrock &bull; CW &bull; VPC</text>
+
+</svg>
+</div>
+</body>
+</html>

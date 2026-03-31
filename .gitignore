@@ -38,6 +38,10 @@ desktop.ini
 cdk.out/
 cdk.context.json
 
+# Lambda layers (built artifacts)
+layers/*.zip
+layers/sklearn-layer/
+
 # Docker
 *.log
 
@@ -48,3 +52,8 @@ htmlcov/
 
 # Claude Code
 .claude/settings.local.json
+
+claude/
+.claude/
+CLAUDE.md
+rules.md

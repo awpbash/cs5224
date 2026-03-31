@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from aws_cdk import (
+    CfnOutput,
     RemovalPolicy,
     Stack,
     aws_cloudfront as cloudfront,
@@ -28,11 +29,48 @@ class FrontendStack(Stack):
         oai = cloudfront.OriginAccessIdentity(self, "OAI")
         bucket.grant_read(oai)
 
+        # CloudFront Function: rewrite /projects/{unknown-id}/subpage/
+        # to /projects/proj_001/subpage/index.html so Next.js client router
+        # can hydrate with the correct page shell, then useParams() reads
+        # the REAL id from window.location
+        rewrite_fn = cloudfront.Function(
+            self, "SpaRewriteFunction",
+            code=cloudfront.FunctionCode.from_inline(
+                "function handler(event) {\n"
+                "  var request = event.request;\n"
+                "  var uri = request.uri;\n"
+                "  if (uri.match(/\\.[a-zA-Z0-9]+$/)) { return request; }\n"
+                "  var m = uri.match(/^\\/projects\\/([^\\/]+)(\\/.+)?$/);\n"
+                "  if (m) {\n"
+                "    var id = m[1];\n"
+                "    var sub = m[2] || '/';\n"
+                "    var known = ['proj_001','proj_002','proj_003','demo_project','new'];\n"
+                "    if (known.indexOf(id) === -1) {\n"
+                "      request.uri = '/projects/proj_001' + sub;\n"
+                "      if (!request.uri.endsWith('/')) request.uri += '/';\n"
+                "      request.uri += 'index.html';\n"
+                "      return request;\n"
+                "    }\n"
+                "  }\n"
+                "  if (uri.endsWith('/')) { request.uri += 'index.html'; }\n"
+                "  else if (!uri.includes('.')) { request.uri += '/index.html'; }\n"
+                "  return request;\n"
+                "}\n"
+            ),
+            function_name="cloudforge-spa-rewrite",
+        )
+
         self.distribution = cloudfront.Distribution(
             self, "CloudForgeCDN",
             default_behavior=cloudfront.BehaviorOptions(
                 origin=origins.S3Origin(bucket, origin_access_identity=oai),
                 viewer_protocol_policy=cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+                function_associations=[
+                    cloudfront.FunctionAssociation(
+                        function=rewrite_fn,
+                        event_type=cloudfront.FunctionEventType.VIEWER_REQUEST,
+                    ),
+                ],
             ),
             default_root_object="index.html",
             error_responses=[
@@ -58,3 +96,5 @@ class FrontendStack(Stack):
             distribution=self.distribution,
             distribution_paths=["/*"],
         )
+
+        CfnOutput(self, "CloudFrontDomain", value=self.distribution.distribution_domain_name)

@@ -45,8 +45,14 @@ def handler(event, context):
             "taskType": project["taskType"],
             "dataSource": project.get("dataSource", "uploaded"),
             "datasetS3Path": project.get("datasetS3Path", ""),
+            "targetColumn": project.get("targetColumn"),
+            "selectedFeatures": project.get("selectedFeatures"),
             "classLabels": project.get("classLabels", []),
             "hyperparameters": body.get("hyperparameters", {}),
+            "trainSplit": body.get("trainSplit", 0.8),
+            "selectedModels": body.get("selectedModels"),
+            "modelType": body.get("modelType"),
+            "mode": body.get("mode", "auto"),
         }
 
         execution = sfn.start_execution(
@@ -67,7 +73,7 @@ def handler(event, context):
         put_job(job)
 
         update_project(user_id, project_id, {
-            "status": "training",
+            "status": "TRAINING",
             "updatedAt": now,
         })
 

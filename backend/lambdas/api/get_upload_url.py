@@ -37,7 +37,7 @@ def handler(event, context):
         update_project(user_id, project_id, {
             "dataSource": "uploaded",
             "datasetS3Path": s3_key,
-            "status": "uploading",
+            "status": "DATA_UPLOADED",
         })
 
         return {

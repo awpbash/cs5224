@@ -2,6 +2,9 @@ import os
 from pathlib import Path
 
 from aws_cdk import (
+    BundlingOptions,
+    BundlingOutput,
+    CfnOutput,
     Duration,
     Stack,
     aws_apigateway as apigw,
@@ -14,7 +17,8 @@ from aws_cdk import (
 )
 from constructs import Construct
 
-BACKEND_DIR = str(Path(__file__).resolve().parent.parent.parent / "backend")
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
+BACKEND_DIR = str(PROJECT_ROOT / "backend")
 
 
 class ApiStack(Stack):
@@ -26,38 +30,67 @@ class ApiStack(Stack):
         data_bucket: s3.IBucket,
         projects_table: dynamodb.ITable,
         jobs_table: dynamodb.ITable,
+        chats_table: dynamodb.ITable,
         user_pool: cognito.IUserPool,
         state_machine: sfn.IStateMachine,
         **kwargs,
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        # Shared Lambda layer for backend/shared/
+        # ── Shared layer (shared/ + pydantic) ──
         shared_layer = _lambda.LayerVersion(
             self, "SharedLayer",
-            code=_lambda.Code.from_asset(BACKEND_DIR, exclude=["lambdas/*", "__pycache__", "*.pyc"]),
+            code=_lambda.Code.from_asset(
+                BACKEND_DIR,
+                bundling=BundlingOptions(
+                    image=_lambda.Runtime.PYTHON_3_12.bundling_image,
+                    command=[
+                        "bash", "-c",
+                        "pip install pydantic -t /asset-output/python/ --no-cache-dir && "
+                        "cp -r shared /asset-output/python/shared"
+                    ],
+                    output_type=BundlingOutput.AUTO_DISCOVER,
+                ),
+            ),
             compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
             description="CloudForge shared utilities",
         )
 
-        # Common env vars
+        # ── Combined sklearn+pandas layer (includes numpy, scipy, pandas) ──
+        sklearn_layer = _lambda.LayerVersion(
+            self, "SklearnLayer",
+            code=_lambda.Code.from_asset(
+                str(PROJECT_ROOT / "layers" / "sklearn-layer.zip"),
+            ),
+            compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
+            description="scikit-learn + pandas for Lambda",
+        )
+
+        # ── Common environment ──
         common_env = {
             "PROJECTS_TABLE": projects_table.table_name,
             "JOBS_TABLE": jobs_table.table_name,
+            "CHATS_TABLE": chats_table.table_name,
             "DATA_BUCKET": data_bucket.bucket_name,
             "STEP_FUNCTION_ARN": state_machine.state_machine_arn,
             "REGION": "ap-southeast-1",
         }
 
-        def make_lambda(name: str, handler_path: str, timeout: int = 30, memory: int = 256) -> _lambda.Function:
+        def make_lambda(
+            name: str, handler_path: str,
+            timeout: int = 30, memory: int = 256,
+            extra_layers: list | None = None,
+            extra_env: dict | None = None,
+        ) -> _lambda.Function:
+            env = {**common_env, **(extra_env or {})}
             fn = _lambda.Function(
                 self, name,
                 function_name=f"cloudforge-{name.lower()}",
                 runtime=_lambda.Runtime.PYTHON_3_12,
                 handler=handler_path,
                 code=_lambda.Code.from_asset(os.path.join(BACKEND_DIR, "lambdas")),
-                layers=[shared_layer],
-                environment=common_env,
+                layers=[shared_layer] + (extra_layers or []),
+                environment=env,
                 timeout=Duration.seconds(timeout),
                 memory_size=memory,
             )
@@ -66,7 +99,7 @@ class ApiStack(Stack):
             data_bucket.grant_read_write(fn)
             return fn
 
-        # API Lambdas
+        # ── Existing API Lambdas ──
         create_project_fn = make_lambda("CreateProject", "api.create_project.handler")
         list_projects_fn = make_lambda("ListProjects", "api.list_projects.handler")
         get_project_fn = make_lambda("GetProject", "api.get_project.handler")
@@ -76,13 +109,60 @@ class ApiStack(Stack):
         get_job_metrics_fn = make_lambda("GetJobMetrics", "api.get_job_metrics.handler")
         get_model_download_fn = make_lambda("GetModelDownload", "api.get_model_download.handler")
 
-        # Inference Lambda needs more memory + longer timeout
-        run_inference_fn = make_lambda("RunInference", "api.run_inference.handler", timeout=60, memory=1024)
+        run_inference_fn = make_lambda(
+            "RunInference", "api.run_inference.handler",
+            timeout=60, memory=1024,
+            extra_layers=[sklearn_layer],
+        )
 
-        # Grant SFN start permission to trigger_pipeline
+        # ── NEW API Lambdas ──
+        delete_project_fn = make_lambda("DeleteProject", "api.delete_project.handler")
+        update_project_fn = make_lambda("UpdateProject", "api.update_project.handler")
+
+        select_preloaded_fn = make_lambda(
+            "SelectPreloaded", "api.select_preloaded.handler",
+        )
+
+        list_preloaded_fn = make_lambda("ListPreloaded", "api.list_preloaded.handler")
+
+        recompute_profile_fn = make_lambda(
+            "RecomputeProfile", "api.recompute_profile.handler",
+            timeout=120, memory=512,
+            extra_layers=[sklearn_layer],
+        )
+
+        # ── Bedrock-powered Lambdas (no external API key needed) ──
+        chat_fn = make_lambda(
+            "Chat", "api.chat.handler",
+            timeout=60, memory=256,
+        )
+
+        interpret_fn = make_lambda(
+            "InterpretResults", "api.interpret_results.handler",
+            timeout=60, memory=256,
+        )
+
+        results_chat_fn = make_lambda(
+            "ResultsChat", "api.results_chat.handler",
+            timeout=60, memory=256,
+        )
+
+        # Grant Bedrock InvokeModel to all AI Lambdas
+        bedrock_policy = iam.PolicyStatement(
+            actions=["bedrock:InvokeModel"],
+            resources=["arn:aws:bedrock:ap-southeast-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"],
+        )
+        chat_fn.add_to_role_policy(bedrock_policy)
+        interpret_fn.add_to_role_policy(bedrock_policy)
+        results_chat_fn.add_to_role_policy(bedrock_policy)
+
+        # Grant SFN permission
         state_machine.grant_start_execution(trigger_pipeline_fn)
 
-        # REST API
+        # Grant chats table to chat Lambda
+        chats_table.grant_read_write_data(chat_fn)
+
+        # ── REST API ──
         self.api = apigw.RestApi(
             self, "CloudForgeApi",
             rest_api_name="cloudforge-api",
@@ -93,36 +173,94 @@ class ApiStack(Stack):
             ),
         )
 
-        # Cognito authorizer
-        authorizer = apigw.CognitoUserPoolsAuthorizer(
+        # Add CORS headers to 4XX/5XX gateway responses (auth failures, etc.)
+        self.api.add_gateway_response(
+            "GatewayResponse4XX",
+            type=apigw.ResponseType.DEFAULT_4_XX,
+            response_headers={
+                "Access-Control-Allow-Origin": "'*'",
+                "Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+                "Access-Control-Allow-Methods": "'*'",
+            },
+        )
+        self.api.add_gateway_response(
+            "GatewayResponse5XX",
+            type=apigw.ResponseType.DEFAULT_5_XX,
+            response_headers={
+                "Access-Control-Allow-Origin": "'*'",
+                "Access-Control-Allow-Headers": "'Content-Type,Authorization'",
+                "Access-Control-Allow-Methods": "'*'",
+            },
+        )
+
+        cog_authorizer = apigw.CognitoUserPoolsAuthorizer(
             self, "CognitoAuthorizer",
             cognito_user_pools=[user_pool],
         )
-        auth_opts = apigw.MethodOptions(authorizer=authorizer, authorization_type=apigw.AuthorizationType.COGNITO)
+        auth_kwargs = {
+            "authorizer": cog_authorizer,
+            "authorization_type": apigw.AuthorizationType.COGNITO,
+        }
 
-        # Routes
+        # ── Routes ──
+        # /projects
         projects = self.api.root.add_resource("projects")
-        projects.add_method("GET", apigw.LambdaIntegration(list_projects_fn), method_options=auth_opts)
-        projects.add_method("POST", apigw.LambdaIntegration(create_project_fn), method_options=auth_opts)
+        projects.add_method("GET", apigw.LambdaIntegration(list_projects_fn), **auth_kwargs)
+        projects.add_method("POST", apigw.LambdaIntegration(create_project_fn), **auth_kwargs)
 
+        # /projects/{id}
         project = projects.add_resource("{id}")
-        project.add_method("GET", apigw.LambdaIntegration(get_project_fn), method_options=auth_opts)
+        project.add_method("GET", apigw.LambdaIntegration(get_project_fn), **auth_kwargs)
+        project.add_method("DELETE", apigw.LambdaIntegration(delete_project_fn), **auth_kwargs)
+        project.add_method("PATCH", apigw.LambdaIntegration(update_project_fn), **auth_kwargs)
 
+        # /projects/{id}/upload-url
         upload_url = project.add_resource("upload-url")
-        upload_url.add_method("POST", apigw.LambdaIntegration(get_upload_url_fn), method_options=auth_opts)
+        upload_url.add_method("POST", apigw.LambdaIntegration(get_upload_url_fn), **auth_kwargs)
 
+        # /projects/{id}/select-preloaded
+        select_preloaded = project.add_resource("select-preloaded")
+        select_preloaded.add_method("POST", apigw.LambdaIntegration(select_preloaded_fn), **auth_kwargs)
+
+        # /projects/{id}/recompute-profile
+        recompute = project.add_resource("recompute-profile")
+        recompute.add_method("POST", apigw.LambdaIntegration(recompute_profile_fn), **auth_kwargs)
+
+        # /projects/{id}/train
         train = project.add_resource("train")
-        train.add_method("POST", apigw.LambdaIntegration(trigger_pipeline_fn), method_options=auth_opts)
+        train.add_method("POST", apigw.LambdaIntegration(trigger_pipeline_fn), **auth_kwargs)
 
+        # /projects/{id}/results
         results = project.add_resource("results")
-        results.add_method("GET", apigw.LambdaIntegration(get_job_metrics_fn), method_options=auth_opts)
+        results.add_method("GET", apigw.LambdaIntegration(get_job_metrics_fn), **auth_kwargs)
 
-        infer = project.add_resource("infer")
-        infer.add_method("POST", apigw.LambdaIntegration(run_inference_fn), method_options=auth_opts)
+        # /projects/{id}/results-chat
+        results_chat = project.add_resource("results-chat")
+        results_chat.add_method("POST", apigw.LambdaIntegration(results_chat_fn), **auth_kwargs)
 
-        jobs = project.add_resource("jobs")
-        job = jobs.add_resource("{jobId}")
-        job.add_method("GET", apigw.LambdaIntegration(get_job_status_fn), method_options=auth_opts)
+        # /projects/{id}/jobs/{jobId}
+        jobs_resource = project.add_resource("jobs")
+        job = jobs_resource.add_resource("{jobId}")
+        job.add_method("GET", apigw.LambdaIntegration(get_job_status_fn), **auth_kwargs)
 
+        # /projects/{id}/jobs/{jobId}/download
         download = job.add_resource("download")
-        download.add_method("GET", apigw.LambdaIntegration(get_model_download_fn), method_options=auth_opts)
+        download.add_method("GET", apigw.LambdaIntegration(get_model_download_fn), **auth_kwargs)
+
+        # /projects/{id}/jobs/{jobId}/interpret
+        interpret = job.add_resource("interpret")
+        interpret.add_method("POST", apigw.LambdaIntegration(interpret_fn), **auth_kwargs)
+
+        # /projects/{id}/jobs/{jobId}/infer
+        infer = job.add_resource("infer")
+        infer.add_method("POST", apigw.LambdaIntegration(run_inference_fn), **auth_kwargs)
+
+        # /chat (top-level)
+        chat_resource = self.api.root.add_resource("chat")
+        chat_resource.add_method("POST", apigw.LambdaIntegration(chat_fn), **auth_kwargs)
+
+        # /preloaded-datasets (top-level)
+        preloaded = self.api.root.add_resource("preloaded-datasets")
+        preloaded.add_method("GET", apigw.LambdaIntegration(list_preloaded_fn), **auth_kwargs)
+
+        CfnOutput(self, "ApiUrl", value=self.api.url)

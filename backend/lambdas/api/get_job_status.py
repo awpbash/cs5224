@@ -1,7 +1,7 @@
 import json
 import logging
 
-from shared.db import get_job
+from shared.db import get_job, get_project
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -15,8 +15,17 @@ CORS_HEADERS = {
 
 def handler(event, context):
     try:
+        user_id = event["requestContext"]["authorizer"]["claims"]["sub"]
         project_id = event["pathParameters"]["id"]
         job_id = event["pathParameters"]["jobId"]
+
+        project = get_project(user_id, project_id)
+        if not project:
+            return {
+                "statusCode": 404,
+                "headers": CORS_HEADERS,
+                "body": json.dumps({"error": "Project not found"}),
+            }
 
         job = get_job(project_id, job_id)
         if not job:

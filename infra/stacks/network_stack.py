@@ -10,25 +10,21 @@ class NetworkStack(Stack):
             self, "CloudForgeVpc",
             vpc_name="cloudforge-vpc",
             max_azs=2,
-            nat_gateways=1,
+            nat_gateways=0,
             subnet_configuration=[
                 ec2.SubnetConfiguration(
                     name="Public",
                     subnet_type=ec2.SubnetType.PUBLIC,
                     cidr_mask=24,
                 ),
-                ec2.SubnetConfiguration(
-                    name="Private",
-                    subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS,
-                    cidr_mask=24,
-                ),
             ],
-            gateway_endpoints={
-                "S3": ec2.GatewayVpcEndpointOptions(
-                    service=ec2.GatewayVpcEndpointService.S3,
-                ),
-                "DynamoDB": ec2.GatewayVpcEndpointOptions(
-                    service=ec2.GatewayVpcEndpointService.DYNAMODB,
-                ),
-            },
+        )
+
+        self.vpc.add_gateway_endpoint(
+            "S3Endpoint",
+            service=ec2.GatewayVpcEndpointAwsService.S3,
+        )
+        self.vpc.add_gateway_endpoint(
+            "DynamoEndpoint",
+            service=ec2.GatewayVpcEndpointAwsService.DYNAMODB,
         )

@@ -3,12 +3,14 @@ import logging
 import os
 import uuid
 
-from openai import OpenAI
+import boto3
 
 from shared.db import get_project
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
+bedrock = boto3.client("bedrock-runtime", region_name=os.environ.get("REGION", "ap-southeast-1"))
 
 CORS_HEADERS = {
     "Content-Type": "application/json",
@@ -51,9 +53,28 @@ When you're ready to propose a config (do this ASAP, even on the first message i
 
 Always output the JSON config when you have enough information — don't wait to be asked."""
 
+MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0"
+
+
+def _invoke_bedrock(system: str, messages: list[dict]) -> str:
+    body = {
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 1024,
+        "temperature": 0.5,
+        "system": system,
+        "messages": messages,
+    }
+    response = bedrock.invoke_model(
+        modelId=MODEL_ID,
+        contentType="application/json",
+        accept="application/json",
+        body=json.dumps(body),
+    )
+    result = json.loads(response["body"].read())
+    return result["content"][0]["text"]
+
 
 def _build_data_context(project_id: str, user_id: str) -> str:
-    """Build rich data context from the project's uploaded data profile."""
     try:
         project = get_project(user_id, project_id)
         if not project or not project.get("dataProfile"):
@@ -67,7 +88,7 @@ def _build_data_context(project_id: str, user_id: str) -> str:
         ]
 
         for col in dp.get("columns", []):
-            desc = f"  • {col['name']} ({col['dtype']})"
+            desc = f"  - {col['name']} ({col['dtype']})"
             desc += f" — {col['uniqueCount']} unique"
             if col.get("nullCount", 0) > 0:
                 pct = round(col["nullCount"] / dp["rowCount"] * 100, 1)
@@ -87,16 +108,14 @@ def _build_data_context(project_id: str, user_id: str) -> str:
 
 
 def handler(event, context):
-    """Chat handler with SSE streaming support."""
     try:
         body = json.loads(event.get("body", "{}"))
-        user_id = event.get("requestContext", {}).get("authorizer", {}).get("claims", {}).get("sub", "local-dev-user")
+        user_id = event["requestContext"]["authorizer"]["claims"]["sub"]
 
         message = body.get("message", "")
         session_id = body.get("sessionId") or str(uuid.uuid4())
         project_id = body.get("projectId", "")
         data_columns = body.get("dataColumns", [])
-        stream = body.get("stream", False)
 
         # Get or create session history
         if session_id not in _sessions:
@@ -111,42 +130,15 @@ def handler(event, context):
         # Build system prompt with data context
         system_content = SYSTEM_PROMPT
 
-        # Inject data profile if we have a projectId
         if project_id:
             data_context = _build_data_context(project_id, user_id)
             if data_context:
                 system_content += data_context
 
-        # Fallback: use dataColumns if provided
         if data_columns and not project_id:
             system_content += f"\n\nDataset columns: {', '.join(data_columns)}"
 
-        openai_messages = [{"role": "system", "content": system_content}]
-        openai_messages.extend(_sessions[session_id])
-
-        client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
-
-        if stream:
-            # Return a streaming response marker — actual streaming handled by Flask route
-            return {
-                "statusCode": 200,
-                "headers": {**CORS_HEADERS, "X-Stream": "true"},
-                "body": json.dumps({"stream": True, "sessionId": session_id}),
-                "_stream_params": {
-                    "client": client,
-                    "messages": openai_messages,
-                    "session_id": session_id,
-                },
-            }
-
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=openai_messages,
-            temperature=0.5,
-            max_tokens=1024,
-        )
-
-        reply = response.choices[0].message.content
+        reply = _invoke_bedrock(system_content, _sessions[session_id])
         _sessions[session_id].append({"role": "assistant", "content": reply})
 
         suggested_config = _extract_config(reply)

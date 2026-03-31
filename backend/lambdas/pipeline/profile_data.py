@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 from shared.config import DATA_BUCKET
-from shared.db import update_project
+from shared.db import update_project, update_job
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -16,10 +16,39 @@ logger.setLevel(logging.INFO)
 s3 = boto3.client("s3")
 
 
+def _sanitize(obj):
+    """Replace NaN/Infinity with None so DynamoDB doesn't choke."""
+    if isinstance(obj, float):
+        if obj != obj or obj == float('inf') or obj == float('-inf'):
+            return None
+        return obj
+    if isinstance(obj, dict):
+        return {k: _sanitize(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_sanitize(i) for i in obj]
+    return obj
+
+
 def handler(event, context):
+    job_id = event.get("jobId")
+    project_id = event.get("projectId")
+    try:
+        return _run(event)
+    except Exception as e:
+        logger.exception("profile_data failed")
+        if job_id and project_id:
+            update_job(project_id, job_id, {"status": "FAILED", "failureReason": str(e)[:500]})
+        raise
+
+
+def _run(event):
     user_id = event["userId"]
     project_id = event["projectId"]
+    job_id = event.get("jobId")
     dataset_s3_path = event["datasetS3Path"]
+
+    if job_id:
+        update_job(project_id, job_id, {"status": "PROFILING", "currentStep": "profiling"})
 
     tmp_path = tempfile.mktemp(suffix=".csv")
     s3.download_file(DATA_BUCKET, dataset_s3_path, tmp_path)
@@ -154,7 +183,7 @@ def handler(event, context):
         "targetDistribution": target_distribution,
     }
 
-    update_project(user_id, project_id, {"dataProfile": data_profile})
+    update_project(user_id, project_id, {"dataProfile": _sanitize(data_profile)})
 
     profile_key = f"{user_id}/{project_id}/profile.json"
     s3.put_object(

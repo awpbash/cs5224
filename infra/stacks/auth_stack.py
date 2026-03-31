@@ -1,4 +1,4 @@
-from aws_cdk import Stack, RemovalPolicy, aws_cognito as cognito
+from aws_cdk import CfnOutput, Stack, RemovalPolicy, aws_cognito as cognito
 from constructs import Construct
 
 
@@ -32,3 +32,6 @@ class AuthStack(Stack):
                 user_srp=True,
             ),
         )
+
+        CfnOutput(self, "UserPoolId", value=self.user_pool.user_pool_id)
+        CfnOutput(self, "UserPoolClientId", value=self.user_pool_client.user_pool_client_id)

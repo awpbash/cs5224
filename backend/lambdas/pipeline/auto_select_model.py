@@ -1,5 +1,7 @@
 import logging
 
+from shared.db import update_job
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -14,6 +16,11 @@ MODEL_NAME_MAP = {
 
 
 def handler(event, context):
+    project_id = event.get("projectId")
+    job_id = event.get("jobId")
+    if project_id and job_id:
+        update_job(project_id, job_id, {"status": "TRAINING", "currentStep": "model_selection"})
+
     task_type = event.get("taskType", "classification")
     data_profile = event.get("dataProfile", {})
     is_regression = event.get("isRegression", False)

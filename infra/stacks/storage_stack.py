@@ -1,4 +1,5 @@
 from aws_cdk import (
+    CfnOutput,
     Stack,
     RemovalPolicy,
     aws_s3 as s3,
@@ -43,3 +44,14 @@ class StorageStack(Stack):
             billing_mode=dynamodb.BillingMode.PAY_PER_REQUEST,
             removal_policy=RemovalPolicy.DESTROY,
         )
+
+        self.chats_table = dynamodb.Table(
+            self, "ChatsTable",
+            table_name="cloudforge-chats",
+            partition_key=dynamodb.Attribute(name="userId", type=dynamodb.AttributeType.STRING),
+            sort_key=dynamodb.Attribute(name="sessionId", type=dynamodb.AttributeType.STRING),
+            billing_mode=dynamodb.BillingMode.PAY_PER_REQUEST,
+            removal_policy=RemovalPolicy.DESTROY,
+        )
+
+        CfnOutput(self, "DataBucketName", value=self.data_bucket.bucket_name)
