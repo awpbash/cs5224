@@ -56,16 +56,6 @@ class ApiStack(Stack):
             description="CloudForge shared utilities",
         )
 
-        # ── Combined sklearn+pandas layer (includes numpy, scipy, pandas) ──
-        sklearn_layer = _lambda.LayerVersion(
-            self, "SklearnLayer",
-            code=_lambda.Code.from_asset(
-                str(PROJECT_ROOT / "layers" / "sklearn-layer.zip"),
-            ),
-            compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
-            description="scikit-learn + pandas for Lambda",
-        )
-
         # ── Common environment ──
         common_env = {
             "PROJECTS_TABLE": projects_table.table_name,
@@ -74,6 +64,7 @@ class ApiStack(Stack):
             "DATA_BUCKET": data_bucket.bucket_name,
             "STEP_FUNCTION_ARN": state_machine.state_machine_arn,
             "REGION": "ap-southeast-1",
+            "BEDROCK_MODEL_ID": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
         }
 
         def make_lambda(
@@ -85,7 +76,7 @@ class ApiStack(Stack):
             env = {**common_env, **(extra_env or {})}
             fn = _lambda.Function(
                 self, name,
-                function_name=f"cloudforge-{name.lower()}",
+                function_name=f"retailmind-{name.lower()}",
                 runtime=_lambda.Runtime.PYTHON_3_12,
                 handler=handler_path,
                 code=_lambda.Code.from_asset(os.path.join(BACKEND_DIR, "lambdas")),
@@ -96,6 +87,7 @@ class ApiStack(Stack):
             )
             projects_table.grant_read_write_data(fn)
             jobs_table.grant_read_write_data(fn)
+            chats_table.grant_read_write_data(fn)
             data_bucket.grant_read_write(fn)
             return fn
 
@@ -109,11 +101,20 @@ class ApiStack(Stack):
         get_job_metrics_fn = make_lambda("GetJobMetrics", "api.get_job_metrics.handler")
         get_model_download_fn = make_lambda("GetModelDownload", "api.get_model_download.handler")
 
-        run_inference_fn = make_lambda(
-            "RunInference", "api.run_inference.handler",
-            timeout=60, memory=1024,
-            extra_layers=[sklearn_layer],
+        # Inference uses a container-based Lambda (10GB limit) so it can include
+        # xgboost + lightgbm + sklearn without hitting the 250MB zip layer limit.
+        ml_dockerfile = "Dockerfile.ml"
+        run_inference_fn = _lambda.DockerImageFunction(
+            self, "RunInferenceContainer",
+            code=_lambda.DockerImageCode.from_image_asset(BACKEND_DIR, file=ml_dockerfile),
+            timeout=Duration.seconds(60),
+            memory_size=1024,
+            environment={**common_env},
         )
+        projects_table.grant_read_write_data(run_inference_fn)
+        jobs_table.grant_read_write_data(run_inference_fn)
+        chats_table.grant_read_write_data(run_inference_fn)
+        data_bucket.grant_read_write(run_inference_fn)
 
         # ── NEW API Lambdas ──
         delete_project_fn = make_lambda("DeleteProject", "api.delete_project.handler")
@@ -125,11 +126,22 @@ class ApiStack(Stack):
 
         list_preloaded_fn = make_lambda("ListPreloaded", "api.list_preloaded.handler")
 
-        recompute_profile_fn = make_lambda(
-            "RecomputeProfile", "api.recompute_profile.handler",
-            timeout=120, memory=512,
-            extra_layers=[sklearn_layer],
+        # Recompute profile also needs sklearn — use the same container image
+        recompute_profile_fn = _lambda.DockerImageFunction(
+            self, "RecomputeProfileContainer",
+            code=_lambda.DockerImageCode.from_image_asset(
+                BACKEND_DIR,
+                file=ml_dockerfile,
+                cmd=["api.recompute_profile.handler"],
+            ),
+            timeout=Duration.seconds(120),
+            memory_size=512,
+            environment={**common_env},
         )
+        projects_table.grant_read_write_data(recompute_profile_fn)
+        jobs_table.grant_read_write_data(recompute_profile_fn)
+        chats_table.grant_read_write_data(recompute_profile_fn)
+        data_bucket.grant_read_write(recompute_profile_fn)
 
         # ── Bedrock-powered Lambdas (no external API key needed) ──
         chat_fn = make_lambda(
@@ -147,14 +159,31 @@ class ApiStack(Stack):
             timeout=60, memory=256,
         )
 
-        # Grant Bedrock InvokeModel to all AI Lambdas
+        # Grant Bedrock InvokeModel to all AI Lambdas (foundation models + inference profiles)
         bedrock_policy = iam.PolicyStatement(
             actions=["bedrock:InvokeModel"],
-            resources=["arn:aws:bedrock:ap-southeast-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"],
+            resources=[
+                "arn:aws:bedrock:*::foundation-model/anthropic.*",
+                "arn:aws:bedrock:*:*:inference-profile/apac.anthropic.*",
+                "arn:aws:bedrock:*:*:inference-profile/us.anthropic.*",
+                "arn:aws:bedrock:*:*:inference-profile/global.anthropic.*",
+            ],
         )
         chat_fn.add_to_role_policy(bedrock_policy)
         interpret_fn.add_to_role_policy(bedrock_policy)
         results_chat_fn.add_to_role_policy(bedrock_policy)
+
+        # Marketplace permissions required for newer Bedrock models
+        marketplace_policy = iam.PolicyStatement(
+            actions=[
+                "aws-marketplace:ViewSubscriptions",
+                "aws-marketplace:Subscribe",
+            ],
+            resources=["*"],
+        )
+        chat_fn.add_to_role_policy(marketplace_policy)
+        interpret_fn.add_to_role_policy(marketplace_policy)
+        results_chat_fn.add_to_role_policy(marketplace_policy)
 
         # Grant SFN permission
         state_machine.grant_start_execution(trigger_pipeline_fn)
@@ -165,7 +194,7 @@ class ApiStack(Stack):
         # ── REST API ──
         self.api = apigw.RestApi(
             self, "CloudForgeApi",
-            rest_api_name="cloudforge-api",
+            rest_api_name="retailmind-api",
             default_cors_preflight_options=apigw.CorsOptions(
                 allow_origins=apigw.Cors.ALL_ORIGINS,
                 allow_methods=apigw.Cors.ALL_METHODS,

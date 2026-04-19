@@ -33,7 +33,7 @@
         </mxCell>
 
         <!-- API Gateway -->
-        <mxCell id="apigw" value="API Gateway&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#888;&quot;&gt;cloudforge-api&lt;br&gt;17 routes&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
+        <mxCell id="apigw" value="API Gateway&lt;br&gt;&lt;font style=&quot;font-size:10px;color:#888;&quot;&gt;cloudforge-api&lt;br&gt;17 REST routes&lt;/font&gt;" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.api_gateway;" vertex="1" parent="1">
           <mxGeometry x="950" y="170" width="60" height="60" as="geometry"/>
         </mxCell>
 

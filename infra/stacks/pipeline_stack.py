@@ -56,16 +56,6 @@ class PipelineStack(Stack):
             compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
         )
 
-        # ── Combined sklearn+pandas layer (includes numpy, scipy, pandas) ──
-        sklearn_layer = _lambda.LayerVersion(
-            self, "SklearnLayer",
-            code=_lambda.Code.from_asset(
-                str(PROJECT_ROOT / "layers" / "sklearn-layer.zip"),
-            ),
-            compatible_runtimes=[_lambda.Runtime.PYTHON_3_12],
-            description="scikit-learn + pandas for Lambda",
-        )
-
         common_env = {
             "PROJECTS_TABLE": projects_table.table_name,
             "JOBS_TABLE": jobs_table.table_name,
@@ -80,7 +70,7 @@ class PipelineStack(Stack):
             all_layers = [shared_layer] + (extra_layers or [])
             fn = _lambda.Function(
                 self, name,
-                function_name=f"cloudforge-{name.lower()}",
+                function_name=f"retailmind-{name.lower()}",
                 runtime=_lambda.Runtime.PYTHON_3_12,
                 handler=handler_path,
                 code=_lambda.Code.from_asset(os.path.join(BACKEND_DIR, "lambdas")),
@@ -94,17 +84,37 @@ class PipelineStack(Stack):
             data_bucket.grant_read_write(fn)
             return fn
 
-        # ── Pipeline Lambdas ──
-        profile_fn = make_pipeline_lambda(
-            "ProfileData", "pipeline.profile_data.handler",
-            timeout=120, memory=512,
-            extra_layers=[sklearn_layer],
+        # ── Pipeline Lambdas (sklearn-heavy ones use container images) ──
+        # Build context = backend/, Dockerfile in containers/inference/
+        profile_fn = _lambda.DockerImageFunction(
+            self, "ProfileDataContainer",
+            code=_lambda.DockerImageCode.from_image_asset(
+                BACKEND_DIR,
+                file="Dockerfile.ml",
+                cmd=["pipeline.profile_data.handler"],
+            ),
+            timeout=Duration.seconds(120),
+            memory_size=512,
+            environment=common_env,
         )
-        etl_fn = make_pipeline_lambda(
-            "EtlPreprocess", "pipeline.etl_preprocess.handler",
-            timeout=300, memory=1024,
-            extra_layers=[sklearn_layer],
+        projects_table.grant_read_write_data(profile_fn)
+        jobs_table.grant_read_write_data(profile_fn)
+        data_bucket.grant_read_write(profile_fn)
+
+        etl_fn = _lambda.DockerImageFunction(
+            self, "EtlPreprocessContainer",
+            code=_lambda.DockerImageCode.from_image_asset(
+                BACKEND_DIR,
+                file="Dockerfile.ml",
+                cmd=["pipeline.etl_preprocess.handler"],
+            ),
+            timeout=Duration.seconds(300),
+            memory_size=1024,
+            environment=common_env,
         )
+        projects_table.grant_read_write_data(etl_fn)
+        jobs_table.grant_read_write_data(etl_fn)
+        data_bucket.grant_read_write(etl_fn)
         auto_select_fn = make_pipeline_lambda(
             "AutoSelectModel", "pipeline.auto_select_model.handler",
         )
@@ -118,7 +128,7 @@ class PipelineStack(Stack):
         # ── ECS Cluster ──
         cluster = ecs.Cluster(
             self, "TrainingCluster",
-            cluster_name="cloudforge-cluster",
+            cluster_name="retailmind-cluster",
             vpc=vpc,
         )
 
@@ -142,6 +152,8 @@ class PipelineStack(Stack):
             ),
         )
         data_bucket.grant_read_write(automl_task_def.task_role)
+        projects_table.grant_read_write_data(automl_task_def.task_role)
+        jobs_table.grant_read_write_data(automl_task_def.task_role)
 
         # ── Step Functions tasks ──
         profile_task = tasks.LambdaInvoke(
@@ -235,13 +247,13 @@ class PipelineStack(Stack):
 
         self.state_machine = sfn.StateMachine(
             self, "PipelineStateMachine",
-            state_machine_name="cloudforge-pipeline",
+            state_machine_name="retailmind-pipeline",
             definition_body=sfn.DefinitionBody.from_chainable(definition),
             timeout=Duration.hours(2),
             logs=sfn.LogOptions(
                 destination=logs.LogGroup(
                     self, "SfnLogGroup",
-                    log_group_name="/aws/stepfunctions/cloudforge-pipeline",
+                    log_group_name="/aws/stepfunctions/retailmind-pipeline",
                     retention=logs.RetentionDays.ONE_WEEK,
                     removal_policy=RemovalPolicy.DESTROY,
                 ),

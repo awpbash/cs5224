@@ -52,7 +52,7 @@ def _build_full_profile(df: pd.DataFrame) -> dict:
             profile["min"] = round(float(desc.get("min", 0)), 4)
             profile["max"] = round(float(desc.get("max", 0)), 4)
             try:
-                counts, edges = np.histogram(df[col].dropna(), bins=5)
+                counts, edges = np.histogram(df[col].dropna(), bins=20)
                 profile["distribution"] = [
                     {"bin": f"{edges[i]:.1f}-{edges[i+1]:.1f}", "count": int(counts[i])}
                     for i in range(len(counts))
@@ -191,4 +191,4 @@ def handler(event, context):
     except Exception as e:
         logger.exception("recompute_profile failed")
         return {"statusCode": 500, "headers": CORS_HEADERS,
-                "body": json.dumps({"error": str(e)})}
+                "body": json.dumps({"error": "Internal server error"})}

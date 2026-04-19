@@ -35,6 +35,14 @@ def handler(event, context):
                 "body": json.dumps({"error": "Project not found"}),
             }
 
+        # Prevent concurrent training on the same project
+        if project.get("status") == "TRAINING":
+            return {
+                "statusCode": 409,
+                "headers": CORS_HEADERS,
+                "body": json.dumps({"error": "A training job is already running for this project"}),
+            }
+
         job_id = str(uuid.uuid4())
         now = datetime.utcnow().isoformat()
 
@@ -91,5 +99,5 @@ def handler(event, context):
         return {
             "statusCode": 500,
             "headers": CORS_HEADERS,
-            "body": json.dumps({"error": str(e)}),
+            "body": json.dumps({"error": "Internal server error"}),
         }

@@ -15,6 +15,9 @@ node_modules/
 .next/
 out/
 frontend/.env.local
+frontend/out/
+tsconfig.tsbuildinfo
+next-env.d.ts
 
 # Environment & secrets
 .env
@@ -50,10 +53,6 @@ layers/sklearn-layer/
 htmlcov/
 .pytest_cache/
 
-# Claude Code
-.claude/settings.local.json
-
-claude/
+# Claude AI assistant
 .claude/
 CLAUDE.md
-rules.md

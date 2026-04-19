@@ -25,17 +25,22 @@ Help the user understand:
 - Actionable next steps based on the results
 - How to improve model performance
 
-Be conversational, concise, and business-focused. Avoid ML jargon unless asked.
-Keep responses to 3-5 sentences unless asked for detail."""
+FORMATTING:
+- Use short paragraphs separated by blank lines. Never write a wall of text.
+- Use **bold** for metric names, feature names, and key numbers.
+- Use bullet points (- ) for lists.
+- Use numbered lists (1. 2. 3.) for action steps.
+- Be conversational, business-focused. Avoid ML jargon unless asked.
+- Keep responses well-structured. Each answer should have a clear headline-like opening sentence, then supporting detail."""
 
-MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0"
+MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "global.anthropic.claude-haiku-4-5-20251001-v1:0")
 
 
 def _invoke_bedrock(system: str, messages: list[dict]) -> str:
     body = {
         "anthropic_version": "bedrock-2023-05-31",
-        "max_tokens": 800,
-        "temperature": 0.6,
+        "max_tokens": 1200,
+        "temperature": 0.4,
         "system": system,
         "messages": messages,
     }
@@ -93,4 +98,4 @@ def handler(event, context):
     except Exception as e:
         logger.exception("results_chat failed")
         return {"statusCode": 500, "headers": CORS_HEADERS,
-                "body": json.dumps({"error": str(e)})}
+                "body": json.dumps({"error": "Internal server error"})}

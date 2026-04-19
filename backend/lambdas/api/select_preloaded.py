@@ -62,4 +62,4 @@ def handler(event, context):
     except Exception as e:
         logger.exception("select_preloaded failed")
         return {"statusCode": 500, "headers": CORS_HEADERS,
-                "body": json.dumps({"error": str(e)})}
+                "body": json.dumps({"error": "Internal server error"})}

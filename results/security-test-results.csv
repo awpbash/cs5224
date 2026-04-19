@@ -1,0 +1,18 @@
+test_name,category,expected_code,actual_code,passed,response_time_ms,details
+No auth header,auth,401,401,PASS,132.9,{"message":"Unauthorized"}
+Empty bearer token,auth,401,401,PASS,90.8,{"message":"Unauthorized"}
+Invalid JWT token,auth,401,401,PASS,93.1,{"message":"Unauthorized"}
+Valid token — projects,auth,200,200,PASS,327.6,[{"projectId": "337564b2-3edd-48bd-8791-fdb9a00b3a62"; "projectName": "da"; "useCase": "churn_prediction"; "taskType": "classification"; "status": "COMPLETED"; "dataSource": "preloaded"; "dataProfile"
+Valid token — preloaded,auth,200,200,PASS,364.1,[{"id": "retail-churn"; "name": "Retail Customer Churn"; "description": "Customer churn prediction dataset with contract; charges and payment data"; "rows": 39; "columns": 6; "suggestedUseCase": "chur
+Get other user's project,isolation,404,404,PASS,931.9,{"error": "Project not found"}
+Delete other user's project,isolation,404,404,PASS,1109.9,{"error": "Project not found"}
+Train other user's project,isolation,404,500,FAIL,867.4,{"error": "the JSON object must be str; bytes or bytearray; not NoneType"}
+Upload to other user's project,isolation,404,404,PASS,971.9,{"error": "Project not found"}
+Infer on other user's job,isolation,404,404,PASS,3826.5,{"error": "Project not found"}
+Get other user's job status,isolation,404,404,PASS,981.7,{"error": "Project not found"}
+Create project — empty body,validation,400,201,FAIL,1188.1,{"projectId": "473cf36f-1c38-4d66-983f-35f591a67801"; "projectName": "Untitled"; "taskType": "classification"; "useCase": "custom"; "status": "CREATED"; "createdAt": "2026-04-07T12:39:22.406009"; "upd
+Create project — missing name,validation,400,201,FAIL,123.5,{"projectId": "ddaf8eb2-7841-42a1-90f1-ade9f5f91042"; "projectName": "Untitled"; "taskType": "classification"; "useCase": "custom"; "status": "CREATED"; "createdAt": "2026-04-07T12:39:22.753417"; "upd
+Chat — empty message,validation,400,500,FAIL,1596.5,{"error": "An error occurred (ValidationException) when calling the InvokeModel operation: messages: at least one message is required"}
+Nonexistent endpoint,validation,403,403,PASS,107.8,{"message":"Invalid key=value pair (missing equal-sign) in Authorization header (hashed with SHA-256 and encoded with Base64): 'zx11KTaq2mFVaUCr3znuZdvDqd3t+cXh5HwEs7ukG8Y='."}
+SQL injection in path,validation,404,404,PASS,127.8,{"error": "Project not found"}
+XSS in project name,validation,200,201,FAIL,100.3,{"projectId": "8b473d2b-d47f-46a3-b68e-87e5b9806d33"; "projectName": "<script>alert(1)</script>"; "taskType": "classification"; "useCase": "custom"; "status": "CREATED"; "createdAt": "2026-04-07T12:39

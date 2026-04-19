@@ -1,0 +1,15 @@
+frontend/node_modules
+frontend/.next
+frontend/out
+.git
+__pycache__
+*.pyc
+infra/cdk.out
+results
+docs
+tests
+scripts
+layers
+*.md
+*.docx
+*.pdf

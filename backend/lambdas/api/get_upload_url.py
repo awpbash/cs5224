@@ -30,6 +30,15 @@ def handler(event, context):
 
         filename = body.get("filename", "dataset.csv")
         content_type = body.get("contentType", "text/csv")
+
+        # Prevent path traversal attacks
+        if ".." in filename or "/" in filename or "\\" in filename:
+            return {
+                "statusCode": 400,
+                "headers": CORS_HEADERS,
+                "body": json.dumps({"error": "Invalid filename"}),
+            }
+
         s3_key = f"{user_id}/{project_id}/raw/{filename}"
 
         url = generate_presigned_upload_url(s3_key, content_type=content_type)
@@ -50,5 +59,5 @@ def handler(event, context):
         return {
             "statusCode": 500,
             "headers": CORS_HEADERS,
-            "body": json.dumps({"error": str(e)}),
+            "body": json.dumps({"error": "Internal server error"}),
         }

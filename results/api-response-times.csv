@@ -1,0 +1,20 @@
+endpoint,method,description,http_code,time_total_ms,time_connect_ms,time_ttfb_ms,size_bytes
+/preloaded-datasets,GET,List preloaded datasets (r1),200,120.7,19.4,0.0,1472
+/projects,GET,List projects (r1),200,254.4,19.5,0.0,41093
+/chat,POST,Chat with Bedrock (r1),200,4259.3,27.9,0.0,2835
+/preloaded-datasets,GET,List preloaded datasets (r2),200,129.0,47.2,0.0,1472
+/projects,GET,List projects (r2),200,281.9,18.9,0.0,41093
+/chat,POST,Chat with Bedrock (r2),200,4718.4,19.6,0.0,2947
+/preloaded-datasets,GET,List preloaded datasets (r3),200,117.5,25.3,0.0,1472
+/projects,GET,List projects (r3),200,359.7,18.9,0.0,41093
+/chat,POST,Chat with Bedrock (r3),200,5485.6,24.9,0.0,2661
+/preloaded-datasets,GET,/preloaded-datasets call #1,200,124.7,24.5,0.0,1472
+/preloaded-datasets,GET,/preloaded-datasets call #2,200,114.4,21.2,0.0,1472
+/preloaded-datasets,GET,/preloaded-datasets call #3,200,95.5,22.9,0.0,1472
+/preloaded-datasets,GET,/preloaded-datasets call #4,200,148.7,56.2,0.0,1472
+/preloaded-datasets,GET,/preloaded-datasets call #5,200,141.5,20.9,0.0,1472
+/projects,GET,/projects call #1,200,283.9,35.5,0.0,41093
+/projects,GET,/projects call #2,200,267.5,21.2,0.0,41093
+/projects,GET,/projects call #3,200,280.1,31.2,0.0,41093
+/projects,GET,/projects call #4,200,452.3,22.7,0.0,41093
+/projects,GET,/projects call #5,200,273.0,27.6,0.0,41093

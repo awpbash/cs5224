@@ -350,6 +350,17 @@ def main() -> None:
     logger.info("Data: %d train, %d val, %d features, task=%s, mode=%s",
                 len(X_train), len(X_val), X_train.shape[1], task_type, mode)
 
+    # Validate data before training
+    if len(X_train) == 0:
+        raise ValueError("Training set is empty — no rows to train on")
+    if task_type == "classification":
+        n_classes = y_train.nunique()
+        if n_classes < 2:
+            raise ValueError(
+                f"Classification requires at least 2 classes in the target, "
+                f"but found {n_classes}. Check your target column or task type."
+            )
+
     t_start = time.time()
 
     # Support user-specified candidate models via env var

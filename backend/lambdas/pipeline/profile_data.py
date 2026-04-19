@@ -70,9 +70,9 @@ def _run(event):
             profile["min"] = round(float(desc.get("min", 0)), 4)
             profile["max"] = round(float(desc.get("max", 0)), 4)
 
-            # Distribution histogram (5 bins)
+            # Distribution histogram (20 bins for frontend re-binning)
             try:
-                counts, edges = np.histogram(df[col].dropna(), bins=5)
+                counts, edges = np.histogram(df[col].dropna(), bins=20)
                 profile["distribution"] = [
                     {"bin": f"{edges[i]:.1f}-{edges[i+1]:.1f}", "count": int(counts[i])}
                     for i in range(len(counts))

@@ -47,7 +47,7 @@
 | 5 | **Lambda** | All API handlers + pipeline steps (profiling, ETL, evaluation) |
 | 6 | **DynamoDB** | Project metadata, job status, chat history |
 | 7 | **Step Functions** | Orchestrates the training pipeline step-by-step |
-| 8 | **ECS Fargate** | Runs training containers (sklearn, XGBoost) |
+| 8 | **ECS Fargate** | Runs training containers (scikit-learn, XGBoost, LightGBM) |
 | 9 | **ECR** | Stores training Docker images |
 | 10 | **Bedrock (Claude)** | Powers the chatbot + generates business recommendations from results |
 | 11 | **EventBridge** | Routes Fargate completion/failure events |
@@ -79,14 +79,17 @@ cloudforge-data-{account_id}/
             ├── raw/
             │   └── data.csv                # Uploaded CSV or copied from preloaded/
             ├── processed/
-            │   ├── train.csv               # 80% split, preprocessed
-            │   ├── val.csv                 # 20% split, preprocessed
-            │   ├── pipeline.json           # Saved preprocessing steps (for inference replay)
+            │   ├── X_train.csv             # Features, 80% split, preprocessed
+            │   ├── X_val.csv               # Features, 20% split, preprocessed
+            │   ├── y_train.csv             # Target, 80% split
+            │   ├── y_val.csv               # Target, 20% split
+            │   ├── pipeline.pkl            # Saved preprocessing pipeline (scaler, label encoders)
             │   └── profile.json            # Data profiling results
             └── models/
                 └── {jobId}/
                     ├── model.pkl           # Trained model
-                    ├── metrics.json        # Accuracy, F1, etc.
+                    ├── metrics.json        # Accuracy, F1, confusion matrix, feature importance
+                    ├── leaderboard.json    # All candidate models ranked (auto mode)
                     └── config.json         # What model + hyperparams were used
 ```
 
@@ -196,14 +199,19 @@ All routes require `Authorization: Bearer {cognito_token}` except OPTIONS.
 | POST | `/projects` | Create project |
 | GET | `/projects` | List user's projects |
 | GET | `/projects/{id}` | Get project + data profile |
+| PUT | `/projects/{id}` | Update project (target, features, business context) |
 | DELETE | `/projects/{id}` | Delete project |
 | POST | `/projects/{id}/upload-url` | Get presigned S3 PUT URL |
 | POST | `/projects/{id}/select-preloaded` | Copy a Kaggle dataset to user's project |
+| POST | `/projects/{id}/recompute-profile` | Recompute data profile after feature selection |
 | POST | `/projects/{id}/train` | Start the training pipeline |
 | GET | `/projects/{id}/jobs/{jobId}` | Get job status + metrics |
+| GET | `/projects/{id}/jobs/{jobId}/metrics` | Get detailed job metrics (confusion matrix, feature importance) |
 | POST | `/projects/{id}/jobs/{jobId}/infer` | Run prediction on trained model |
+| POST | `/projects/{id}/jobs/{jobId}/interpret` | Generate Bedrock business recommendations |
 | GET | `/projects/{id}/jobs/{jobId}/download` | Get presigned URL for model download |
-| POST | `/chat` | Send message to chatbot |
+| POST | `/chat` | Send message to chatbot (problem refinement) |
+| POST | `/results-chat` | Send follow-up question about results |
 | GET | `/preloaded-datasets` | List available Kaggle datasets |
 
 ---
@@ -220,9 +228,10 @@ START
   │     Write profile.json to S3, update DynamoDB project with dataProfile
   │
   ├──> Lambda: etl_preprocess
-  │     Impute nulls (median/mode), encode categoricals (one-hot),
-  │     scale numerics (StandardScaler), 80/20 train/val split
-  │     Write train.csv, val.csv, pipeline.json to S3
+  │     Handle booleans, expand datetimes (year/month/dayofweek),
+  │     impute nulls (median/mode), label-encode categoricals,
+  │     scale numerics (StandardScaler), stratified 80/20 train/val split
+  │     Write X_train, X_val, y_train, y_val, pipeline.pkl to S3
   │
   ├──> Lambda: auto_select_model
   │     Based on row count + task type:
@@ -257,13 +266,22 @@ Error handling:
 
 Not a full conversational agent — it's a **structured Bedrock call** that helps frame the business problem.
 
-### How it works
+### Three Bedrock use cases
 
+**1. Problem Refinement Chat (`chat.py`):**
 1. User describes their problem: *"I want to know which customers might stop buying"*
-2. Lambda sends message + system prompt to Bedrock Claude (Haiku — cheapest, fastest)
-3. Claude returns a friendly reply + a structured `suggestedConfig` JSON
-4. Frontend displays the suggestion, user can accept or tweak
-5. Max 3 follow-up turns per session
+2. Lambda sends message + data context (columns, row count, nulls) + system prompt to Bedrock Claude Haiku
+3. Claude returns a friendly reply + a structured `suggestedConfig` JSON (use case, task type, target, features)
+4. Frontend displays the suggestion, user can accept or tweak via multi-turn conversation
+
+**2. Result Interpretation (`interpret_results.py`):**
+- Takes model metrics, feature importance, and business context
+- Returns executive summary, 4-5 actionable recommendations with impact levels (high/medium/low), top 5 feature insights
+- Focuses on ROI and business language, not ML jargon
+
+**3. Results Q&A Chat (`results_chat.py`):**
+- Follow-up questions about model results, next steps, feature meanings
+- Includes full project context + metrics in system prompt for grounded answers
 
 ```python
 SYSTEM_PROMPT = """
@@ -304,35 +322,48 @@ Example:
 
 ---
 
-## 8. Training Containers
+## 8. Training Container
 
-Two containers in ECR:
+One unified AutoML container in ECR: `tabular-automl`
 
-| Tag | Models | Use case |
-|---|---|---|
-| `tabular-sklearn` | Logistic Regression, Linear Regression, Random Forest, Decision Tree | Small datasets, simple models |
-| `tabular-xgboost` | XGBoost | Medium-large datasets, best general performance |
+**Supported models (19 total):**
+
+| Category | Models |
+|---|---|
+| Classification (8) | Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, XGBoost, LightGBM, KNN, SVM |
+| Regression (11) | Linear Regression, Ridge, Lasso, ElasticNet, Decision Tree, Random Forest, Gradient Boosting, XGBoost, LightGBM, KNN, SVM |
+
+Each model includes a hyperparameter search grid for auto-tuning via `RandomizedSearchCV`.
 
 ### Container contract
 
-Every container reads env vars set by Step Functions:
+The container supports two modes:
 
 ```
+MODE            = "auto" | "single"   (default: auto)
 TASK_TYPE       = "classification" | "regression"
-MODEL_TYPE      = "xgboost" | "logistic" | ...
+MODEL_TYPE      = model name for single mode (e.g. "xgboost_clf")
 DATA_S3_PATH    = "s3://cloudforge-data-xxx/users/{userId}/{projectId}/processed/"
 OUTPUT_S3_PATH  = "s3://cloudforge-data-xxx/users/{userId}/{projectId}/models/{jobId}/"
 HYPERPARAMS     = '{"max_depth": 6, "n_estimators": 200}'
+CV_FOLDS        = number of CV folds (default: 5)
+MAX_CANDIDATES  = max models to try in auto mode (default: 8)
+```
 
+**Auto mode:** Selects candidate models based on dataset size (skips SVM/KNN for large datasets), runs cross-validation + hyperparameter search for each, picks the best. Uploads `model.pkl`, `metrics.json`, `leaderboard.json`, `config.json`.
+
+**Single mode:** Trains the specified model with optional hyperparameter overrides. Uploads `model.pkl`, `metrics.json`, `config.json`.
+
+```
 Flow:
-  1. Download train.csv + val.csv from S3
-  2. Train model
-  3. Evaluate on val set
-  4. Upload model.pkl + metrics.json to S3
+  1. Download X_train, X_val, y_train, y_val from S3
+  2. Select candidate models (auto) or use specified model (single)
+  3. Cross-validate with hyperparameter tuning
+  4. Upload model.pkl + metrics.json + leaderboard.json to S3
   5. Exit 0 (success) or 1 (failure)
 ```
 
-**Fargate resources:** 1 vCPU, 2 GB RAM for most jobs. ~$0.004 per 5-minute run.
+**Fargate resources:** 1 vCPU, 2 GB RAM for most jobs. ~$0.05 per training run.
 
 ---
 
@@ -417,9 +448,11 @@ Data isolation:
 
 ```
 Next.js 14 (static export) → S3 + CloudFront
-TypeScript, Ant Design or shadcn/ui
-Auth via AWS Amplify JS (Cognito only)
+TypeScript, Tailwind CSS, Radix UI / shadcn components
+Auth via Cognito JS SDK
 Charts via Recharts
+Animations via Framer Motion
+Icons via Lucide React
 ```
 
 | Route | Page |
@@ -427,23 +460,32 @@ Charts via Recharts
 | `/` | Landing page |
 | `/auth/login` | Login |
 | `/auth/signup` | Sign up |
-| `/dashboard` | Project list with status badges |
-| `/projects/new` | Use case templates + chatbot |
-| `/projects/[id]` | Upload CSV or pick preloaded dataset |
-| `/projects/[id]/train` | Pipeline progress (polling) |
-| `/projects/[id]/results` | Metrics, charts, business recommendations |
-| `/projects/[id]/infer` | Input data, get predictions |
+| `/auth/forgot-password` | Password reset flow |
+| `/dashboard` | Project list with status badges, delete, filtering |
+| `/projects/new` | Create project (name, use case, task type) |
+| `/projects/[id]` | Project overview with step navigation |
+| `/projects/[id]/upload` | Drag-drop CSV upload + preloaded dataset picker + data preview |
+| `/projects/[id]/chat` | Data exploration chatbot (multi-turn, context-aware) |
+| `/projects/[id]/profile` | Data profiling — column stats, null %, types, feature selection, target picker |
+| `/projects/[id]/train` | Auto-config display, advanced override, cost estimate, pipeline trigger + status polling |
+| `/projects/[id]/results` | Business summary, KPIs, feature importance, Bedrock recommendations, results Q&A chat |
+| `/projects/[id]/infer` | Tabular form input built from features, prediction + confidence display |
+| `/compare` | Side-by-side model comparison |
+| `/models` | Browse trained models |
+
+**Key components:** AuthGuard (protected routes), ChatFAB (floating chat), Navbar, OnboardingTour, ThemeToggle (light/dark mode), 10+ Radix UI primitives.
 
 ---
 
 ## 13. Evaluation Plan
 
-| Dimension | What we test |
-|---|---|
-| **Architecture quality** | API latency (<500ms), pipeline end-to-end time (<10 min for 5K rows), chatbot response (<3s) |
-| **Scalability** | Load test with 5/20/50 concurrent users, check Lambda scales, Fargate handles parallel jobs |
-| **Security** | Cross-tenant access test (User A can't see User B's data), invalid JWT rejected, S3 not publicly accessible |
-| **Business KPIs** | Time-to-insight, pipeline success rate, cost per tenant |
+| Dimension | What we test | Method |
+|---|---|---|
+| **Architecture quality** | API latency (<500ms), pipeline end-to-end time (<10 min for 5K rows), chatbot response (<3s) | CloudWatch metrics, end-to-end timing |
+| **Scalability** | Load test with 50–200 concurrent requests, verify Lambda auto-scaling, Fargate handles parallel training jobs | loader.io free tier or `hey` CLI tool against API Gateway endpoints; monitor via CloudWatch dashboard |
+| **Fault tolerance** | System recovers from component failures — Fargate task termination mid-training, Lambda cold starts, DynamoDB throttling | Terminate ECS task via `aws ecs stop-task` during training; verify Step Functions catches failure and updates job status to FAILED. Multi-AZ resilience is inherent: Lambda, DynamoDB, API Gateway, and S3 are all multi-AZ by default; Fargate runs across 2 public subnets in separate AZs |
+| **Security** | Cross-tenant data isolation (User A can't see User B's data), invalid JWT rejected, S3 not publicly accessible, presigned URLs expire correctly | Manual penetration test: modify JWT claims, attempt cross-user API calls, verify S3 bucket policies |
+| **Business KPIs** | Time-to-insight (<15 min from upload to recommendations), pipeline success rate (>95%), cost per tenant (<$0.10/run) | Track via CloudWatch custom metrics and DynamoDB job records |
 
 ---
 
@@ -452,41 +494,47 @@ Charts via Recharts
 | Service | Cost |
 |---|---|
 | S3, CloudFront, Cognito, API Gateway, Lambda, DynamoDB, Step Functions, ECR, EventBridge, CloudWatch | **Free tier** |
-| Fargate (~50 training jobs × 5 min) | ~$0.50 |
-| Bedrock Haiku (~200 calls) | ~$0.20 |
-| **Total** | **< $1/month** |
+| VPC (2 public subnets, no NAT Gateway, S3 + DynamoDB endpoints) | **$0** |
+| Fargate (~50 training jobs × 5 min each, 1 vCPU / 2 GB) | ~$2.50 |
+| Bedrock Claude Haiku (~200 calls across chat, interpret, Q&A) | ~$0.20 |
+| **Total** | **~$5–12/month** |
 
-No VPC, no NAT Gateway — Fargate runs in default VPC public subnets. This keeps costs near zero for a demo. Production would use private subnets + NAT Gateway (~$33/month) but that's out of scope.
+No NAT Gateway — Fargate runs in public subnets with public IPs. VPC endpoints for S3 and DynamoDB avoid data transfer charges. Production would use private subnets + NAT Gateway (~$33/month) but that's out of scope for this demo.
 
 ---
 
 ## 15. Implementation Phases (4 weeks)
 
-### Week 1: Foundation
-- CDK: S3, DynamoDB, Cognito, API Gateway, Lambda scaffold
-- Backend: create/list/get project, upload URL, shared utilities
-- Frontend: Next.js scaffold, auth flow, dashboard
-- Seed preloaded datasets
+### Week 1: Foundation [COMPLETED]
+- CDK stacks: storage (S3, DynamoDB), auth (Cognito), API Gateway, network (VPC)
+- Backend: all CRUD Lambdas (create/list/get/update/delete project), upload URL, shared utilities
+- Frontend: Next.js scaffold, Cognito auth flow (login/signup/forgot-password), dashboard
+- Seed preloaded datasets (4 Kaggle datasets)
 
-### Week 1-2: Pipeline
-- Lambdas: profile, ETL, auto-select, evaluate, deploy
-- Training containers → ECR
-- Step Functions state machine + ECS Fargate setup
+### Week 1-2: Pipeline [COMPLETED]
+- Unified AutoML container (`tabular-automl`) with 19 models (8 clf + 11 reg), auto/single modes, CV + hyperparameter search
+- Pipeline Lambdas: profile_data, etl_preprocess, auto_select_model, evaluate_model, deploy_model
+- CDK: Step Functions state machine, ECS Fargate cluster, ECR repository
+- EventBridge handlers: on_fargate_complete, scheduled_retrain
 - Test: trigger pipeline manually → model in S3
 
-### Week 2-3: Chatbot + Inference + Full API
-- Bedrock chatbot Lambda + result interpretation Lambda
-- Inference Lambda
-- trigger_pipeline, job status endpoints
-- Test: full flow via Postman
+### Week 2-3: Chatbot + Inference + Full API [COMPLETED]
+- Bedrock integration: chat (problem refinement), interpret_results (business recommendations), results_chat (follow-up Q&A)
+- Inference Lambda with full preprocessing pipeline replay
+- recompute_profile, trigger_pipeline, get_job_status, get_job_metrics endpoints
+- Test: full API flow from create project → train → infer via curl/Postman
 
-### Week 2-4: Frontend (parallel)
-- All pages: project creation, upload, pipeline monitor, results, inference
-- Charts (Recharts), business insights display
-- Polling for job status
+### Week 2-4: Frontend (parallel) [COMPLETED]
+- All 15 pages: auth, dashboard, project creation, upload, chat, profile, train, results, inference, compare, models
+- Components: AuthGuard, ChatFAB, Navbar, OnboardingTour, ThemeToggle, 10+ Radix UI primitives
+- Charts (Recharts), Bedrock-powered business insights, results Q&A chat
+- Polling for job status, presigned URL upload, dark mode
 
-### Week 4: Integration + Demo
-- End-to-end testing
-- CloudWatch dashboard
-- Security tests, light load test
-- Demo prep
+### Week 4: Integration + Evaluation [IN PROGRESS]
+- End-to-end testing across all flows
+- CloudWatch monitoring dashboard (5 widgets: API requests, errors, latency, pipeline runs, duration)
+- Load testing: loader.io / `hey` against API Gateway (50-200 concurrent requests)
+- Fault tolerance: Fargate task termination test, multi-AZ validation
+- Security tests: cross-tenant isolation, JWT validation, S3 access policies
+- Deploy script (`scripts/deploy.sh`) for one-command full deployment
+- Final report + video presentation (due 19/04/26)

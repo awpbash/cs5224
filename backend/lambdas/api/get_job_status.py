@@ -54,7 +54,7 @@ def handler(event, context):
                 "isRegression": job.get("isRegression", False),
                 "createdAt": job["createdAt"],
                 "completedAt": job.get("completedAt"),
-                "failureReason": job.get("error"),
+                "failureReason": job.get("failureReason") or job.get("error"),
             }),
         }
     except Exception as e:
@@ -62,5 +62,5 @@ def handler(event, context):
         return {
             "statusCode": 500,
             "headers": CORS_HEADERS,
-            "body": json.dumps({"error": str(e)}),
+            "body": json.dumps({"error": "Internal server error"}),
         }

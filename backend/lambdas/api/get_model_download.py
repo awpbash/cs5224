@@ -1,7 +1,7 @@
 import json
 import logging
 
-from shared.db import get_job
+from shared.db import get_job, get_project
 from shared.s3_utils import generate_presigned_download_url
 
 logger = logging.getLogger(__name__)
@@ -16,8 +16,18 @@ CORS_HEADERS = {
 
 def handler(event, context):
     try:
+        user_id = event["requestContext"]["authorizer"]["claims"]["sub"]
         project_id = event["pathParameters"]["id"]
         job_id = event["pathParameters"]["jobId"]
+
+        # Verify user owns the project
+        project = get_project(user_id, project_id)
+        if not project:
+            return {
+                "statusCode": 404,
+                "headers": CORS_HEADERS,
+                "body": json.dumps({"error": "Project not found"}),
+            }
 
         job = get_job(project_id, job_id)
         if not job:
@@ -47,5 +57,5 @@ def handler(event, context):
         return {
             "statusCode": 500,
             "headers": CORS_HEADERS,
-            "body": json.dumps({"error": str(e)}),
+            "body": json.dumps({"error": "Internal server error"}),
         }

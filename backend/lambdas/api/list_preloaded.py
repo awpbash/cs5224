@@ -14,12 +14,12 @@ PRELOADED = [
     {
         "id": "retail-churn",
         "name": "Retail Customer Churn",
-        "description": "Telco customer churn prediction dataset with demographics and service usage",
-        "rows": 7043, "columns": 21,
+        "description": "Customer churn prediction dataset with contract, charges and payment data",
+        "rows": 39, "columns": 6,
         "suggestedUseCase": "churn_prediction",
         "suggestedTaskType": "classification",
-        "suggestedTarget": "Churn",
-        "sampleColumns": ["gender", "SeniorCitizen", "tenure", "MonthlyCharges", "TotalCharges", "Churn"],
+        "suggestedTarget": "churn",
+        "sampleColumns": ["tenure", "monthly_charges", "total_charges", "contract_type", "payment_method", "churn"],
     },
     {
         "id": "supermarket-sales",
@@ -44,8 +44,8 @@ PRELOADED = [
     {
         "id": "store-demand",
         "name": "Store Item Demand Forecasting",
-        "description": "5 years of store-item sales data for demand forecasting",
-        "rows": 913000, "columns": 4,
+        "description": "Store-item sales data for demand forecasting",
+        "rows": 5000, "columns": 4,
         "suggestedUseCase": "demand_forecasting",
         "suggestedTaskType": "regression",
         "suggestedTarget": "sales",
