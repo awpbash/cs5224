@@ -1,8 +1,8 @@
 """RetailMind AutoML training container.
 
 Modes:
-  MODE=auto    — tries multiple models with CV, picks the best, saves leaderboard
-  MODE=single  — trains one specific model (MODEL_TYPE env var)
+  MODE=auto    - tries multiple models with CV, picks the best, saves leaderboard
+  MODE=single  - trains one specific model (MODEL_TYPE env var)
 
 Environment variables:
   DATA_S3_PATH    s3://bucket/users/{userId}/{projectId}/processed/
@@ -160,7 +160,7 @@ def run_auto(
     """Try multiple models, rank by CV score, return best model + leaderboard."""
 
     if candidate_model_names:
-        # User specified exact models — use those
+        # User specified exact models - use those
         candidates = []
         for name in candidate_model_names:
             spec = get_model_by_name(name)
@@ -352,7 +352,7 @@ def main() -> None:
 
     # Validate data before training
     if len(X_train) == 0:
-        raise ValueError("Training set is empty — no rows to train on")
+        raise ValueError("Training set is empty - no rows to train on")
     if task_type == "classification":
         n_classes = y_train.nunique()
         if n_classes < 2:

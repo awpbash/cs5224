@@ -7,9 +7,9 @@ Usage:
   python scripts/plot-tests.py
 
 Outputs:
-  results/security-test-matrix.png     — pass/fail grid by category
-  results/api-response-breakdown.png   — stacked bar: connect / ttfb / transfer
-  results/cold-start-analysis.png      — sequential call latency (warm-up curve)
+  results/security-test-matrix.png     - pass/fail grid by category
+  results/api-response-breakdown.png   - stacked bar: connect / ttfb / transfer
+  results/cold-start-analysis.png      - sequential call latency (warm-up curve)
 """
 
 import pandas as pd
@@ -265,7 +265,7 @@ def main():
         plot_security_matrix(sec_df)
         plot_security_donut(sec_df)
     else:
-        print(f"  {SEC_CSV} not found — skipping security plots")
+        print(f"  {SEC_CSV} not found - skipping security plots")
 
     if os.path.exists(API_CSV):
         api_df = pd.read_csv(API_CSV)
@@ -273,7 +273,7 @@ def main():
         plot_api_breakdown(api_df)
         plot_cold_start(api_df)
     else:
-        print(f"  {API_CSV} not found — skipping API plots")
+        print(f"  {API_CSV} not found - skipping API plots")
 
     print("\nDone! Check the results/ folder for PNG charts.")
 

@@ -134,7 +134,7 @@ export default function DashboardPage() {
           </div>
           <h2 className="text-lg font-medium mb-2">No projects yet</h2>
           <p className="text-muted-foreground text-sm mb-6 max-w-sm">
-            Create your first project to start building AI models from your data — no data science expertise required.
+            Create your first project to start building AI models from your data - no data science expertise required.
           </p>
           <Link
             href="/projects/new"

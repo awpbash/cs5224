@@ -23,7 +23,7 @@ function FormattedMessage({ content }: { content: string }) {
     const line = lines[i];
     const trimmed = line.trim();
 
-    // Skip empty lines — they become spacing
+    // Skip empty lines - they become spacing
     if (!trimmed) {
       if (elements.length > 0) {
         elements.push(<div key={`sp-${i}`} className="h-1.5" />);

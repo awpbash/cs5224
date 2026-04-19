@@ -1,19 +1,19 @@
 # RetailMind
 
-**No-code ML platform for retail SMEs.** Upload your data, describe your business problem, and get a trained model with plain-English recommendations — no data science expertise required.
+No-code ML platform for retail SMEs. Upload your data, describe your business problem, and get a trained model with plain-English recommendations.
 
-Built on 12 AWS services for CS5224 Cloud Computing at the National University of Singapore.
+Built on 12 AWS services.
 
 ---
 
 ## What It Does
 
-1. **Describe your problem** — Use the AI chatbot or pick a template (churn prediction, demand forecasting, customer segmentation)
-2. **Upload data** — Drag-and-drop a CSV or choose from preloaded Kaggle datasets
-3. **Automatic profiling** — Data quality checks, distributions, and feature analysis
-4. **Train a model** — AutoML tries up to 8 algorithms with cross-validation, picks the best
-5. **Get insights** — Business-language summary, feature importance, and AI-generated recommendations
-6. **Run predictions** — Enter new data and get instant predictions from your trained model
+1. **Describe your problem** - Use the AI chatbot or pick a template (churn prediction, demand forecasting, customer segmentation)
+2. **Upload data** - Drag-and-drop a CSV or choose from preloaded datasets
+3. **Automatic profiling** - Data quality checks, distributions, and feature analysis
+4. **Train a model** - AutoML tries up to 8 algorithms with cross-validation and picks the best
+5. **Get insights** - Business-language summary, feature importance, and AI-generated recommendations
+6. **Run predictions** - Enter new data and get instant predictions
 
 ---
 
@@ -37,8 +37,6 @@ Browser (Next.js SPA)
           ProfileData -> ETL -> AutoSelect ->
           Train (ECS Fargate) -> Evaluate -> Deploy
 ```
-
-### AWS Services
 
 | Service | Purpose |
 |---------|---------|
@@ -64,26 +62,14 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for full details.
 ```
 retailmind/
 ├── frontend/                  # Next.js + TypeScript SPA
-│   └── src/
-│       ├── app/               # Pages (dashboard, projects, auth)
-│       ├── components/        # Reusable UI components
-│       ├── hooks/             # React hooks (auth, polling)
-│       └── lib/               # API client, types, auth helpers
-│
 ├── backend/
-│   ├── lambdas/
-│   │   ├── api/               # 16 API Gateway handlers
-│   │   ├── pipeline/          # Step Functions task handlers
-│   │   └── events/            # EventBridge handlers
+│   ├── lambdas/api/           # API Gateway handlers
+│   ├── lambdas/pipeline/      # Step Functions task handlers
+│   ├── lambdas/events/        # EventBridge handlers
 │   └── shared/                # Shared utilities (Lambda layer)
-│
-├── containers/
-│   └── tabular-automl/        # AutoML container (19 models)
-│
-├── infra/                     # AWS CDK stacks (Python)
-│   └── stacks/                # 7 stacks (storage, auth, api, pipeline, etc.)
-│
-├── scripts/                   # Deployment, testing, and analysis scripts
+├── containers/tabular-automl/ # AutoML container (19 models)
+├── infra/stacks/              # AWS CDK (7 stacks)
+├── scripts/                   # Deploy, test, and analysis scripts
 ├── layers/                    # Lambda layers (sklearn)
 ├── results/                   # Load test and security test outputs
 └── docs/                      # Architecture docs and diagrams
@@ -95,47 +81,31 @@ retailmind/
 
 ### Prerequisites
 
-| Tool | Version |
-|------|---------|
-| AWS CLI | v2+ |
-| AWS CDK | v2+ |
-| Python | 3.12 |
-| Node.js | 18+ |
-| Docker | Desktop |
-
-AWS credentials must be configured for `ap-southeast-1` and Bedrock access must be enabled for Claude 3 Haiku.
+- AWS CLI v2+, CDK v2+, Python 3.12, Node.js 18+, Docker
+- AWS credentials configured for `ap-southeast-1`
+- Bedrock access enabled for Claude 3 Haiku
 
 ### Deploy
 
 ```bash
-# 1. Build the sklearn Lambda layer
+# Build the sklearn Lambda layer
 cd layers && bash build-layers.sh
 
-# 2. Install CDK dependencies
+# Install CDK dependencies and bootstrap
 cd ../infra && pip install -r requirements.txt
-
-# 3. Bootstrap CDK (first time only)
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 cdk bootstrap aws://$ACCOUNT_ID/ap-southeast-1
 
-# 4. Build the frontend
+# Build frontend and deploy all stacks
 cd ../frontend && npm install && npm run build
-
-# 5. Deploy all stacks
 cd ../infra && cdk deploy --all --require-approval broadening
 
-# 6. Update frontend/.env.local with outputs from step 5, rebuild, and redeploy
+# Update frontend/.env.local with CDK outputs, rebuild, redeploy
 cd ../frontend && npm run build
 cd ../infra && cdk deploy CloudForgeFrontend
 
-# 7. Seed sample datasets
+# Seed sample datasets
 cd .. && bash scripts/seed-data.sh
-```
-
-Or use the all-in-one script:
-
-```bash
-bash scripts/deploy.sh
 ```
 
 ### Frontend Environment
@@ -154,66 +124,50 @@ NEXT_PUBLIC_COGNITO_REGION=ap-southeast-1
 ## Local Development
 
 ```bash
-# Frontend
-cd frontend && npm install && npm run dev
-
-# Backend tests
-cd backend && pip install -r requirements.txt
-python -m pytest tests/
-
-# CDK
-cd infra && pip install -r requirements.txt
-cdk synth    # preview CloudFormation
-cdk diff     # see what would change
+cd frontend && npm install && npm run dev    # http://localhost:3000
+cd backend && pip install -r requirements.txt && python -m pytest tests/
+cd infra && cdk synth
 ```
 
 ---
 
 ## Testing
 
-### Load Testing
-
-Hits CloudFront and API Gateway at varying concurrency levels (1, 10, 25, 50, 100 concurrent requests):
-
 ```bash
+# Load test (varying concurrency against CloudFront + API Gateway)
 export COGNITO_TOKEN="your-jwt-token"
 bash scripts/load-test.sh
-python scripts/plot-load-test.py    # generates charts in results/
-```
+python scripts/plot-load-test.py
 
-### Security Testing
-
-Tests authentication, data isolation, input validation, CORS, and cold start behaviour:
-
-```bash
-export COGNITO_TOKEN="your-jwt-token"
+# Security test (auth, data isolation, input validation, CORS, cold starts)
 bash scripts/test-security.sh
-python scripts/plot-tests.py        # generates charts in results/
+python scripts/plot-tests.py
 ```
+
+Results and charts are saved to `results/`.
 
 ---
 
 ## ML Training
 
-The AutoML container supports 19 models across classification and regression:
+The AutoML container supports 19 models:
 
-**Classification (8):** Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, XGBoost, LightGBM, KNN, SVM
+- **Classification:** Logistic Regression, Decision Tree, Random Forest, Gradient Boosting, XGBoost, LightGBM, KNN, SVM
+- **Regression:** Linear Regression, Ridge, Lasso, ElasticNet, Decision Tree, Random Forest, Gradient Boosting, XGBoost, LightGBM, KNN, SVM
 
-**Regression (11):** Linear Regression, Ridge, Lasso, ElasticNet, Decision Tree, Random Forest, Gradient Boosting, XGBoost, LightGBM, KNN, SVM
-
-In **auto mode**, the container selects candidates based on dataset size, runs cross-validation with hyperparameter search, and picks the best model. In **single mode**, it trains one specified model.
+Auto mode selects candidates based on dataset size, runs cross-validation with hyperparameter search, and picks the best. Single mode trains one specified model.
 
 ---
 
 ## Cost
 
-| Service | Monthly Cost |
-|---------|-------------|
+| Service | Monthly |
+|---------|---------|
 | Most services | $0 (free tier) |
-| ECS Fargate | ~$2-5 (~$0.05/job) |
-| Bedrock | ~$1-3 (per-token) |
+| ECS Fargate | ~$2-5 |
+| Bedrock | ~$1-3 |
 | S3 + ECR | ~$0.50 |
-| **Total** | **~$5-12/month** |
+| **Total** | **~$5-12** |
 
 ---
 
@@ -224,9 +178,3 @@ cd infra && cdk destroy --all
 ```
 
 Manually delete non-empty S3 buckets, ECR images, and CloudWatch log groups.
-
----
-
-## Team
-
-CS5224 Cloud Computing — National University of Singapore, AY2025/26

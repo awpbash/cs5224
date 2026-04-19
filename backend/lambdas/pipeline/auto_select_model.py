@@ -38,7 +38,7 @@ def handler(event, context):
     user_model_type = event.get("modelType")
 
     if selected_models and len(selected_models) > 0:
-        # User picked specific models — map to train.py names
+        # User picked specific models - map to train.py names
         candidate_models = []
         for m in selected_models:
             mapped = MODEL_NAME_MAP.get(m)
@@ -73,7 +73,7 @@ def handler(event, context):
             "isRegression": is_regression,
         }
 
-    # Auto mode — pick based on data characteristics
+    # Auto mode - pick based on data characteristics
     if is_regression:
         if row_count > 5000 or column_count > 15:
             model_type = "xgboost_reg"

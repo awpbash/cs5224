@@ -155,7 +155,7 @@ def _run(event):
     except Exception:
         pass
 
-    # Target distribution (for numeric targets — histogram; for categorical — value counts)
+    # Target distribution (for numeric targets - histogram; for categorical - value counts)
     target_distribution = {}
     try:
         last_col = df.columns[-1]

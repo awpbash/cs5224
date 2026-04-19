@@ -2,7 +2,7 @@
 set -e
 cd "$(dirname "$0")"
 
-echo "Building sklearn layer (pipeline Lambdas only — inference uses container image)..."
+echo "Building sklearn layer (pipeline Lambdas only - inference uses container image)..."
 rm -rf sklearn-layer sklearn-layer.zip
 docker run --rm --entrypoint bash -v "$(pwd):/out" public.ecr.aws/lambda/python:3.12 -c \
   "pip install scikit-learn -t /out/sklearn-layer/python/ --no-cache-dir && \

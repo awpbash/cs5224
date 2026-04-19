@@ -1,4 +1,4 @@
-"""Scheduled retraining handler — triggered by EventBridge cron rule.
+"""Scheduled retraining handler - triggered by EventBridge cron rule.
 
 Scans for projects with auto-retrain enabled and triggers a new
 training pipeline for each one using the same configuration as

@@ -14,8 +14,8 @@
 #   3. Optionally adjust CONCURRENCY_LEVELS and REQUESTS_PER_LEVEL
 #
 # Output:
-#   results/load-test-results.csv   — raw data (one row per request)
-#   results/load-test-summary.csv   — aggregated stats per endpoint + concurrency
+#   results/load-test-results.csv   - raw data (one row per request)
+#   results/load-test-summary.csv   - aggregated stats per endpoint + concurrency
 #   Terminal prints a summary table when done
 # ─────────────────────────────────────────────────────────────
 
@@ -24,7 +24,7 @@ set -euo pipefail
 # ═══════ CONFIGURE THESE ═══════
 CLOUDFRONT_URL="${CLOUDFRONT_URL:-https://dquehu2ohxwqm.cloudfront.net}"
 API_URL="${API_URL:-https://xou98cxmqe.execute-api.ap-southeast-1.amazonaws.com/prod}"
-TOKEN="${COGNITO_TOKEN:-}"            # Cognito ID token — grab from browser: Dev Tools → Network → any API request → Authorization header (paste the part after "Bearer ")
+TOKEN="${COGNITO_TOKEN:-}"            # Cognito ID token - grab from browser: Dev Tools → Network → any API request → Authorization header (paste the part after "Bearer ")
 
 # Test parameters
 CONCURRENCY_LEVELS=(1 10 25 50 100)
@@ -55,7 +55,7 @@ if [ -n "$API_URL" ]; then
   ENDPOINTS+=("API_ListPreloaded|${API_URL}/preloaded-datasets|api_read|yes")
   ENDPOINTS+=("API_ListProjects|${API_URL}/projects|api_read|yes")
 
-  # POST endpoint (chat) — uncomment if you want to test write endpoints
+  # POST endpoint (chat) - uncomment if you want to test write endpoints
   # ENDPOINTS+=("API_Chat|${API_URL}/chat|api_write|yes")
 fi
 
@@ -117,7 +117,7 @@ run_batch() {
 
   local batch_end=$(date +%s%N)
   local batch_ms=$(( (batch_end - batch_start) / 1000000 ))
-  echo "  ✓ $name @ c=$concurrency — ${batch_ms}ms total"
+  echo "  ✓ $name @ c=$concurrency - ${batch_ms}ms total"
 }
 
 # ─────────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 FROM public.ecr.aws/lambda/python:3.12
 
-# Install ML libraries — container image Lambdas have 10GB limit (not 250MB)
+# Install ML libraries - container image Lambdas have 10GB limit (not 250MB)
 RUN pip install --no-cache-dir \
     scikit-learn \
     xgboost \
@@ -19,5 +19,5 @@ COPY lambdas/pipeline/profile_data.py ${LAMBDA_TASK_ROOT}/pipeline/profile_data.
 COPY lambdas/pipeline/etl_preprocess.py ${LAMBDA_TASK_ROOT}/pipeline/etl_preprocess.py
 COPY lambdas/pipeline/__init__.py ${LAMBDA_TASK_ROOT}/pipeline/__init__.py
 
-# Default handler — overridden per function in CDK
+# Default handler - overridden per function in CDK
 CMD ["api.run_inference.handler"]

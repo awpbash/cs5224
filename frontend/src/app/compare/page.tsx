@@ -31,7 +31,7 @@ const APPROACHES = [
     ],
     pros: ["Full customization", "Deep analysis possible"],
     cons: [
-      "Expensive — $100K+/year salary",
+      "Expensive - $100K+/year salary",
       "Weeks to first insight",
       "Dependent on one person",
       "Need to explain retail domain",
@@ -48,7 +48,7 @@ const APPROACHES = [
       "Upload your CSV or pick a sample dataset",
       "Describe your business problem in plain English",
       "Review AI-suggested analysis setup",
-      "Click Train — AutoML handles the rest",
+      "Click Train - AutoML handles the rest",
       "Get business recommendations instantly",
     ],
     pros: [

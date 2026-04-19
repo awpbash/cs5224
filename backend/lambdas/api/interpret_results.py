@@ -33,14 +33,14 @@ RULES:
 6. The executive summary should answer: "What is the ONE thing I should do differently starting tomorrow?"
 7. Recommendations should be ordered by estimated business impact, not by feature importance score.
 
-FORMAT — respond with ONLY this JSON, no other text:
+FORMAT - respond with ONLY this JSON, no other text:
 ```json
 {
   "summary": "3-4 sentence executive summary: what the model found, the key business implication, and the single most important action to take",
   "recommendations": [
     {
       "title": "Verb-first action title (5-8 words)",
-      "description": "WHO should do WHAT, HOW, and the expected business outcome in 2-3 sentences. Be specific — name features, thresholds, customer segments.",
+      "description": "WHO should do WHAT, HOW, and the expected business outcome in 2-3 sentences. Be specific - name features, thresholds, customer segments.",
       "impact": "high|medium|low"
     }
   ],
@@ -137,7 +137,7 @@ def handler(event, context):
                 fi_lines = []
                 for i, f in enumerate(sorted_fi[:10], 1):
                     pct = round(f.get("importance", 0) * 100, 1)
-                    fi_lines.append(f"  {i}. {f.get('feature', '?')} — {pct}% importance")
+                    fi_lines.append(f"  {i}. {f.get('feature', '?')} - {pct}% importance")
                 fi_summary = "\n".join(fi_lines)
             else:
                 fi_summary = json.dumps(feature_importance, indent=2)

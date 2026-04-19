@@ -48,7 +48,7 @@ def handler(event, context):
                 })
             else:
                 reason = stopped_reason or f"Container exited with code {exit_code}"
-                logger.error("Fargate task failed: %s — %s", task_arn, reason)
+                logger.error("Fargate task failed: %s - %s", task_arn, reason)
                 update_job(project_id, job_id, {
                     "status": "FAILED",
                     "failureReason": reason[:500],

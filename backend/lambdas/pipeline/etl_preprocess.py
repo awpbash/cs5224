@@ -117,7 +117,7 @@ def _run(event):
     # --- Encode categorical features ---
     # Note: Label encoders are fitted on full data before split so that all
     # category values are mapped. This is acceptable for label encoding (unlike
-    # scaling) because it only creates a mapping — no statistics are leaked.
+    # scaling) because it only creates a mapping - no statistics are leaked.
     label_encoders = {}
     for col in df.select_dtypes(include=["object", "string"]).columns:
         if col == target_col:
@@ -131,7 +131,7 @@ def _run(event):
 
     class_labels = []
     if is_regression:
-        # For regression, target should be numeric — convert if needed
+        # For regression, target should be numeric - convert if needed
         df[target_col] = pd.to_numeric(df[target_col], errors="coerce")
         df = df.dropna(subset=[target_col])
     else:

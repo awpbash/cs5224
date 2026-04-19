@@ -22,7 +22,7 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
     },
   });
 
-  // Handle expired/invalid token — redirect to login
+  // Handle expired/invalid token - redirect to login
   if (res.status === 401) {
     signOut();
     if (typeof window !== "undefined" && !window.location.pathname.startsWith("/auth")) {

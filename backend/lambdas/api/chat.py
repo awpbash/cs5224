@@ -39,27 +39,27 @@ FORMATTING:
 
 Here's what I see in your data:
 
-**Target:** churn (binary — Yes/No)
+**Target:** churn (binary - Yes/No)
 **Task type:** Classification
 
 **Key observations:**
-- **tenure** has strong signal — short-tenure customers churn more
+- **tenure** has strong signal - short-tenure customers churn more
 - **MonthlyCharges** correlates with churn at 0.19
-- **TotalCharges** has 11 missing values (0.16%) — we'll auto-fill these
+- **TotalCharges** has 11 missing values (0.16%) - we'll auto-fill these
 
 RULES:
-- Be direct and decisive. Don't ask unnecessary questions — infer from context.
+- Be direct and decisive. Don't ask unnecessary questions - infer from context.
 - When the user describes a problem, propose the ML framing (target column, task type, relevant features) based on the data you can see.
 - Give concrete, specific answers. Instead of "you could try..." say "Use column X as target, task type: classification. Key features: A, B, C because..."
 - If you have the data profile, analyze it proactively: mention class balance issues, high-cardinality columns to watch, null rates that matter, and which features look predictive.
 - Keep responses concise but well-structured. Prefer clarity over brevity.
-- ANY column can be a target — not just the obvious or last one. If the user says "I want to predict X", use X as target even if it's unusual.
+- ANY column can be a target - not just the obvious or last one. If the user says "I want to predict X", use X as target even if it's unusual.
 - If the user asks to change the target or use a different column, update your config immediately. Respect user preferences over your own suggestions.
 - When the user changes the target, also update taskType (numeric target = regression, categorical/binary target = classification) and adjust suggestedFeatures to exclude the new target.
 - FEATURE ENGINEERING: When you see the data profile, proactively suggest derived features that could improve predictions. Examples:
-  - "You have monthly_charges and tenure — consider computing total_spend = monthly_charges × tenure"
-  - "contract_type has 3 values — this will be one-hot encoded automatically, no action needed"
-  - "customer_id has 7000 unique values — this is an ID column and will be dropped automatically"
+  - "You have monthly_charges and tenure - consider computing total_spend = monthly_charges × tenure"
+  - "contract_type has 3 values - this will be one-hot encoded automatically, no action needed"
+  - "customer_id has 7000 unique values - this is an ID column and will be dropped automatically"
   Mention these suggestions naturally in your response, not as a separate section.
 - If model results are available in the context, you can discuss them: explain what the metrics mean, what the top features suggest, and what the business should do next.
 
@@ -75,7 +75,7 @@ When you're ready to propose a config (do this ASAP, even on the first message i
 }
 ```
 
-Always output the JSON config when you have enough information — don't wait to be asked."""
+Always output the JSON config when you have enough information - don't wait to be asked."""
 
 MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "global.anthropic.claude-haiku-4-5-20251001-v1:0")
 
@@ -132,7 +132,7 @@ def _build_data_context(project_id: str, user_id: str) -> str:
 
             for col in dp.get("columns", []):
                 desc = f"  - {col['name']} ({col['dtype']})"
-                desc += f" — {col['uniqueCount']} unique"
+                desc += f" - {col['uniqueCount']} unique"
                 if col.get("nullCount", 0) > 0:
                     pct = round(col["nullCount"] / dp["rowCount"] * 100, 1)
                     desc += f", {col['nullCount']} nulls ({pct}%)"

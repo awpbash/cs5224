@@ -126,7 +126,7 @@ class ApiStack(Stack):
 
         list_preloaded_fn = make_lambda("ListPreloaded", "api.list_preloaded.handler")
 
-        # Recompute profile also needs sklearn — use the same container image
+        # Recompute profile also needs sklearn - use the same container image
         recompute_profile_fn = _lambda.DockerImageFunction(
             self, "RecomputeProfileContainer",
             code=_lambda.DockerImageCode.from_image_asset(

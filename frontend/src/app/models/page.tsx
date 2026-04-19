@@ -27,7 +27,7 @@ import {
 /*  Model Data                                                         */
 /* ------------------------------------------------------------------ */
 
-// ── AWS pricing (ap-southeast-1) — must match train/page.tsx ──────────────
+// ── AWS pricing (ap-southeast-1) - must match train/page.tsx ──────────────
 const FARGATE_VCPU_PER_HR = 0.04048;
 const FARGATE_MEM_PER_GB_HR = 0.004445;
 const FARGATE_VCPU = 1;
@@ -83,7 +83,7 @@ const CLASSIFICATION_MODELS: Model[] = [
     description:
       "Predicts the probability of an outcome by fitting a linear boundary between classes. The simplest and most interpretable classification model.",
     howItWorks:
-      "Draws a straight line (or plane) to separate classes. For each data point, it calculates a probability score — above 50% is one class, below is the other. Think of it like a scoring system where each feature adds or subtracts points.",
+      "Draws a straight line (or plane) to separate classes. For each data point, it calculates a probability score - above 50% is one class, below is the other. Think of it like a scoring system where each feature adds or subtracts points.",
     bestFor: [
       "Binary classification (yes/no, churn/stay)",
       "When you need to explain WHY a prediction was made",
@@ -123,7 +123,7 @@ const CLASSIFICATION_MODELS: Model[] = [
       "Datasets with both numeric and categorical features",
     ],
     limitations: [
-      "Prone to overfitting — can memorize training data",
+      "Prone to overfitting - can memorize training data",
       "Small data changes can produce very different trees",
       "Usually less accurate than ensemble methods",
     ],
@@ -154,7 +154,7 @@ const CLASSIFICATION_MODELS: Model[] = [
     howItWorks:
       "Creates many decision trees, each trained on a random sample of rows and columns. Each tree votes on the prediction, and the majority wins. This \"wisdom of crowds\" approach reduces individual tree errors and overfitting.",
     bestFor: [
-      "General-purpose classification — works well on most datasets",
+      "General-purpose classification - works well on most datasets",
       "Medium-to-large datasets (1K–100K+ rows)",
       "When you want solid accuracy without heavy tuning",
       "Datasets with many features (auto-selects the useful ones)",
@@ -273,7 +273,7 @@ const CLASSIFICATION_MODELS: Model[] = [
     description:
       "Microsoft's gradient boosting framework, designed for speed and efficiency. Grows trees leaf-wise instead of level-wise for faster convergence.",
     howItWorks:
-      "Similar to XGBoost but uses a different tree growth strategy (leaf-wise vs level-wise). This means it finds the best split globally, leading to faster training and often better accuracy — especially on larger datasets.",
+      "Similar to XGBoost but uses a different tree growth strategy (leaf-wise vs level-wise). This means it finds the best split globally, leading to faster training and often better accuracy - especially on larger datasets.",
     bestFor: [
       "Large datasets (fastest boosting algorithm)",
       "High-dimensional data with many features",
@@ -313,7 +313,7 @@ const CLASSIFICATION_MODELS: Model[] = [
     interpretability: "High",
     timeMultiplier: 2.0,
     description:
-      "Classifies a new data point by looking at the K most similar existing data points and taking a majority vote. No training needed — it memorizes the data.",
+      "Classifies a new data point by looking at the K most similar existing data points and taking a majority vote. No training needed - it memorizes the data.",
     howItWorks:
       "When predicting for a new customer, it finds the K most similar customers in the training data (using distance metrics) and checks what happened to them. If 4 out of 5 nearest neighbors churned, the prediction is \"churn\".",
     bestFor: [
@@ -445,7 +445,7 @@ const REGRESSION_MODELS: Model[] = [
     description:
       "Linear regression with a penalty that can shrink some coefficients to exactly zero, effectively performing automatic feature selection.",
     howItWorks:
-      "Like Ridge but uses L1 penalty, which can set irrelevant feature weights to exactly zero. This means Lasso automatically identifies which features matter and which don't — great for understanding what drives predictions.",
+      "Like Ridge but uses L1 penalty, which can set irrelevant feature weights to exactly zero. This means Lasso automatically identifies which features matter and which don't - great for understanding what drives predictions.",
     bestFor: [
       "Automatic feature selection (drops irrelevant features)",
       "Sparse models with few important predictors",
@@ -475,7 +475,7 @@ const REGRESSION_MODELS: Model[] = [
     interpretability: "High",
     timeMultiplier: 0.5,
     description:
-      "Combines Ridge and Lasso penalties — gets the best of both worlds: feature selection from Lasso and stability from Ridge.",
+      "Combines Ridge and Lasso penalties - gets the best of both worlds: feature selection from Lasso and stability from Ridge.",
     howItWorks:
       "Uses both L1 (Lasso) and L2 (Ridge) penalties simultaneously. The l1_ratio parameter controls the mix: 1.0 = pure Lasso, 0.0 = pure Ridge. This handles correlated features better than Lasso alone while still performing feature selection.",
     bestFor: [
@@ -523,7 +523,7 @@ const REGRESSION_MODELS: Model[] = [
     limitations: [
       "Prone to overfitting",
       "Predictions are step-wise (not smooth)",
-      "Unstable — small changes in data can change the tree",
+      "Unstable - small changes in data can change the tree",
     ],
     hyperparameters: [
       {
@@ -605,7 +605,7 @@ const REGRESSION_MODELS: Model[] = [
     interpretability: "Low",
     timeMultiplier: 1.5,
     description:
-      "Optimized gradient boosting for regression — fast, accurate, and handles missing values natively.",
+      "Optimized gradient boosting for regression - fast, accurate, and handles missing values natively.",
     howItWorks:
       "Same boosting strategy as Gradient Boosting but with engineering optimizations for speed and accuracy. Built-in regularization prevents overfitting, and it handles missing values automatically.",
     bestFor: [
@@ -942,7 +942,7 @@ export default function ModelsPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground">Model Library</h1>
           <p className="mt-2 text-muted-foreground max-w-2xl">
-            RetailMind offers <strong>19 machine learning models</strong> — 8 for classification (predicting categories)
+            RetailMind offers <strong>19 machine learning models</strong> - 8 for classification (predicting categories)
             and 11 for regression (predicting numbers). In <strong>Auto mode</strong>, we test multiple models and pick the
             best one for your data automatically.
           </p>
@@ -967,7 +967,7 @@ export default function ModelsPage() {
           </div>
         </div>
 
-        {/* Dataset Size Picker — controls cost estimates */}
+        {/* Dataset Size Picker - controls cost estimates */}
         <div className="mb-6 rounded-xl border border-border/60 bg-card px-5 py-4">
           <div className="flex items-center gap-2 mb-3">
             <Database className="h-4 w-4 text-muted-foreground" />

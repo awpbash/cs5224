@@ -1,4 +1,4 @@
-"""Model registry — every model RetailMind can train.
+"""Model registry - every model RetailMind can train.
 
 Each entry defines the estimator constructor, default hyperparameters,
 a search grid for auto-tuning, and which task types it supports.

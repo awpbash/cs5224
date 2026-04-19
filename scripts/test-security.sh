@@ -1,6 +1,6 @@
 #!/bin/bash
 # ─────────────────────────────────────────────────────────────
-# RetailMind — Security & API Test Suite
+# RetailMind - Security & API Test Suite
 # Tests auth, data isolation, endpoint responses, cold starts
 # ─────────────────────────────────────────────────────────────
 #
@@ -99,7 +99,7 @@ run_api_test() {
 # ═════════════════════════════════════════════════════════════
 echo ""
 echo "╔══════════════════════════════════════════════════════╗"
-echo "║       RetailMind — Security & API Test Suite         ║"
+echo "║       RetailMind - Security & API Test Suite         ║"
 echo "╚══════════════════════════════════════════════════════╝"
 
 # ─────────────────────────────────────────────────────────────
@@ -111,8 +111,8 @@ echo "── 1. Authentication Tests"
 run_security_test "No auth header" "auth" "401" "GET" "$API/projects" "missing"
 run_security_test "Empty bearer token" "auth" "401" "GET" "$API/projects" "empty"
 run_security_test "Invalid JWT token" "auth" "401" "GET" "$API/projects" "invalid"
-run_security_test "Valid token — projects" "auth" "200" "GET" "$API/projects" "valid"
-run_security_test "Valid token — preloaded" "auth" "200" "GET" "$API/preloaded-datasets" "valid"
+run_security_test "Valid token - projects" "auth" "200" "GET" "$API/projects" "valid"
+run_security_test "Valid token - preloaded" "auth" "200" "GET" "$API/preloaded-datasets" "valid"
 
 # ─────────────────────────────────────────────────────────────
 # 2. DATA ISOLATION TESTS (cross-tenant)
@@ -137,9 +137,9 @@ run_security_test "Get other user's job status" "isolation" "404" "GET" "$API/pr
 echo ""
 echo "── 3. Input Validation Tests"
 
-run_security_test "Create project — empty body" "validation" "400" "POST" "$API/projects" "valid" '{}'
-run_security_test "Create project — missing name" "validation" "400" "POST" "$API/projects" "valid" '{"taskType":"classification"}'
-run_security_test "Chat — empty message" "validation" "400" "POST" "$API/chat" "valid" '{"message":""}'
+run_security_test "Create project - empty body" "validation" "400" "POST" "$API/projects" "valid" '{}'
+run_security_test "Create project - missing name" "validation" "400" "POST" "$API/projects" "valid" '{"taskType":"classification"}'
+run_security_test "Chat - empty message" "validation" "400" "POST" "$API/chat" "valid" '{"message":""}'
 run_security_test "Nonexistent endpoint" "validation" "403" "GET" "$API/nonexistent" "valid"
 run_security_test "SQL injection in path" "validation" "404" "GET" "$API/projects/1;DROP%20TABLE" "valid"
 run_security_test "XSS in project name" "validation" "200" "POST" "$API/projects" "valid" '{"projectName":"<script>alert(1)</script>","taskType":"classification","useCase":"custom"}'
@@ -170,7 +170,7 @@ done
 # ─────────────────────────────────────────────────────────────
 echo ""
 echo "── 5. Cold Start Comparison"
-echo "  (First call vs subsequent — Lambda may be warm already)"
+echo "  (First call vs subsequent - Lambda may be warm already)"
 
 for ep in "/preloaded-datasets" "/projects"; do
   echo "  --- $ep ---"

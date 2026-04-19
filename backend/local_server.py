@@ -633,7 +633,7 @@ def run_inference(project_id):
 
 @app.route("/projects/<project_id>/results-chat", methods=["POST"])
 def results_chat(project_id):
-    """Chat about training results — business-focused Q&A."""
+    """Chat about training results - business-focused Q&A."""
     from openai import OpenAI
     from shared.db import get_project, get_job
 

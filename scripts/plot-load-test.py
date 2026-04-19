@@ -7,9 +7,9 @@ Usage:
   python scripts/plot-load-test.py
 
 Outputs:
-  results/load-test-latency.png      — avg/p95/p99 latency vs concurrency
-  results/load-test-success-rate.png  — success rate vs concurrency
-  results/load-test-distribution.png  — box plot latency distribution
+  results/load-test-latency.png      - avg/p95/p99 latency vs concurrency
+  results/load-test-success-rate.png  - success rate vs concurrency
+  results/load-test-distribution.png  - box plot latency distribution
 """
 
 import pandas as pd

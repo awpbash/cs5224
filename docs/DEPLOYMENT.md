@@ -1,4 +1,4 @@
-# RetailMind — Deployment Guide
+# RetailMind - Deployment Guide
 
 ## Table of Contents
 
@@ -106,12 +106,12 @@
 |---|---------|---------------|--------------|
 | 1 | **Amazon Cognito** | `cloudforge-users` | User sign-up, login, JWT token issuance. The frontend uses Cognito JS SDK to authenticate. Every API call includes the JWT in the `Authorization` header. |
 | 2 | **Amazon API Gateway** | `cloudforge-api` | REST API with 16 routes. Validates JWT via Cognito authorizer before forwarding to Lambda. Handles CORS. |
-| 3 | **AWS Lambda** | `cloudforge-*` (16 functions) | All backend logic. Each handler is a single Python file. No frameworks — plain `handler(event, context)` functions. |
+| 3 | **AWS Lambda** | `cloudforge-*` (16 functions) | All backend logic. Each handler is a single Python file. No frameworks - plain `handler(event, context)` functions. |
 | 4 | **Amazon DynamoDB** | `cloudforge-projects`, `cloudforge-jobs`, `cloudforge-chats` | Three tables storing project metadata, training job state, and chat sessions. On-demand billing (pay per request). |
 | 5 | **Amazon S3** | `cloudforge-data-{account_id}`, `cloudforge-frontend-{account_id}` | Data bucket stores CSVs, processed data, trained models, metrics. Frontend bucket stores the Next.js static export. |
 | 6 | **Amazon CloudFront** | `cloudforge-cdn` | CDN in front of the frontend S3 bucket. HTTPS, caching, SPA routing (rewrites 404/403 → index.html). |
 | 7 | **AWS Step Functions** | `cloudforge-pipeline` | Orchestrates the 6-step ML training pipeline. Each step is a Lambda or ECS task. Handles errors, timeouts, state passing between steps. |
-| 8 | **Amazon ECS (Fargate)** | `cloudforge-cluster` | Runs the training container. Fargate = serverless containers — no EC2 instances to manage. Pulls image from ECR, runs in public subnet with public IP. |
+| 8 | **Amazon ECS (Fargate)** | `cloudforge-cluster` | Runs the training container. Fargate = serverless containers - no EC2 instances to manage. Pulls image from ECR, runs in public subnet with public IP. |
 | 9 | **Amazon ECR** | Auto-created by CDK | Docker image registry. CDK builds the `tabular-automl` Dockerfile and pushes it to ECR during `cdk deploy`. |
 | 10 | **Amazon Bedrock** | Claude 3 Haiku model | Powers the chatbot (problem refinement), result interpretation (business recommendations), and results Q&A. Called via `bedrock-runtime` boto3 client. |
 | 11 | **Amazon CloudWatch** | `cloudforge-dashboard` | Monitoring dashboard with 5 widgets: API request count, API errors (4xx/5xx), API latency, pipeline execution count (started/succeeded/failed), pipeline duration. |
@@ -145,7 +145,7 @@ Browser → Cognito JS SDK → Cognito User Pool
 - Frontend uses AWS Amplify JS SDK (or direct Cognito API) to call **Cognito**
 - **Sign up:** Cognito creates user, sends verification email
 - **Login:** Cognito validates password, returns 3 tokens:
-  - `id_token` (JWT with user claims — this is what we send to API Gateway)
+  - `id_token` (JWT with user claims - this is what we send to API Gateway)
   - `access_token`
   - `refresh_token`
 - Frontend stores `id_token` in `localStorage`
@@ -239,7 +239,7 @@ Browser → API Gateway → Lambda (recompute_profile) → S3 → Lambda (pandas
 2. **Lambda** (`recompute_profile.py`):
    - Downloads CSV from **S3**
    - Computes correlation matrix, PCA analysis, class balance / target distribution using **pandas** and **scikit-learn** (via Lambda layers)
-   - Returns the analytics data (no DynamoDB write — this is an on-demand computation)
+   - Returns the analytics data (no DynamoDB write - this is an on-demand computation)
 
 **Services called:** API Gateway, Cognito, Lambda, S3
 
@@ -247,7 +247,7 @@ Browser → API Gateway → Lambda (recompute_profile) → S3 → Lambda (pandas
 
 ### 7. User Clicks "Train Model"
 
-This is the most complex flow — it touches 7 services.
+This is the most complex flow - it touches 7 services.
 
 ```
 Browser → API Gateway → Lambda (trigger_pipeline) → Step Functions → 4 Lambdas + 1 ECS Fargate task
@@ -304,7 +304,7 @@ Step Functions → Lambda → S3 (read CSV) → sklearn (impute/encode/scale/spl
 ```
 Step Functions → Lambda (pure logic, no AWS calls)
 ```
-- Pure logic — no AWS service calls
+- Pure logic - no AWS service calls
 - If user selected specific models → maps them to train.py names
 - If auto mode → picks model based on row count and feature count:
   - Large dataset (>5000 rows or >15 features) → XGBoost
@@ -455,12 +455,12 @@ Deployed in dependency order. Each stack is a separate CloudFormation stack.
 
 | Stack | File | Creates | Depends On |
 |-------|------|---------|------------|
-| **CloudForgeNetwork** | `network_stack.py` | VPC (2 public subnets, no NAT), S3 + DynamoDB gateway endpoints | — |
-| **CloudForgeStorage** | `storage_stack.py` | S3 data bucket (CORS enabled), 3 DynamoDB tables (projects, jobs, chats) | — |
-| **CloudForgeAuth** | `auth_stack.py` | Cognito User Pool (`cloudforge-users`), App Client (no secret, SRP + password auth) | — |
+| **CloudForgeNetwork** | `network_stack.py` | VPC (2 public subnets, no NAT), S3 + DynamoDB gateway endpoints | - |
+| **CloudForgeStorage** | `storage_stack.py` | S3 data bucket (CORS enabled), 3 DynamoDB tables (projects, jobs, chats) | - |
+| **CloudForgeAuth** | `auth_stack.py` | Cognito User Pool (`cloudforge-users`), App Client (no secret, SRP + password auth) | - |
 | **CloudForgePipeline** | `pipeline_stack.py` | ECR (auto), ECS Cluster + Fargate task def, 5 pipeline Lambdas, Step Functions state machine, sklearn layer | Network, Storage |
 | **CloudForgeApi** | `api_stack.py` | API Gateway (16 routes), 16 Lambda functions, Cognito authorizer, Bedrock IAM, sklearn layer, pandas layer | Storage, Auth, Pipeline |
-| **CloudForgeFrontend** | `frontend_stack.py` | S3 frontend bucket, CloudFront distribution, OAI, BucketDeployment from `frontend/out/` | — |
+| **CloudForgeFrontend** | `frontend_stack.py` | S3 frontend bucket, CloudFront distribution, OAI, BucketDeployment from `frontend/out/` | - |
 | **CloudForgeMonitoring** | `monitoring_stack.py` | CloudWatch dashboard (5 widgets: API requests, errors, latency, pipeline executions, pipeline duration) | Api, Pipeline |
 
 ---
@@ -574,7 +574,7 @@ npm install       # or: pnpm install
 npm run build     # produces frontend/out/
 ```
 
-Note: At this point, `NEXT_PUBLIC_API_URL` in `.env.local` might be empty. That's OK — we'll update it after deployment and redeploy the frontend.
+Note: At this point, `NEXT_PUBLIC_API_URL` in `.env.local` might be empty. That's OK - we'll update it after deployment and redeploy the frontend.
 
 ---
 
@@ -694,8 +694,8 @@ If you don't have these sample CSVs yet, download them from Kaggle:
 2. **Sign up:** Create a new account (Cognito sends verification email)
 3. **Create project:** Click "New Project", fill in name and use case
 4. **Upload data:** Upload a CSV or select a preloaded dataset
-5. **Chat:** Describe your business problem — the AI should respond with a suggested config
-6. **Train:** Click "Train Model" — check the Step Functions console to watch the execution
+5. **Chat:** Describe your business problem - the AI should respond with a suggested config
+6. **Train:** Click "Train Model" - check the Step Functions console to watch the execution
 7. **Results:** After training completes (~2-5 minutes), view metrics and AI recommendations
 8. **Infer:** Enter feature values and get a prediction
 
@@ -773,14 +773,14 @@ curl -X POST -H "Authorization: Bearer $TOKEN" \
 
 ### What costs money
 
-- **Fargate** is the main variable cost — each training job runs a container for 2-10 minutes
-- **Bedrock** charges per token — each chat message or interpretation costs fractions of a cent
+- **Fargate** is the main variable cost - each training job runs a container for 2-10 minutes
+- **Bedrock** charges per token - each chat message or interpretation costs fractions of a cent
 - **S3** storage grows with datasets and models
 
 ### Cost killers to avoid
 
-- ~~NAT Gateway: $33/month~~ (removed — using public subnets instead)
-- ~~SageMaker: ml.g4dn.xlarge is $0.73/hr~~ (removed — using Fargate instead)
+- ~~NAT Gateway: $33/month~~ (removed - using public subnets instead)
+- ~~SageMaker: ml.g4dn.xlarge is $0.73/hr~~ (removed - using Fargate instead)
 - Don't leave large datasets in S3 indefinitely
 
 ---

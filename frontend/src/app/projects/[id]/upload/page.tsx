@@ -418,7 +418,7 @@ export default function UploadPage() {
                       <div className="flex-1 min-w-0">
                         <p className="text-sm text-foreground">
                           <span className="font-medium">{issue.column}</span>
-                          {" — "}Missing data
+                          {" - "}Missing data
                         </p>
                         <p className="mt-1 text-xs text-muted-foreground">
                           {issue.description}

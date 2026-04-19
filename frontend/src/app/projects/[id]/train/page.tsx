@@ -85,7 +85,7 @@ const POLL_INTERVAL_MS = 5000;
 
 const CLF_MODELS = [
   { value: "auto", label: "Auto (Best Model)", desc: "Tries multiple approaches, picks the best one" },
-  { value: "xgboost", label: "XGBoost", desc: "Fast and accurate — recommended for most tasks" },
+  { value: "xgboost", label: "XGBoost", desc: "Fast and accurate - recommended for most tasks" },
   { value: "random_forest", label: "Random Forest", desc: "Reliable predictions using multiple decision paths" },
   { value: "logistic", label: "Logistic Regression", desc: "Simple and easy to understand" },
   { value: "decision_tree", label: "Decision Tree", desc: "Creates clear if-then rules you can follow" },
@@ -93,7 +93,7 @@ const CLF_MODELS = [
 
 const REG_MODELS = [
   { value: "auto", label: "Auto (Best Model)", desc: "Tries multiple approaches, picks the best one" },
-  { value: "xgboost", label: "XGBoost", desc: "Fast and accurate — recommended for most tasks" },
+  { value: "xgboost", label: "XGBoost", desc: "Fast and accurate - recommended for most tasks" },
   { value: "random_forest", label: "Random Forest", desc: "Reliable predictions using multiple decision paths" },
   { value: "linear", label: "Linear Regression", desc: "Simple and easy to understand" },
   { value: "decision_tree", label: "Decision Tree", desc: "Creates clear if-then rules you can follow" },
@@ -228,7 +228,7 @@ export default function TrainPage() {
     : null;
   const featureCount = (project?.selectedFeatures as string[] | undefined)?.length ?? null;
 
-  // Elapsed timer — runs every second when training is active
+  // Elapsed timer - runs every second when training is active
   useEffect(() => {
     if (!isTraining || !startTime) return;
     setElapsedSec(Math.floor((Date.now() - startTime) / 1000));
@@ -276,7 +276,7 @@ export default function TrainPage() {
           localStorage.removeItem(`trainStartTime_${projectId}`);
         }
       } catch {
-        // Network error during polling — don't stop, just skip this tick
+        // Network error during polling - don't stop, just skip this tick
       }
     },
     [stopPolling]
@@ -296,7 +296,7 @@ export default function TrainPage() {
     [stopPolling, pollJobStatus]
   );
 
-  // startElapsedTimer is now handled by the useEffect above — just set startTime
+  // startElapsedTimer is now handled by the useEffect above - just set startTime
 
   // On page load: check if there's an active job in localStorage and resume polling
   useEffect(() => {

@@ -20,7 +20,7 @@ const STEPS = [
     icon: Cpu,
     title: "Train a model",
     description:
-      "We automatically select and tune the best model for your data. No data science expertise needed — just click Train.",
+      "We automatically select and tune the best model for your data. No data science expertise needed - just click Train.",
   },
   {
     icon: BarChart3,

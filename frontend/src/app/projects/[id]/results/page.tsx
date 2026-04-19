@@ -242,7 +242,7 @@ export default function ResultsPage() {
       const { downloadUrl } = await getModelDownloadUrl(id, job.jobId);
       window.open(downloadUrl, "_blank");
     } catch {
-      // silently fail — user can retry
+      // silently fail - user can retry
     } finally {
       setDownloadLoading(false);
     }
@@ -401,7 +401,7 @@ export default function ResultsPage() {
         </div>
       </div>
 
-      {/* What Drives Your Results — always shown from model data, no AI needed */}
+      {/* What Drives Your Results - always shown from model data, no AI needed */}
       {topFeatures.length > 0 && (
         <div className="rounded-xl border border-border/60 bg-emerald-50/30 p-6 shadow-sm">
           <p className="text-sm font-medium mb-1">Key Drivers</p>

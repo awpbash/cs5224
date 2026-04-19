@@ -1,4 +1,4 @@
-# RetailMind — AI-Powered Analytics Platform for Retail SMEs
+# RetailMind - AI-Powered Analytics Platform for Retail SMEs
 
 > **Problem:** Retail SMEs lack data analysts and ML expertise. Existing tools (SageMaker Canvas, Roboflow) assume technical users.
 >
@@ -17,11 +17,11 @@
 │  API LAYER (all Lambda)                                             │
 │  ├── CRUD: create/list/get/delete projects                          │
 │  ├── Upload: presigned S3 URLs for CSV                              │
-│  ├── Chatbot: Bedrock Claude — problem alignment                    │
+│  ├── Chatbot: Bedrock Claude - problem alignment                    │
 │  ├── Trigger: start Step Functions pipeline                         │
 │  ├── Status: poll job progress                                      │
 │  ├── Inference: load model from S3, predict                         │
-│  └── Interpret: Bedrock Claude — business recommendations           │
+│  └── Interpret: Bedrock Claude - business recommendations           │
 ├─────────────────────────────────────────────────────────────────────┤
 │  PIPELINE (Step Functions)                                          │
 │  Profile Data ──> ETL ──> Auto-Select Model ──> Fargate Train       │
@@ -53,9 +53,9 @@
 | 11 | **EventBridge** | Routes Fargate completion/failure events |
 | 12 | **CloudWatch** | Logs and monitoring |
 
-**No ALB** — all HTTP goes through API Gateway → Lambda. Fargate only runs batch training jobs (invoked by Step Functions, not serving HTTP).
+**No ALB** - all HTTP goes through API Gateway → Lambda. Fargate only runs batch training jobs (invoked by Step Functions, not serving HTTP).
 
-**No SQS** — the pipeline is sequential (profile → ETL → train → evaluate), which is exactly what Step Functions does. SQS is for fan-out/worker patterns.
+**No SQS** - the pipeline is sequential (profile → ETL → train → evaluate), which is exactly what Step Functions does. SQS is for fan-out/worker patterns.
 
 ---
 
@@ -98,15 +98,15 @@ Frontend is in a separate bucket: `cloudforge-frontend-{account_id}`
 **Key rule:** Lambda always builds S3 paths using `userId` from the Cognito JWT, never from the request body. This prevents users from accessing each other's data.
 
 ```python
-# CORRECT — userId from JWT
+# CORRECT - userId from JWT
 user_id = event["requestContext"]["authorizer"]["claims"]["sub"]
 s3_key = f"users/{user_id}/{project_id}/raw/data.csv"
 
-# WRONG — never trust user input for paths
+# WRONG - never trust user input for paths
 user_id = json.loads(event["body"])["userId"]
 ```
 
-**Presigned URLs** for upload: Lambda generates a PUT URL scoped to `users/{userId}/{projectId}/raw/data.csv`, valid for 15 minutes. Browser uploads directly to S3 — no file goes through Lambda.
+**Presigned URLs** for upload: Lambda generates a PUT URL scoped to `users/{userId}/{projectId}/raw/data.csv`, valid for 15 minutes. Browser uploads directly to S3 - no file goes through Lambda.
 
 **Preloaded datasets:** When a user selects a Kaggle dataset, Lambda copies it to `users/{userId}/{projectId}/raw/data.csv`. This keeps the pipeline path-consistent (always reads from `users/`).
 
@@ -143,7 +143,7 @@ Access patterns:
 PK: projectId   SK: jobId
 
 Attributes:
-  userId              (denormalized — for authorization checks)
+  userId              (denormalized - for authorization checks)
   modelType           "xgboost" | "random_forest" | "logistic" | "linear" | "decision_tree"
   hyperparameters     { max_depth: 6, n_estimators: 200 }
   status              "PROFILING" | "PREPROCESSING" | "TRAINING" | "EVALUATING" | "COMPLETED" | "FAILED"
@@ -264,7 +264,7 @@ Error handling:
 
 ## 7. Chatbot (Bedrock Claude)
 
-Not a full conversational agent — it's a **structured Bedrock call** that helps frame the business problem.
+Not a full conversational agent - it's a **structured Bedrock call** that helps frame the business problem.
 
 ### Three Bedrock use cases
 
@@ -311,7 +311,7 @@ Output: 3-5 plain-English recommendations
 
 Example:
 "1. Contract type matters most. Month-to-month customers are 3x more
-    likely to churn — consider incentives for annual plans.
+    likely to churn - consider incentives for annual plans.
  2. New customers are at risk. Tenure < 6 months has 45% churn rate.
     Focus onboarding efforts on this group.
  3. Support tickets are a warning sign. 3+ tickets in the last quarter
@@ -466,7 +466,7 @@ Icons via Lucide React
 | `/projects/[id]` | Project overview with step navigation |
 | `/projects/[id]/upload` | Drag-drop CSV upload + preloaded dataset picker + data preview |
 | `/projects/[id]/chat` | Data exploration chatbot (multi-turn, context-aware) |
-| `/projects/[id]/profile` | Data profiling — column stats, null %, types, feature selection, target picker |
+| `/projects/[id]/profile` | Data profiling - column stats, null %, types, feature selection, target picker |
 | `/projects/[id]/train` | Auto-config display, advanced override, cost estimate, pipeline trigger + status polling |
 | `/projects/[id]/results` | Business summary, KPIs, feature importance, Bedrock recommendations, results Q&A chat |
 | `/projects/[id]/infer` | Tabular form input built from features, prediction + confidence display |
@@ -483,7 +483,7 @@ Icons via Lucide React
 |---|---|---|
 | **Architecture quality** | API latency (<500ms), pipeline end-to-end time (<10 min for 5K rows), chatbot response (<3s) | CloudWatch metrics, end-to-end timing |
 | **Scalability** | Load test with 50–200 concurrent requests, verify Lambda auto-scaling, Fargate handles parallel training jobs | loader.io free tier or `hey` CLI tool against API Gateway endpoints; monitor via CloudWatch dashboard |
-| **Fault tolerance** | System recovers from component failures — Fargate task termination mid-training, Lambda cold starts, DynamoDB throttling | Terminate ECS task via `aws ecs stop-task` during training; verify Step Functions catches failure and updates job status to FAILED. Multi-AZ resilience is inherent: Lambda, DynamoDB, API Gateway, and S3 are all multi-AZ by default; Fargate runs across 2 public subnets in separate AZs |
+| **Fault tolerance** | System recovers from component failures - Fargate task termination mid-training, Lambda cold starts, DynamoDB throttling | Terminate ECS task via `aws ecs stop-task` during training; verify Step Functions catches failure and updates job status to FAILED. Multi-AZ resilience is inherent: Lambda, DynamoDB, API Gateway, and S3 are all multi-AZ by default; Fargate runs across 2 public subnets in separate AZs |
 | **Security** | Cross-tenant data isolation (User A can't see User B's data), invalid JWT rejected, S3 not publicly accessible, presigned URLs expire correctly | Manual penetration test: modify JWT claims, attempt cross-user API calls, verify S3 bucket policies |
 | **Business KPIs** | Time-to-insight (<15 min from upload to recommendations), pipeline success rate (>95%), cost per tenant (<$0.10/run) | Track via CloudWatch custom metrics and DynamoDB job records |
 
@@ -499,7 +499,7 @@ Icons via Lucide React
 | Bedrock Claude Haiku (~200 calls across chat, interpret, Q&A) | ~$0.20 |
 | **Total** | **~$5–12/month** |
 
-No NAT Gateway — Fargate runs in public subnets with public IPs. VPC endpoints for S3 and DynamoDB avoid data transfer charges. Production would use private subnets + NAT Gateway (~$33/month) but that's out of scope for this demo.
+No NAT Gateway - Fargate runs in public subnets with public IPs. VPC endpoints for S3 and DynamoDB avoid data transfer charges. Production would use private subnets + NAT Gateway (~$33/month) but that's out of scope for this demo.
 
 ---
 
